@@ -2,6 +2,12 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
 
+#install mac appstore apps
+brew 'mas'
+
+#libcaca depends on this!
+cask 'xquartz'
+
 brew 'ack'
 brew 'coreutils'
 brew 'go'
@@ -25,10 +31,14 @@ brew 'youtube-dl'
 brew 'zsh'
 
 cask '1password'
+cask 'alfred'
 cask 'atom'
 cask 'firefox'
 cask 'google-chrome'
-cask 'mapbox-studio'
 cask 'openpht'
 cask 'sourcetree'
+cask 'java'
 cask 'vlc'
+
+mas 'Pages', id: 409201541
+mas 'Numbers', id:409203825
