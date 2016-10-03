@@ -26,6 +26,7 @@ brew 'spaceman-diff'
 brew 'unrar'
 brew 'wget'
 brew 'youtube-dl'
+brew 'zsh'
 
 cask '1password'
 #cask 'adium'
