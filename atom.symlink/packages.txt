@@ -1,0 +1,7 @@
+atom-bootstrap4@1.4.0
+atom-material-syntax@0.4.6
+atom-material-ui@1.3.6
+language-babel@2.42.3
+terminal-plus@0.14.5
+
+

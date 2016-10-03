@@ -16,8 +16,8 @@
       "vendor"
     ]
     themes: [
-      "unity-ui"
-      "glacier-syntax"
+      "atom-material-ui"
+      "atom-material-syntax"
     ]
   editor:
     fontFamily: "Menlo"
