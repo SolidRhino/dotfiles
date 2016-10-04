@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'homebrew/command-not-found'
 
 #install mac appstore apps
 brew 'mas'
