@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'homebrew/php'
 tap 'homebrew/command-not-found'
 
 #install mac appstore apps
@@ -31,6 +32,11 @@ brew 'unrar'
 brew 'wget'
 brew 'youtube-dl'
 brew 'zsh'
+
+# PHP things
+brew 'php70'
+brew 'wp-cli'
+brew 'composer'
 
 cask '1password'
 cask 'alfred'
