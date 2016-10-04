@@ -9,6 +9,7 @@ brew 'mas'
 #libcaca depends on this!
 cask 'xquartz'
 
+brew 'bash'
 brew 'ack'
 brew 'coreutils'
 brew 'go'
