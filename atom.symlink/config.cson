@@ -16,8 +16,8 @@
       "vendor"
     ]
     themes: [
-      "atom-material-ui"
-      "atom-material-syntax"
+      "nova-atom-ui"
+      "nova-atom-syntax"
     ]
   editor:
     fontFamily: "Menlo"
