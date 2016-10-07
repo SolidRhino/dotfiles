@@ -51,3 +51,4 @@ cask 'vlc'
 
 mas 'Pages', id: 409201541
 mas 'Numbers', id:409203825
+mas 'Xcode', id:497799835
