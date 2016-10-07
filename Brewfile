@@ -30,6 +30,7 @@ brew 'roundup'
 brew 'spaceman-diff'
 brew 'unrar'
 brew 'wget'
+brew 'watchman'
 brew 'youtube-dl'
 brew 'zsh'
 
