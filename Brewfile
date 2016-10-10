@@ -1,6 +1,8 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'homebrew/services'
+tap 'caskroom/versions'
 tap 'homebrew/php'
 tap 'homebrew/command-not-found'
 
