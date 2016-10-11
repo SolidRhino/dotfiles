@@ -1,4 +1,8 @@
 "*":
+  "autocomplete-plus":
+    confirmCompletion: "tab always, enter when suggestion explicitly selected"
+  autosave:
+    enabled: true
   core:
     disabledPackages: [
       "background-tips"
@@ -25,6 +29,10 @@
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+  "file-icons":
+    coloured: false
+  "find-and-replace":
+    scrollToResultOnLiveSearch: true
   "go-plus":
     goPath: "/Users/holman/Code/go"
   "linter-eslint":
@@ -38,5 +46,15 @@
       "text.git-commit"
       "text.html.basic"
     ]
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
+  "terminal-plus":
+    style:
+      theme: "pro"
+  "tree-view": {}
   welcome:
     showOnStartup: false
