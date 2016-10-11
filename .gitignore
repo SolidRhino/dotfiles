@@ -3,8 +3,10 @@ atom.symlink/.node-gyp
 atom.symlink/.storage
 atom.symlink/blob-store
 atom.symlink/compile-cache/
+atom.symlink/git-time-machine
 atom.symlink/packages
 atom.symlink/storage
+atom.symlink/split-diff
 atom.symlink/themes
 
 git/gitconfig.local.symlink
