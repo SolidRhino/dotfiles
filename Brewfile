@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/versions'
+tap 'homebrew/fuse'
 tap 'homebrew/php'
 tap 'homebrew/command-not-found'
 
@@ -12,8 +13,12 @@ brew 'mas'
 #libcaca depends on this!
 cask 'xquartz'
 
+#bindfs depends on this!
+cask 'osxfuse'
+
 brew 'bash'
 brew 'ack'
+brew 'bindfs'
 brew 'coreutils'
 brew 'go'
 brew 'grc'
@@ -34,6 +39,7 @@ brew 'unrar'
 brew 'wget'
 brew 'watchman'
 brew 'youtube-dl'
+brew 'ansible'
 brew 'zsh'
 
 # PHP things
@@ -52,6 +58,8 @@ cask 'openpht'
 cask 'sourcetree'
 cask 'java'
 cask 'vlc'
+cask 'vagrant'
+cask 'virtualbox'
 
 mas 'Pages', id: 409201541
 mas 'Numbers', id:409203825
