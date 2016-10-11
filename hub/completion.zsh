@@ -1,3 +1,4 @@
+#hub completion
 completion='$(brew --prefix)/share/zsh/site-functions/_git'
 
 if test -f $completion
