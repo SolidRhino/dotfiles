@@ -19,6 +19,7 @@
       "tmp"
       "vendor"
     ]
+    telemetryConsent: "limited"
     themes: [
       "nova-atom-ui"
       "nova-atom-syntax"
