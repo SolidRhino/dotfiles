@@ -6,7 +6,6 @@ tap 'caskroom/versions'
 tap 'caskroom/fonts'
 tap 'homebrew/fuse'
 tap 'homebrew/php'
-tap 'homebrew/command-not-found'
 
 #install mac appstore apps
 brew 'mas'
