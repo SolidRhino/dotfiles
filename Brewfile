@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 tap 'caskroom/versions'
+tap 'caskroom/fonts'
 tap 'homebrew/fuse'
 tap 'homebrew/php'
 tap 'homebrew/command-not-found'
@@ -61,6 +62,7 @@ cask 'java'
 cask 'vlc'
 cask 'vagrant'
 cask 'virtualbox'
+cask 'font-awesome-terminal-fonts'
 
 mas 'Pages', id: 409201541
 mas 'Numbers', id:409203825
