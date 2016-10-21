@@ -18,6 +18,7 @@ cask 'xquartz'
 cask 'osxfuse'
 
 brew 'bash'
+brew 'antigen'
 brew 'ack'
 brew 'bindfs'
 brew 'coreutils'
