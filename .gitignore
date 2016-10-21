@@ -8,5 +8,7 @@ atom.symlink/packages
 atom.symlink/storage
 atom.symlink/split-diff
 atom.symlink/themes
+atom.symlink/blob-store
+atom.symlink/recovery
 
 git/gitconfig.local.symlink
