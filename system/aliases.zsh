@@ -8,3 +8,8 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+alias cask='brew cask' # i <3 u cask
+alias where=which # sometimes i forget
+
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash; sudo rm /private/var/vm/sleepimage"
