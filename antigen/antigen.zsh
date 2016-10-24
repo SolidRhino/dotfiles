@@ -61,6 +61,9 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
+antigen bundle gitignore
+antigen bundle brew
+#antigen bundle cask
 antigen bundle command-not-found
 
 # Syntax highlighting bundle.
