@@ -1,6 +1,6 @@
-if test $(which antigen)
+if test $(antigen version)
 then
-
-antigen update
-antigen cleanup --force
+  echo "Update antigen bundels and cleanup"
+  antigen update
+  antigen cleanup --force
 fi
