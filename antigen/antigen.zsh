@@ -63,11 +63,18 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle gitignore
 antigen bundle brew
-#antigen bundle cask
 antigen bundle command-not-found
+antigen bundle common-aliases
+antigen bundle compleat
+antigen bundle git-extras
+antigen bundle osx
+antigen bundle node
+antigen bundle sudo
+antigen bundle nmn/gulp.plugin.zsh
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
 antigen theme bhilburn/powerlevel9k powerlevel9k
