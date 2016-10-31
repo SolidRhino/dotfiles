@@ -25,7 +25,7 @@
       "nova-atom-syntax"
     ]
   editor:
-    fontFamily: "Menlo"
+    fontFamily: "Fira Code"
     fontSize: 15
     invisibles: {}
     showIndentGuide: true
