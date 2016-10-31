@@ -7,16 +7,19 @@ tap 'caskroom/fonts'
 tap 'homebrew/fuse'
 tap 'homebrew/php'
 
-#install mac appstore apps
+# install mac appstore apps
 brew 'mas'
 
-#libcaca depends on this!
+# libcaca depends on this!
 cask 'xquartz'
 
-#bindfs depends on this!
+# bindfs depends on this!
 cask 'osxfuse'
 
+# shells
 brew 'bash'
+brew 'zsh'
+
 brew 'antigen'
 brew 'ack'
 brew 'bindfs'
@@ -43,7 +46,6 @@ brew 'wget'
 brew 'watchman'
 brew 'youtube-dl'
 brew 'ansible'
-brew 'zsh'
 
 # PHP things
 brew 'php70'
