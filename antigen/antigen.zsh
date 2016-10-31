@@ -71,6 +71,7 @@ antigen bundle osx
 antigen bundle node
 antigen bundle sudo
 antigen bundle nmn/gulp.plugin.zsh
+antigen bundle lukechilds/zsh-nvm
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
