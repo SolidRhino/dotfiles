@@ -63,7 +63,10 @@ cask 'java'
 cask 'vlc'
 cask 'vagrant'
 cask 'virtualbox'
+
+# Fonts
 cask 'font-awesome-terminal-fonts'
+cask 'font-fira-code'
 
 mas 'Pages', id: 409201541
 mas 'Numbers', id:409203825
