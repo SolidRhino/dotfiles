@@ -6,8 +6,6 @@
   core:
     disabledPackages: [
       "background-tips"
-      "exception-reporting"
-      "metrics"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -30,6 +28,8 @@
     invisibles: {}
     showIndentGuide: true
     softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "6f441e1f-6471-e35a-48fb-8f1d273aef8f"
   "file-icons":
     coloured: false
   "find-and-replace":
