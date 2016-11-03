@@ -47,6 +47,7 @@ brew 'wget'
 brew 'watchman'
 brew 'youtube-dl'
 brew 'ansible'
+brew 'yarn'
 
 # PHP things
 brew 'php70'
