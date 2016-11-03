@@ -147,10 +147,14 @@ then
   if source bin/dot > /tmp/dotfiles-dot 2>&1
   then
     success "dependencies installed"
+
+    info 'Set zsh as default shell'
+    sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+
   else
     fail "error installing dependencies"
   fi
 fi
 
 echo ''
-echo '  All installed!'
+echo '  All installed! Restart the terminal.'
