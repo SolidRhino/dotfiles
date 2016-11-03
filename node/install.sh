@@ -1,12 +1,15 @@
-if test $(which node)
+if test $(which npm)
 then
-  if test ! $(which spoof)
+  if test ! $(which yarn)
   then
-    npm install spoof -g
+    npm install --global yarn
+  else
+    yarn self-update
   fi
 
-  if test ! $(which react-native)
+  if test $(which yarn)
   then
-    npm install -g react-native-cli
+    yarn global add spoof
+    yarn global add react-native-cli
   fi
 fi
