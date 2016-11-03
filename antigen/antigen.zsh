@@ -62,14 +62,17 @@ antigen use oh-my-zsh
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle gitignore
+antigen bundle github
+antigen bundle git-extras
+antigen bundle docker
 antigen bundle brew
 antigen bundle command-not-found
 antigen bundle common-aliases
 antigen bundle compleat
-antigen bundle git-extras
 antigen bundle osx
 antigen bundle node
 antigen bundle sudo
+antigen bundle nvm
 antigen bundle nmn/gulp.plugin.zsh
 antigen bundle lukechilds/zsh-nvm
 
