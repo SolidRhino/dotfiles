@@ -1,5 +1,5 @@
 # install nvm
-if test ! $(which nvm)
+if [ ! -d "$HOME/.nvm" ];
 then
   export NVM_DIR="$HOME/.nvm" && (
     git clone https://github.com/creationix/nvm.git "$NVM_DIR"
