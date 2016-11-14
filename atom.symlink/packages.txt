@@ -1,9 +1,9 @@
 atom-bootstrap4@1.4.0
 atom-material-syntax@0.4.6
 atom-material-ui@1.3.6
-file-icons@1.7.23
-git-time-machine@1.5.3
-language-babel@2.45.0
+file-icons@1.7.25
+git-time-machine@1.5.4
+language-babel@2.48.3
 nova-atom-syntax@1.3.1
 nova-atom-ui@1.2.5
 
