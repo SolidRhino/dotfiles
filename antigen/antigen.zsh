@@ -69,6 +69,7 @@ antigen bundle brew
 antigen bundle command-not-found
 antigen bundle common-aliases
 antigen bundle compleat
+antigen bundle composer
 antigen bundle osx
 antigen bundle node
 antigen bundle sudo
