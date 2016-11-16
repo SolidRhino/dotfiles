@@ -3,7 +3,7 @@ atom-material-syntax@0.4.6
 atom-material-ui@1.3.6
 file-icons@1.7.25
 git-time-machine@1.5.4
-language-babel@2.48.3
+language-babel@2.48.4
 nova-atom-syntax@1.3.1
 nova-atom-ui@1.2.5
 
