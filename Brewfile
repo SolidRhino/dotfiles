@@ -6,6 +6,7 @@ tap 'caskroom/versions'
 tap 'caskroom/fonts'
 tap 'homebrew/fuse'
 tap 'homebrew/php'
+tap 'getantibody/homebrew-antibody'
 
 # install mac appstore apps
 brew 'mas'
@@ -20,7 +21,7 @@ cask 'osxfuse'
 brew 'bash'
 brew 'zsh'
 
-brew 'antigen'
+brew 'antibody'
 brew 'ack'
 brew 'bindfs'
 brew 'coreutils'
