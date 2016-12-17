@@ -1,2 +1,5 @@
 alias d='docker $*'
 alias d-c='docker-compose $*'
+alias drm='drc && dri'
+alias drc='docker rm -f $(docker ps -a -q)'
+alias dri='docker rmi $(docker images -q)'
