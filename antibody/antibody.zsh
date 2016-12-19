@@ -1,5 +1,6 @@
 source <(antibody init)
 
+# Setup powerlevel9k
 POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
@@ -55,6 +56,7 @@ POWERLEVEL9K_TIME_FOREGROUND="249"
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S} \UE12E"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=('status' 'os_icon' 'todo' 'dir' 'vcs')
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('nvm' 'rvm' 'load' 'ram_joined' 'battery' 'time')
+NVM_LAZY_LOAD=true
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 # antigen bundle git
@@ -70,7 +72,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('nvm' 'rvm' 'load' 'ram_joined' 'battery' 't
 # antigen bundle node
 # antigen bundle sudo
 # antigen bundle vagrant
-# antigen bundle nvm
 # antigen bundle nmn/gulp.plugin.zsh
 # antigen bundle lukechilds/zsh-nvm
 

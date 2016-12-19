@@ -1,3 +1,4 @@
+lukechilds/zsh-nvm
 caarlos0/zsh-git-sync kind:path
 caarlos0/zsh-mkc
 Tarrasch/zsh-bd
