@@ -53,6 +53,8 @@
     useGlobalEslint: true
   nuclide:
     installRecommendedPackages: true
+    "nuclide-health": {}
+    "nuclide-hg-repository": {}
     "nuclide-home":
       showHome: false
   "release-notes":
