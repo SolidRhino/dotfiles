@@ -9,6 +9,8 @@ cd "$(dirname $0)"/..
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
 brew bundle
+echo "› brew cleanup"
+brew cleanup
 
 #accapt xcode license
 #sudo xcodebuild -license accept
