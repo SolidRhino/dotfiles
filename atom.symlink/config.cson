@@ -4,8 +4,21 @@
   autosave:
     enabled: true
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "background-tips"
+      "tree-view"
     ]
     followSymlinks: false
     hideGitIgnoredFiles: true
@@ -19,8 +32,8 @@
     ]
     telemetryConsent: "limited"
     themes: [
-      "nova-atom-ui"
-      "nova-atom-syntax"
+      "nucleus-dark-ui"
+      "behave-theme"
     ]
   editor:
     fontFamily: "Fira Code"
@@ -38,6 +51,10 @@
     goPath: "/Users/holman/Code/go"
   "linter-eslint":
     useGlobalEslint: true
+  nuclide:
+    installRecommendedPackages: true
+    "nuclide-home":
+      showHome: false
   "release-notes":
     viewedVersion: "0.89.0"
   "spell-check":
