@@ -2,9 +2,10 @@ atom-bootstrap4@1.4.0
 atom-material-syntax@0.4.6
 atom-material-ui@1.3.8
 behave-theme@1.6.0
-file-icons@1.7.25
+file-icons@2.0.7
 git-blame@0.4.11
 git-log@0.4.1
+git-plus@7.0.5
 git-time-machine@1.5.4
 haskell-grammar@0.4.0
 highlight-selected@0.11.2
@@ -20,8 +21,9 @@ merge-conflicts@1.4.4
 nova-atom-syntax@1.3.1
 nova-atom-ui@1.2.5
 nucleus-dark-ui@0.10.19
-nuclide@0.194.0
+nuclide@0.195.0
 nuclide-format-js@0.0.36
+set-syntax@0.3.2
 sort-lines@0.14.0
 tool-bar@1.0.1
 

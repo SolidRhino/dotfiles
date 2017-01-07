@@ -48,6 +48,10 @@
     coloured: false
   "find-and-replace":
     scrollToResultOnLiveSearch: true
+  "git-plus":
+    general:
+      _analyticsUserId: "d017cfc1-36ec-4867-a322-15a89c309b05"
+      analytics: false
   "go-plus":
     goPath: "/Users/holman/Code/go"
   "linter-eslint":
