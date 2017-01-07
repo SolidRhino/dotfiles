@@ -1,7 +1,0 @@
-caarlos0/zsh-git-sync kind:path
-caarlos0/zsh-mkc
-Tarrasch/zsh-bd
-zsh-users/zsh-completions
-bhilburn/powerlevel9k
-djui/alias-tips
-voronkovich/gitignore.plugin.zsh
