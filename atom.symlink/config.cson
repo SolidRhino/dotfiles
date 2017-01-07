@@ -8,6 +8,7 @@
       "source.ini": [
         ".buckconfig"
         ".hgrc"
+        ".flowconfig"
       ]
       "source.json": [
         ".arcconfig"
@@ -53,8 +54,13 @@
     useGlobalEslint: true
   nuclide:
     installRecommendedPackages: true
+    "nuclide-distraction-free-mode":
+      hideFindAndReplace: true
+      hideStatusBar: true
+      hideToolBar: true
     "nuclide-health": {}
-    "nuclide-hg-repository": {}
+    "nuclide-hg-repository":
+      enableDiffStats: true
     "nuclide-home":
       showHome: false
   "release-notes":
