@@ -23,7 +23,6 @@ brew 'zsh'
 # install the newest runtimes
 brew 'go'
 brew 'node'
-brew 'ruby'
 brew 'yarn'
 
 
@@ -51,6 +50,10 @@ brew 'unrar'
 brew 'watchman'
 brew 'wget'
 brew 'youtube-dl'
+
+# Ruby things
+brew 'rbenv'
+brew 'ruby-build'
 
 # PHP things
 brew 'php70'
