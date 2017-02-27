@@ -79,6 +79,7 @@ zplug "plugins/node", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/vagrant", from:oh-my-zsh
+zplug "plugins/rbenv", from:oh-my-zsh
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
