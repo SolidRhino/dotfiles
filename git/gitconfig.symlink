@@ -13,9 +13,9 @@
         diff = auto
         status = auto
         branch = auto
-        ui = true
+	ui = true
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/ivotrompert/.gitignore
         editor = vim
 [apply]
         whitespace = nowarn
@@ -33,9 +33,14 @@
         default = simple
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
 	template = /Users/ivotrompert/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
