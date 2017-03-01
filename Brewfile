@@ -74,6 +74,7 @@ cask 'sequel-pro'
 cask 'sourcetree'
 cask 'vagrant'
 cask 'virtualbox'
+cask 'virtualbox-extension-pack'
 cask 'vlc'
 
 # Fonts
