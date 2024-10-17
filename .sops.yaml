@@ -1,0 +1,14 @@
+keys:
+  # Users
+  - &users:
+    - &ivo age1g5j2yqjlhamu598s2hpypm0dw6m7366m39fzh5hgaud53mkmw4csdlrwld
+  # Hosts
+  - &hosts:
+    - &horizon age1pqcu2wyyvd66wqaw2s2v6zryfqvug9ynkcl3qwy6k60p6e5mquwsst0tfx
+
+creation_rules:
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *horizon
+      - *ivo

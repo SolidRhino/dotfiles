@@ -1,0 +1,10 @@
+LICENSE.md
+dist
+pnpm-lock.yaml
+flake.lock
+vercel.json
+cache
+tmp
+.temp
+secrets/
+.sops.yaml
