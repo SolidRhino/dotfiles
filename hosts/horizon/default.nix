@@ -7,6 +7,7 @@
     ./vpsadminos.nix
     ../common/global
     ../common/users/ivo
+    ../common/optinal/tailscale-ssh.nix
   ];
 
   networking = {
