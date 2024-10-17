@@ -10,6 +10,10 @@
     ../common/optinal/tailscale-ssh.nix
   ];
 
+  services.tailscale = {
+    extraUpFlags = ["--advertise-tags=tag:server"];
+  };  
+
   networking = {
     hostName = "horizon";
   };
