@@ -5,6 +5,6 @@
   };
 
   environment.persistence = {
-    "/persist".directories = ["/var/lib/mysql"];
+    "/persistent".directories = ["/var/lib/mysql"];
   };
 }
