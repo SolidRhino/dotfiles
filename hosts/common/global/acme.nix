@@ -6,7 +6,7 @@
   };
 
   environment.persistence = {
-    "/persistent" = {
+    "/persist" = {
       directories = ["/var/lib/acme"];
     };
   };

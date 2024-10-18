@@ -8,6 +8,6 @@
   sops.secrets.tailscale-auth.sopsFile = ../secrets.yaml;
 
   environment.persistence = {
-    "/persistent".directories = ["/var/lib/tailscale"];
+    "/persist".directories = ["/var/lib/tailscale"];
   };
 }
