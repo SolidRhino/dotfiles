@@ -5,8 +5,9 @@
       enableTransience = true;
       settings = {
         add_newline = true;
-        aws.disable = true;
-        gcloud.disable = true;
+        aws.disabled = true;
+        gcloud.disabled = true;
+        container.disabled = true;
       };
     };
   };
