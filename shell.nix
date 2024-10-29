@@ -1,13 +1,4 @@
-{
-  pkgs ? import <nixpkgs> {},
-  inputs,
-  ...
-}: let
-  nixvim' = inputs.nixvim.packages.${pkgs.system}.default;
-  nvim = nixvim'.extend {
-    config.theme = pkgs.lib.mkForce "tokyonight";
-  };
-in {
+{pkgs ? import <nixpkgs> {}, ...}: {
   default = pkgs.mkShell {
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations";
     nativeBuildInputs = with pkgs; [
@@ -31,7 +22,7 @@ in {
       fd
       nushell
       just
-      nvim
+      helix
     ];
     name = "dots";
   };

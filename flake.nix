@@ -40,11 +40,6 @@
       };
     };
 
-    nixvim = {
-      url = "github:elythh/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     impermanence.url = "github:nix-community/impermanence";
   };
 
@@ -68,7 +63,7 @@
     );
   in {
     inherit lib;
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs inputs;});
+    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
