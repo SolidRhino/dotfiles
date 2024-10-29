@@ -74,6 +74,14 @@
           inherit inputs outputs;
         };
       };
+
+      # Test server vpsfree.cz
+      vps-test = lib.nixosSystem {
+        modules = [./hosts/horizon];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
 
     homeConfigurations = {

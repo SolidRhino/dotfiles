@@ -15,7 +15,7 @@
   };
 
   networking = {
-    hostName = "horizon";
+    hostName = "vps-test";
   };
 
   nixpkgs.hostPlatform.system = "x86_64-linux";
