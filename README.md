@@ -1,7 +1,5 @@
 # Dot files
 
-
-
 Use this URL to start setup a computer with nixos:
 
 ```bash

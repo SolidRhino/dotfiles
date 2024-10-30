@@ -77,7 +77,7 @@
 
       # Test server vpsfree.cz
       vps-test = lib.nixosSystem {
-        modules = [./hosts/horizon];
+        modules = [./hosts/vps-test];
         specialArgs = {
           inherit inputs outputs;
         };
