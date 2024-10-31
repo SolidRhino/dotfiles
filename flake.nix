@@ -46,6 +46,8 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
+
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
   outputs = {
@@ -69,7 +71,7 @@
     );
   in {
     inherit lib;
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs nixvim;});
+    devShells = forEachSystem (pkgs: import ./devshell.nix {inherit pkgs nixvim;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
