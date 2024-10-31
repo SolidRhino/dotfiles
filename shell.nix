@@ -1,4 +1,11 @@
-{pkgs ? import <nixpkgs> {}, ...}: {
+{
+  pkgs ? import <nixpkgs> {},
+  nixvim ? import (builtins.fetchGit {url = "https://github.com/SolidRhino/nixvim";}),
+  ...
+}: let
+  nixvim' = nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
+  nvim = nixvim';
+in {
   default = pkgs.mkShell {
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations";
     nativeBuildInputs = with pkgs; [
@@ -23,7 +30,7 @@
       fd
       nushell
       just
-      helix
+      nvim
     ];
     name = "dots";
   };

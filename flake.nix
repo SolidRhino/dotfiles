@@ -27,6 +27,11 @@
       };
     };
 
+    nixvim = {
+      url = "github:SolidRhino/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,6 +53,7 @@
     nixpkgs,
     home-manager,
     pre-commit-hooks,
+    nixvim,
     systems,
     ...
   } @ inputs: let
@@ -63,7 +69,7 @@
     );
   in {
     inherit lib;
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs nixvim;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
