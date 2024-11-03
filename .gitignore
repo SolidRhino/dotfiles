@@ -1,5 +1,5 @@
+!.envrc
 .direnv
 .pre-commit-config.yaml
 result*
 *.qcow2
-.nixie
