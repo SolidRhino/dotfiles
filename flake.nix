@@ -54,8 +54,6 @@
     self,
     nixpkgs,
     home-manager,
-    pre-commit-hooks,
-    nixvim,
     systems,
     ...
   } @ inputs: let
@@ -71,7 +69,7 @@
     );
   in {
     inherit lib;
-    devShells = forEachSystem (pkgs: import ./devshell.nix {inherit pkgs nixvim;});
+    devShells = forEachSystem (pkgs: import ./devshell.nix {inherit pkgs inputs;});
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {

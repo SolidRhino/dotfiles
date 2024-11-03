@@ -1,12 +1,22 @@
 {
   pkgs,
-  nixvim,
+  inputs,
   ...
 }: let
-  nixvim' = nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
-  nvim = nixvim';
+  nvim = inputs.nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
+
+  pre-commit-check = inputs.pre-commit-hooks.lib."${pkgs.stdenv.hostPlatform.system}".run {
+    src = ./.;
+    hooks = {
+      flake-checker.enable = true;
+      alejandra.enable = true;
+      deadnix.enable = true;
+      statix.enable = true;
+    };
+  };
 in {
   default = pkgs.mkShell {
+    name = "dots";
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations";
     nativeBuildInputs = with pkgs; [
       bashInteractive
@@ -32,6 +42,7 @@ in {
       just
       nvim
     ];
-    name = "dots";
+    inherit (pre-commit-check) shellHook;
+    buildInputs = pre-commit-check.enabledPackages;
   };
 }
