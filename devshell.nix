@@ -9,6 +9,9 @@
     src = ./.;
     hooks = {
       flake-checker.enable = true;
+      detect-private-keys.enable = true;
+      detect-aws-credentials.enable = true;
+      check-added-large-files.enable = true;
       alejandra.enable = true;
       deadnix.enable = true;
       statix.enable = true;
