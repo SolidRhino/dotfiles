@@ -3,7 +3,8 @@
   inputs,
   ...
 }: let
-  nvim = inputs.nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
+  #nvim = inputs.nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
+  helix = inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".default;
 
   pre-commit-check = inputs.pre-commit-hooks.lib."${pkgs.stdenv.hostPlatform.system}".run {
     src = ./.;
@@ -38,12 +39,18 @@ in {
       ssh-to-age
       gnupg
       age
+      # Language servers
+      nixd
+      nil
+      yaml-language-server
+      vscode-langservers-extracted
 
       fzf
       fd
       nushell
       just
-      nvim
+      #nvim
+      helix
     ];
     inherit (pre-commit-check) shellHook;
     buildInputs = pre-commit-check.enabledPackages;
