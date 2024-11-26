@@ -23,34 +23,35 @@ in {
     name = "dots";
     NIX_CONFIG = "extra-experimental-features = nix-command flakes ca-derivations";
     nativeBuildInputs = with pkgs; [
-      bashInteractive
-      gcc
       alejandra
+      bashInteractive
       deadnix
-      statix
+      gcc
+      git
+      home-manager
+      lazygit
+      nix
       nix-inspect
       nodePackages.prettier
-      nix
-      home-manager
-      git
-      lazygit
+      statix
 
+      age
+      gnupg
       sops
       ssh-to-age
-      gnupg
-      age
-      # Language servers
-      nixd
-      nil
-      yaml-language-server
-      vscode-langservers-extracted
 
-      fzf
+      # Language servers
+      bash-language-server
+      nil
+      nixd
+      vscode-langservers-extracted
+      yaml-language-server
+
       fd
-      nushell
-      just
-      #nvim
+      fzf
       helix
+      just
+      nushell
     ];
     inherit (pre-commit-check) shellHook;
     buildInputs = pre-commit-check.enabledPackages;
