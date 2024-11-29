@@ -29,7 +29,7 @@
     };
 
     nixvim = {
-      url = "github:SolidRhino/nixvim";
+      url = "github:redyf/Neve";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  #nvim = inputs.nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
+  nvim = inputs.nixvim.packages."${pkgs.stdenv.hostPlatform.system}".default;
   helix = inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".default;
 
   pre-commit-check = inputs.pre-commit-hooks.lib."${pkgs.stdenv.hostPlatform.system}".run {
@@ -50,6 +50,7 @@ in {
       fd
       fzf
       helix
+      nvim
       just
       nushell
     ];
