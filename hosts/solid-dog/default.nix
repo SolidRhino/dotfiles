@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hardware-configuration.nix
     ../common/global
     ../common/users/ivo
     ../common/optinal/tailscale-ssh.nix
