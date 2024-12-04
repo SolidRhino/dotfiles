@@ -87,6 +87,13 @@
         };
       };
 
+      solid-dog = lib.nixosSystem {
+        modules = [./hosts/solid-dog];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
       # Test server vpsfree.cz
       vps-test = lib.nixosSystem {
         modules = [./hosts/vps-test];
