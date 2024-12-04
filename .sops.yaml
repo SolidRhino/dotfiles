@@ -5,10 +5,12 @@ keys:
   # Hosts
   - &hosts:
     - &horizon age1pqcu2wyyvd66wqaw2s2v6zryfqvug9ynkcl3qwy6k60p6e5mquwsst0tfx
+    - &solid-dog age1pyr9ma2x58gcwsu8qmljms5mj20fw7wvwkv7g232qjycwalkxqyqytsx6f
 
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
     key_groups:
     - age:
+      - *solid-dog
       - *horizon
       - *ivo
