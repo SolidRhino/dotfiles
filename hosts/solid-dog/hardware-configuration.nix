@@ -10,9 +10,9 @@
     initrd = {
       availableKernelModules = ["xhci_pci" "uas"];
       kernelModules = [];
-      postDeviceCommands = lib.mkAfter ''
-        zfs rollback -r zpool/root@blank
-      '';
+      # postDeviceCommands = lib.mkAfter ''
+      #   zfs rollback -r zpool/root@blank
+      # '';
     };
     kernelModules = [];
     extraModulePackages = [];
