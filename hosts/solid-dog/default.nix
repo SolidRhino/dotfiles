@@ -6,12 +6,19 @@
     ../common/optinal/tailscale-ssh.nix
   ];
 
+  boot.loader = {
+    grub.enable = false;
+    efi.canTouchEfiVariables = false;
+    systemd-boot.enable = true;
+  };
+
   services.tailscale = {
     extraUpFlags = ["--advertise-tags=tag:server"];
   };
 
   networking = {
     hostName = "solid-dog";
+    networkmanager.enable = true;
   };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
