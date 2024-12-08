@@ -8,7 +8,7 @@
 
   boot.loader = {
     grub.enable = false;
-    efi.canTouchEfiVariables = false;
+    efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
   };
 
