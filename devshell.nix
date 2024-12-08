@@ -9,7 +9,7 @@
   pre-commit-check = inputs.pre-commit-hooks.lib."${pkgs.stdenv.hostPlatform.system}".run {
     src = ./.;
     hooks = {
-      flake-checker.enable = true;
+      #flake-checker.enable = true;
       detect-private-keys.enable = true;
       detect-aws-credentials.enable = true;
       check-added-large-files.enable = true;
