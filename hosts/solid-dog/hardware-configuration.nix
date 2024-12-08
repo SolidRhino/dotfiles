@@ -26,7 +26,7 @@
       options = ["zfsutil"];
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/C5C7-03B8";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
       options = ["fmask=0022" "dmask=0022"];
     };
@@ -44,7 +44,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/sda2";}
+    {device = "/dev/disk/by-label/swap";}
   ];
 
   networking.hostId = "f9608cfb";
