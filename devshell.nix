@@ -35,6 +35,7 @@ in {
       nodePackages.prettier
       statix
 
+      # encryption tools
       age
       gnupg
       sops
@@ -49,10 +50,12 @@ in {
 
       fd
       fzf
-      helix
-      nvim
       just
       nushell
+
+      # Editors
+      helix
+      nvim
     ];
     inherit (pre-commit-check) shellHook;
     buildInputs = pre-commit-check.enabledPackages;
