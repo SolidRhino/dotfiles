@@ -49,4 +49,5 @@
 
   networking.hostId = "f9608cfb";
   networking.useDHCP = lib.mkDefault true;
+  services.hardware.argonone.enable = true;
 }
