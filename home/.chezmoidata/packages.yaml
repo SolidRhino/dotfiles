@@ -1,0 +1,41 @@
+packages:
+  common:
+    - bat
+    - curl
+    - eza
+    - fd
+    - fish
+    - fzf
+    - gh
+    - git
+    - lazygit
+    - neovim
+    - rg
+    - ripgrep
+    - starship
+    - tree-sitter-cli
+    - wget
+
+  darwin:
+    brews: []
+    casks:
+      - 1password
+      - 1password-cli
+      - brave-browser
+      - claude
+      - codex
+      - font-jetbrains-mono-nerd-font
+      - font-fira-code-nerd-font
+      - iterm2
+      - itermai
+      - neovide-app
+      - visual-studio-code
+
+  apt:
+    - build-essential
+
+  dnf:
+    - "@development-tools"
+
+  pacman:
+    - base-devel

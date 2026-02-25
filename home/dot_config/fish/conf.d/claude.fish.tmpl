@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "darwin" -}}
+# Claude Code OAuth token from 1Password
+set -gx CLAUDE_CODE_OAUTH_TOKEN {{ onepasswordRead "op://Private/Claude OAuth/referentie" }}
+{{ end -}}
