@@ -1,0 +1,39 @@
+{{/* Machine type flags */}}
+{{- $ephemeral := false -}}
+{{- $headless := false -}}
+{{- $personal := false -}}
+
+{{/* Compute osid: "darwin", "linux-ubuntu", "linux-arch", etc. */}}
+{{- $osID := .chezmoi.os -}}
+{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* Detect ephemeral environments: Codespaces, containers, CI */}}
+{{- if or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{-   $ephemeral = true -}}
+{{-   $headless = true -}}
+{{- end -}}
+
+{{/* macOS: scutil gives a reliable hostname unlike .chezmoi.hostname */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname = output "scutil" "--get" "LocalHostName" | trim -}}
+{{- end -}}
+
+{{- if not $ephemeral -}}
+{{-   if stdinIsATTY -}}
+{{-     $headless = promptBoolOnce . "headless" "headless" -}}
+{{-     $personal = promptBoolOnce . "personal" "personal" -}}
+{{-   else -}}
+{{-     $ephemeral = true -}}
+{{-     $headless = true -}}
+{{-   end -}}
+{{- end -}}
+
+[data]
+    ephemeral = {{ $ephemeral }}
+    headless  = {{ $headless }}
+    hostname  = {{ $hostname | quote }}
+    osid      = {{ $osID | quote }}
+    personal  = {{ $personal }}

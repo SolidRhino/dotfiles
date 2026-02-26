@@ -1,17 +1,17 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
-set -eu
+set -eufo pipefail
 
 if ! command -v brew >/dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 brew bundle --file=/dev/stdin <<EOF
 {{ range (concat .packages.common .packages.darwin.brews) -}}
-brew {{ . | quote }}
+brew "{{ . }}"
 {{ end -}}
 {{ range .packages.darwin.casks -}}
-cask {{ . | quote }}
+cask "{{ . }}"
 {{ end -}}
 EOF
 {{ end -}}

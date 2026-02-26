@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -eufo pipefail
 
 FISH_PATH="$(command -v fish)"
 

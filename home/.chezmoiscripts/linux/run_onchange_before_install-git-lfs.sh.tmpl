@@ -1,0 +1,12 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .osid "linux-ubuntu" "linux-debian" "linux-linuxmint" "linux-pop" -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Add git-lfs official apt repository (distro versions are severely outdated)
+if [ ! -f /etc/apt/sources.list.d/github_git-lfs.list ]; then
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh \
+        | sudo bash
+fi
+{{ end -}}
+{{ end -}}

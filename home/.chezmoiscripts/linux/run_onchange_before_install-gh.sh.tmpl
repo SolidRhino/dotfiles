@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .osid "linux-ubuntu" "linux-debian" "linux-linuxmint" "linux-pop" -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Add GitHub CLI official apt repository
+if [ ! -f /etc/apt/sources.list.d/github-cli.list ]; then
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+    sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+        | sudo tee /etc/apt/sources.list.d/github-cli.list
+    sudo apt-get update -y
+fi
+{{ end -}}
+{{ end -}}

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eufo pipefail
 
 if command -v rustup >/dev/null 2>&1; then
 		exit 0

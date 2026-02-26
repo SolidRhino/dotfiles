@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eufo pipefail
 # Set up 1Password GitHub CLI plugin (interactive, runs once)
 
 # Skip if op is not installed

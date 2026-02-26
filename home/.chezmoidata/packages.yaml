@@ -1,18 +1,23 @@
 packages:
-  common:
+  cargo:
     - bat
-    - curl
+    - cargo-update
+    - difftastic
     - eza
+    - ripgrep
+    - starship
+    - topgrade
+
+  common:
+    - curl
     - fd
     - fish
     - fzf
     - gh
     - git
+    - git-lfs
     - lazygit
     - neovim
-    - rg
-    - ripgrep
-    - starship
     - tree-sitter-cli
     - wget
 
@@ -33,12 +38,11 @@ packages:
 
   apt:
     - build-essential
+    - fd-find       # 'fd' on other package managers
 
   dnf:
     - "@development-tools"
 
   pacman:
     - base-devel
-
-  cargo:
-    - topgrade
+    - github-cli    # 'gh' on other package managers

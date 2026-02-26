@@ -1,0 +1,27 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -eufo pipefail
+
+{{ if eq .osid "linux-arch" "linux-manjaro" "linux-endeavouros" -}}
+# Arch-based: rolling release, always latest
+# Note: 'gh' is 'github-cli' in Arch; 'fd' keeps the same name
+sudo pacman -S --noconfirm --needed \
+    {{ concat .packages.pacman (.packages.common | without "gh") | join " " }}
+
+{{ else if eq .osid "linux-ubuntu" "linux-debian" "linux-linuxmint" "linux-pop" -}}
+# Debian-based: repos for gh and git-lfs are set up by dedicated scripts
+# Note: 'fd' is 'fd-find' in apt; 'gh' comes from the GitHub CLI repo
+sudo apt-get update -y
+sudo apt-get install -y \
+    {{ concat .packages.apt (.packages.common | without "fd") | join " " }}
+
+{{ else if eq .osid "linux-fedora" "linux-rhel" "linux-centos" "linux-rocky" "linux-almalinux" -}}
+sudo dnf install -y \
+    {{ concat .packages.dnf .packages.common | join " " }}
+
+{{ else -}}
+echo "Unsupported distribution: {{ .osid }}"
+echo "Please install manually: {{ .packages.common | join ", " }}"
+exit 1
+{{ end -}}
+{{ end -}}
