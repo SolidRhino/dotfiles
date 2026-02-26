@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu
+
+# Packages: {{ .packages.cargo | join ", " }}
+
+if ! command -v cargo >/dev/null 2>&1; then
+    # shellcheck source=/dev/null
+    source "$HOME/.cargo/env"
+fi
+
+{{ range .packages.cargo -}}
+cargo install {{ . }}
+{{ end -}}

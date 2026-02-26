@@ -39,3 +39,6 @@ packages:
 
   pacman:
     - base-devel
+
+  cargo:
+    - topgrade
