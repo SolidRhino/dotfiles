@@ -34,19 +34,7 @@ if command -q chezmoi
     abbr -a czad chezmoi add
 end
 
-# Systeem package managers
-if command -q apt
-    abbr -a upd "sudo apt update && sudo apt upgrade -y"
-end
-
-if command -q brew
-    abbr -a upd "brew update && brew upgrade"
-end
-
-if command -q dnf
-    abbr -a upd "sudo dnf upgrade -y"
-end
-
-if command -q pacman
-    abbr -a upd "sudo pacman -Syu"
+# Updates
+if command -q topgrade
+    abbr -a upd topgrade
 end
