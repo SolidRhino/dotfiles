@@ -1,0 +1,80 @@
+name: Dotfiles Changelog
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1'   # Every Monday at 06:00 UTC
+  workflow_dispatch:        # Manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    # Skip the bot's own changelog commit to avoid loops
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - name: Checkout with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # ── Breaking change detection ──────────────────────────────────────────
+      # Looks for conventional commits with ! e.g. "refactor!: overhaul zsh config"
+      - name: Detect breaking changes in push
+        id: detect
+        if: github.event_name == 'push'
+        run: |
+          RANGE="${{ github.event.before }}..${{ github.sha }}"
+          if git log "$RANGE" --pretty=format:"%s" | grep -qE "^[a-z]+(\([^)]+\))?!:"; then
+            echo "breaking=true"  >> "$GITHUB_OUTPUT"
+          else
+            echo "breaking=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ── Tagging ───────────────────────────────────────────────────────────
+      # Creates a DD-MM-YYYY tag on:
+      #   • weekly schedule
+      #   • manual dispatch
+      #   • any push that contains a breaking change commit
+      - name: Create date tag
+        if: |
+          github.event_name == 'schedule'          ||
+          github.event_name == 'workflow_dispatch'  ||
+          steps.detect.outputs.breaking == 'true'
+        run: |
+          BASE=$(date +%d-%m-%Y)
+          TAG="$BASE"
+          N=1
+          # Handle the rare case of multiple tags on the same day
+          while git rev-parse "$TAG" >/dev/null 2>&1; do
+            TAG="${BASE}-${N}"
+            N=$((N + 1))
+          done
+          git tag "$TAG"
+          git push origin "$TAG"
+
+      # ── Changelog ─────────────────────────────────────────────────────────
+      # Fully regenerates CHANGELOG.md so the new tag (if any) is reflected
+      - name: Generate changelog
+        uses: orhun/git-cliff-action@v3
+        with:
+          config: cliff.toml
+          args: --output CHANGELOG.md
+
+      - name: Commit and push changelog
+        run: |
+          git add CHANGELOG.md
+          # Exit cleanly if nothing changed
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: update changelog [skip ci]"
+          git push

@@ -4,14 +4,13 @@
 header = """
 # Changelog
 
-All notable changes to this dotfiles repository will be documented in this file.
-
+All notable changes to this dotfiles repository will be documented here.\n
 """
 body = """
 {% if version %}\
-## [{{ version | trim_start_matches(pat="v") }}] — {{ timestamp | date(format="%Y-%m-%d") }}
+## {{ version }}
 {% else %}\
-## [unreleased]
+## Unreleased — {{ timestamp | date(format="%d-%m-%Y") }}
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}\
 ### {{ group | striptags | trim | upper_first }}
@@ -25,24 +24,25 @@ footer = ""
 
 [git]
 conventional_commits = true
-filter_unconventional = true
+filter_unconventional = false
 split_commits = false
 
 commit_parsers = [
-    { message = "^feat",     group = "Features" },
-    { message = "^fix",      group = "Bug Fixes" },
-    { message = "^refactor", group = "Refactoring" },
-    { message = "^perf",     group = "Performance" },
-    { message = "^docs?",    group = "Documentation" },
-    { message = "^chore",    group = "Miscellaneous" },
-    { message = "^style",    group = "Styling" },
-    { message = "^test",     group = "Testing" },
-    { message = "^revert",   group = "Reverts" },
-    { message = "^ci",       group = "CI" },
+    { message = "^feat",      group = "Features" },
+    { message = "^fix",       group = "Bug Fixes" },
+    { message = "^refactor",  group = "Refactoring" },
+    { message = "^perf",      group = "Performance" },
+    { message = "^docs?",     group = "Documentation" },
+    { message = "^chore",     group = "Miscellaneous" },
+    { message = "^style",     group = "Styling" },
+    { message = "^test",      group = "Testing" },
+    { message = "^revert",    group = "Reverts" },
+    { message = "^ci",        group = "CI" },
+    { message = ".*",         group = "Other Changes" },
 ]
 
 protect_breaking_commits = false
 filter_commits = false
-tag_pattern = "v[0-9].*"
+tag_pattern = "[0-9]{2}-[0-9]{2}-[0-9]{4}"
 topo_order = false
 sort_commits = "oldest"
