@@ -1,10 +1,6 @@
 {{ if eq .chezmoi.os "darwin" -}}
-# Claude Code OAuth token — read from 1Password at shell startup
+# Claude Code OAuth token — baked in at chezmoi apply time from 1Password
+# To update: re-run chezmoi apply (requires op to be authenticated)
 # 1Password reference: op://Private/Claude OAuth/referentie
-if command -q op && op whoami >/dev/null 2>&1
-    set -l _token (op read "op://Private/Claude OAuth/referentie" 2>/dev/null)
-    if test -n "$_token"
-        set -gx CLAUDE_CODE_OAUTH_TOKEN $_token
-    end
-end
+set -gx CLAUDE_CODE_OAUTH_TOKEN {{ onepasswordRead "op://Private/Claude OAuth/referentie" }}
 {{ end -}}
