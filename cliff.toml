@@ -28,17 +28,22 @@ filter_unconventional = false
 split_commits = false
 
 commit_parsers = [
-    { message = "^feat",      group = "Features" },
-    { message = "^fix",       group = "Bug Fixes" },
-    { message = "^refactor",  group = "Refactoring" },
-    { message = "^perf",      group = "Performance" },
-    { message = "^docs?",     group = "Documentation" },
-    { message = "^chore",     group = "Miscellaneous" },
-    { message = "^style",     group = "Styling" },
-    { message = "^test",      group = "Testing" },
-    { message = "^revert",    group = "Reverts" },
-    { message = "^ci",        group = "CI" },
-    { message = ".*",         group = "Other Changes" },
+    # Skip noise
+    { message = "docs.*changelog",  skip = true },
+    { message = "\\[skip ci\\]",    skip = true },
+
+    # Grouped sections with emoji
+    { message = "^feat",      group = "🚀 Features" },
+    { message = "^fix",       group = "🐛 Bug Fixes" },
+    { message = "^refactor",  group = "📦 Refactoring" },
+    { message = "^perf",      group = "⚡ Performance" },
+    { message = "^docs?",     group = "📚 Documentation" },
+    { message = "^chore",     group = "🔧 Miscellaneous" },
+    { message = "^style",     group = "🎨 Styling" },
+    { message = "^test",      group = "🧪 Testing" },
+    { message = "^revert",    group = "⏪ Reverts" },
+    { message = "^ci",        group = "⚙️ CI" },
+    { message = ".*",         group = "📝 Other Changes" },
 ]
 
 protect_breaking_commits = false
