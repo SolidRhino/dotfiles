@@ -22,7 +22,9 @@ All notable changes to this dotfiles repository will be documented in this file.
 - Add Linux support to SSH config template
 
 ### Miscellaneous
+- Initial repository setup
 - Add git-cliff config and chezmoi external skill
+- Silence Initial commit warning in git-cliff
 
 ### Refactoring
 - Manage cargo packages via packages.yaml

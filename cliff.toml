@@ -29,7 +29,6 @@ filter_unconventional = true
 split_commits = false
 
 commit_parsers = [
-    { message = "^Initial commit", skip = true },
     { message = "^feat",     group = "Features" },
     { message = "^fix",      group = "Bug Fixes" },
     { message = "^refactor", group = "Refactoring" },
