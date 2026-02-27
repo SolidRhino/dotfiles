@@ -4,6 +4,7 @@ packages:
     - cargo-update
     - difftastic
     - eza
+    - git-cliff
     - ripgrep
     - starship
     - topgrade
@@ -38,11 +39,15 @@ packages:
 
   apt:
     - build-essential
-    - fd-find       # 'fd' on other package managers
+    - fd-find           # 'fd' on other package managers
+    - 1password-cli     # op CLI (repo added by install-op script)
 
   dnf:
     - "@development-tools"
+    - 1password-cli     # op CLI (repo added by install-op script)
 
   pacman:
     - base-devel
-    - github-cli    # 'gh' on other package managers
+    - github-cli        # 'gh' on other package managers
+    - tree-sitter       # 'tree-sitter-cli' on other package managers
+    - 1password-cli     # op CLI (in official extra repo)
