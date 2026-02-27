@@ -10,7 +10,7 @@ body = """
 {% if version %}\
 ## {{ version }}
 {% else %}\
-## Unreleased
+## 🌿 Latest
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}\
 ### {{ group | striptags | trim | upper_first }}
