@@ -1,11 +1,11 @@
-# Navigatie (altijd beschikbaar)
+# Navigation (always available)
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias mkdir="mkdir -p"
 alias cls="clear"
 
-# ls vervangen door eza indien beschikbaar
+# Replace ls with eza if available
 if command -q eza
     alias ls="eza --icons"
     alias ll="eza -lah --icons --git"
@@ -16,14 +16,14 @@ else
     alias la="ls -A"
 end
 
-# grep vervangen door ripgrep indien beschikbaar
+# Replace grep with ripgrep if available
 if command -q rg
     alias grep="rg"
 else
     alias grep="grep --color=auto"
 end
 
-# cat vervangen door bat indien beschikbaar
+# Replace cat with bat if available
 if command -q bat
     alias cat="bat"
 end
@@ -56,9 +56,8 @@ if command -q chezmoi
     alias czap="chezmoi apply"
     alias czed="chezmoi edit"
     alias czcd="chezmoi cd"
-    alias czdiff="chezmoi diff"
     alias czad="chezmoi add"
 end
 
-# Herlaad fish config
+# Reload fish config
 alias reload="source ~/.config/fish/config.fish"
