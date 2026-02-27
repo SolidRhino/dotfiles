@@ -2,7 +2,7 @@
 
 All notable changes to this dotfiles repository will be documented here.
 
-## Unreleased
+## 🌿 Latest
 ### ⚙️ CI
 - Auto-merge Dependabot PRs
 
@@ -34,6 +34,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Bump GitHub Actions to latest versions
 - Add Dependabot for automatic GitHub Actions updates
 - Add emoji headers and filter changelog noise from cliff.toml
+- Rename Unreleased to 🌿 Latest in changelog
 
 ### 🚀 Features
 - Add chezmoi dotfiles for Fish shell environment
