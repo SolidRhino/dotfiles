@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to this dotfiles repository will be documented in this file.
+All notable changes to this dotfiles repository will be documented here.
 
-## [unreleased]
+## Unreleased
 ### Bug Fixes
 - Enforce rust-before-cargo script execution order
 - Harden curl commands and pin cargo installs
@@ -19,6 +19,7 @@ All notable changes to this dotfiles repository will be documented in this file.
 - Add README with bootstrap, commands, and troubleshooting
 - Update changelog
 - Fix bootstrap section to use install script and ~/.local/bin
+- Update changelog
 
 ### Features
 - Add chezmoi dotfiles for Fish shell environment
@@ -31,6 +32,7 @@ All notable changes to this dotfiles repository will be documented in this file.
 - Initial repository setup
 - Add git-cliff config and chezmoi external skill
 - Silence Initial commit warning in git-cliff
+- Automate weekly changelog via GitHub Actions and date tags
 
 ### Refactoring
 - Manage cargo packages via packages.yaml
