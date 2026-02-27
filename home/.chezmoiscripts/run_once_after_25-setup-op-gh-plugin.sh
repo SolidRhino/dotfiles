@@ -2,6 +2,12 @@
 set -eufo pipefail
 # Set up 1Password GitHub CLI plugin (interactive, runs once)
 
+# Skip in non-interactive environments (CI, headless, containers)
+if [ ! -t 0 ]; then
+    echo "Skipping: non-interactive environment"
+    exit 0
+fi
+
 # Skip if op is not installed
 if ! command -v op &>/dev/null; then
     echo "Skipping: 1Password CLI (op) not found"

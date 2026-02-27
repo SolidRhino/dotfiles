@@ -5,7 +5,7 @@ set -eufo pipefail
 
 # Add git-lfs official apt repository (distro versions are severely outdated)
 if [ ! -f /etc/apt/sources.list.d/github_git-lfs.list ]; then
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh \
+    curl --proto '=https' --tlsv1.2 -fsSL https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh \
         | sudo bash
 fi
 {{ end -}}
