@@ -42,5 +42,6 @@ All notable changes to this dotfiles repository will be documented here.
 - Install 1Password CLI on Linux
 - Add Linux support to SSH config template
 - Add cross-platform SSH commit signing via 1Password
+- Add quality-of-life git config improvements
 
 
