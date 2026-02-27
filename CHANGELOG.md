@@ -17,6 +17,8 @@ All notable changes to this dotfiles repository will be documented in this file.
 - Update changelog
 - Update changelog
 - Add README with bootstrap, commands, and troubleshooting
+- Update changelog
+- Fix bootstrap section to use install script and ~/.local/bin
 
 ### Features
 - Add chezmoi dotfiles for Fish shell environment
