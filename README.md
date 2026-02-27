@@ -4,18 +4,13 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Supports macO
 
 ## Bootstrap
 
-### macOS
+Works on macOS and Linux. Installs chezmoi to `~/.local/bin` and applies the dotfiles in one shot:
 
 ```sh
-brew install chezmoi
-chezmoi init --apply SolidRhino/dotfile
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply SolidRhino/dotfile
 ```
 
-### Linux
-
-```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply SolidRhino/dotfile
-```
+> **macOS with Homebrew already installed:** `brew install chezmoi && chezmoi init --apply SolidRhino/dotfile`
 
 **What to expect:**
 - On first run, chezmoi prompts for `headless` and `personal` flags (answered once, stored in `~/.config/chezmoi/chezmoi.toml`)
