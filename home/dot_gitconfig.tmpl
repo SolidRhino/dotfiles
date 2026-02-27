@@ -1,0 +1,66 @@
+[user]
+    name  = SolidRhino
+    email = SolidRhino@users.noreply.github.com
+{{- if or (eq .chezmoi.os "darwin") (and (eq .chezmoi.os "linux") .personal (not .headless)) }}
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPqcqpy2phbFs7TRVf/1ZNIk5SJCfhMyPpQyX7s1poEC
+{{- end }}
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[alias]
+    ci = commit
+
+[diff]
+    external = difft
+
+[filter "lfs"]
+    clean    = git-lfs clean -- %f
+    smudge   = git-lfs smudge -- %f
+    process  = git-lfs filter-process
+    required = true
+
+{{- if eq .chezmoi.os "darwin" }}
+
+[credential "https://github.com"]
+    helper =
+    helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !/opt/homebrew/bin/gh auth git-credential
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    # Requires the full 1Password app (not just 1password-cli)
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+{{- else if and (eq .chezmoi.os "linux") .personal (not .headless) }}
+
+[credential "https://github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    # Requires the full 1Password app (not just 1password-cli)
+    # Install from: https://1password.com/downloads/linux/
+    program = "/opt/1Password/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+{{- end }}
