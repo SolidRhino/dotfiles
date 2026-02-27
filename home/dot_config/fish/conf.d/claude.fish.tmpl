@@ -1,12 +1,10 @@
 {{ if eq .chezmoi.os "darwin" -}}
 # Claude Code OAuth token — read from 1Password at shell startup
 # 1Password reference: op://Private/Claude OAuth/referentie
-if command -q op
+if command -q op && op whoami >/dev/null 2>&1
     set -l _token (op read "op://Private/Claude OAuth/referentie" 2>/dev/null)
     if test -n "$_token"
         set -gx CLAUDE_CODE_OAUTH_TOKEN $_token
-    else
-        echo "warning: CLAUDE_CODE_OAUTH_TOKEN not set — check op://Private/Claude OAuth/referentie" >&2
     end
 end
 {{ end -}}
