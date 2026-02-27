@@ -7,5 +7,5 @@ if command -v claude >/dev/null 2>&1; then
 fi
 
 echo "Installing Claude Code..."
-curl -fsSL https://claude.ai/install.sh | bash
+curl --proto '=https' --tlsv1.2 -fsSL https://claude.ai/install.sh | bash
 {{ end -}}

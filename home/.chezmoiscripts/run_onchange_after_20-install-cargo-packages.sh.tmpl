@@ -9,5 +9,5 @@ if ! command -v cargo >/dev/null 2>&1; then
 fi
 
 {{ range .packages.cargo -}}
-cargo install {{ . }}
+cargo install --locked {{ . }}
 {{ end -}}
