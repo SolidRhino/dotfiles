@@ -1,0 +1,29 @@
+# Changelog
+
+All notable changes to this dotfiles repository will be documented in this file.
+
+## [unreleased]
+### Bug Fixes
+- Enforce rust-before-cargo script execution order
+- Harden curl commands and pin cargo installs
+- Read Claude OAuth token from 1Password at runtime
+
+### Documentation
+- Update CLAUDE.md to reflect all recent changes
+
+### Features
+- Add chezmoi dotfiles for Fish shell environment
+- Install Rust via rustup and topgrade via cargo
+- Install 1Password CLI on Linux
+- Add Linux support to SSH config template
+
+### Miscellaneous
+- Add git-cliff config and chezmoi external skill
+
+### Refactoring
+- Manage cargo packages via packages.yaml
+- Adopt twpayne structural improvements + per-tool Linux repos
+- Enforce script execution order with numeric prefixes
+- Clean up Fish shell configuration
+
+
