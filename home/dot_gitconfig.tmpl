@@ -11,14 +11,24 @@
 [pull]
     rebase = true
 
+[push]
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
 [rebase]
     autoStash = true
+
+[merge]
+    conflictStyle = zdiff3
 
 [alias]
     ci = commit
 
 [diff]
     external = difft
+    colorMoved = default
 
 [filter "lfs"]
     clean    = git-lfs clean -- %f
