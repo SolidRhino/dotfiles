@@ -25,6 +25,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update changelog
 - Update changelog
 - Update changelog
+- Update changelog
 
 ### Features
 - Add chezmoi dotfiles for Fish shell environment
@@ -42,6 +43,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Bump GitHub Actions to latest versions
 - Update changelog [skip ci]
 - Add Dependabot for automatic GitHub Actions updates
+- Update changelog [skip ci]
 
 ### Refactoring
 - Manage cargo packages via packages.yaml
