@@ -33,6 +33,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Add git-cliff config and chezmoi external skill
 - Silence Initial commit warning in git-cliff
 - Automate weekly changelog via GitHub Actions and date tags
+- Fix cliff.toml unreleased timestamp error
+- Bump GitHub Actions to latest versions
 
 ### Refactoring
 - Manage cargo packages via packages.yaml
