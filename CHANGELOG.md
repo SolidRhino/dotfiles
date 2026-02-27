@@ -33,6 +33,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Fix cliff.toml unreleased timestamp error
 - Bump GitHub Actions to latest versions
 - Add Dependabot for automatic GitHub Actions updates
+- Add emoji headers and filter changelog noise from cliff.toml
 
 ### 🚀 Features
 - Add chezmoi dotfiles for Fish shell environment
