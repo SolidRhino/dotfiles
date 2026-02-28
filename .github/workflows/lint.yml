@@ -1,0 +1,55 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run shellcheck on plain shell scripts
+        run: |
+          shellcheck \
+            home/.chezmoiscripts/run_once_after_10-install-rust.sh \
+            home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
+            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh
+
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install yamllint
+        run: pip install yamllint
+      - name: Lint YAML files
+        run: |
+          yamllint .github/workflows/
+          yamllint home/.chezmoidata/packages.yaml
+
+  toml:
+    name: taplo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install taplo
+        run: |
+          curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-linux-x86_64.gz \
+            | gzip -d - > /usr/local/bin/taplo
+          chmod +x /usr/local/bin/taplo
+      - name: Check TOML formatting
+        run: taplo fmt --check cliff.toml
+
+  chezmoi-verify:
+    name: chezmoi verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install chezmoi
+        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+      - name: Verify chezmoi source renders
+        run: chezmoi --source=$GITHUB_WORKSPACE/home dump --format=json > /dev/null
