@@ -2,3 +2,8 @@
     type = "git-repo"
     url = "https://github.com/cosgroveb/chezmoi-skill.git"
     refreshPeriod = "168h"
+
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/SolidRhino/nvim.git"
+    refreshPeriod = "168h"
