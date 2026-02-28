@@ -1,0 +1,20 @@
+{{ if or (eq .chezmoi.os "darwin") (and (eq .chezmoi.os "linux") .personal (not .headless)) -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Skip if already logged in
+if [[ -f "${HOME}/.local/share/atuin/session" ]]; then
+    echo "atuin: already logged in, skipping"
+    exit 0
+fi
+
+if ! command -v atuin >/dev/null 2>&1; then
+    # shellcheck source=/dev/null
+    source "${HOME}/.cargo/env"
+fi
+
+atuin login \
+    -u "{{ onepasswordRead "op://Private/Atuin/CLI/gebruikersnaam" }}" \
+    -p "{{ onepasswordRead "op://Private/Atuin/CLI/wachtwoord" }}" \
+    -k "{{ onepasswordRead "op://Private/Atuin/CLI/key" }}"
+{{ end -}}
