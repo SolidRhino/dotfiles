@@ -7,6 +7,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Auto-merge Dependabot PRs
 - Add lint workflow (shellcheck, yamllint, taplo, chezmoi verify)
 
+### 🎨 Styling
+- Add comment header to mise.fish
+
 ### 🐛 Bug Fixes
 - Enforce rust-before-cargo script execution order
 - Harden curl commands and pin cargo installs
