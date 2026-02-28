@@ -25,6 +25,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Clarify 1Password uses only apply-time onepasswordRead, never runtime op read
 - Add enhancements design doc for lint workflow, git aliases, chezmoiignore, packages
 - Add implementation plan for enhancements
+- Add Atuin integration design doc
+- Add Atuin implementation plan
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
@@ -56,5 +58,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add git aliases (unstage, amend, undo, gone)
 - Add .chezmoiignore to exclude secrets and externally managed paths
 - Add shellcheck to common packages
+- Add atuin to cargo packages
+- Add atuin config
+- Add atuin Fish shell integration
+- Add atuin 1Password login script
 
 
