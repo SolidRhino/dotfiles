@@ -5,6 +5,7 @@ All notable changes to this dotfiles repository will be documented here.
 ## 🌿 Latest
 ### ⚙️ CI
 - Auto-merge Dependabot PRs
+- Add lint workflow (shellcheck, yamllint, taplo, chezmoi verify)
 
 ### 🐛 Bug Fixes
 - Enforce rust-before-cargo script execution order
@@ -22,6 +23,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Add README with bootstrap, commands, and troubleshooting
 - Fix bootstrap section to use install script and ~/.local/bin
 - Clarify 1Password uses only apply-time onepasswordRead, never runtime op read
+- Add enhancements design doc for lint workflow, git aliases, chezmoiignore, packages
+- Add implementation plan for enhancements
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
@@ -50,5 +53,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Integrate mackup for iCloud GUI settings backup and restore
 - Add nvim config as chezmoi external
 - Add chezmoi refresh-externals shortcut to topgrade and fish
+- Add git aliases (unstage, amend, undo, gone)
+- Add .chezmoiignore to exclude secrets and externally managed paths
+- Add shellcheck to common packages
 
 
