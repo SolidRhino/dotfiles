@@ -43,5 +43,6 @@ All notable changes to this dotfiles repository will be documented here.
 - Add Linux support to SSH config template
 - Add cross-platform SSH commit signing via 1Password
 - Add quality-of-life git config improvements
+- Integrate mackup for iCloud GUI settings backup and restore
 
 
