@@ -66,7 +66,7 @@ Scripts are organised into subdirectories:
 **dnf-based** (Fedora, RHEL, Rocky, AlmaLinux): native `dnf` with upstream repo added for:
 - `linux/run_onchange_before_10-install-op.sh.tmpl` — 1Password CLI official RPM repo
 
-**mise** will be added later for language runtime version management (node, python, go, ruby). Not needed yet.
+**mise** manages language runtime versions (node, python, go, ruby). Installed via `packages.cargo`. Global tool config at `home/dot_config/mise/config.toml`; Fish init at `home/dot_config/fish/conf.d/mise.fish`. Adding a new runtime means adding a line to `config.toml` — the `run_onchange_after_21` script reruns automatically.
 
 ## Package Naming Differences (packages.yaml)
 
