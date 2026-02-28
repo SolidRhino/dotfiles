@@ -1,5 +1,6 @@
 packages:
   cargo:
+    - atuin
     - bat
     - cargo-update
     - difftastic
