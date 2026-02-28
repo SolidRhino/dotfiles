@@ -1,4 +1,5 @@
-{{- if eq .chezmoi.os "darwin" }}
 [commands]
+"Chezmoi Externals" = "chezmoi apply --refresh-externals --force"
+{{- if eq .chezmoi.os "darwin" }}
 "Mackup Backup" = "mackup backup --force"
 {{- end }}

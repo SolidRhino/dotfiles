@@ -28,6 +28,7 @@ end
 if command -q chezmoi
     abbr -a cz   chezmoi
     abbr -a czap chezmoi apply
+    abbr -a czre chezmoi apply --refresh-externals --force
     abbr -a czed chezmoi edit
     abbr -a czcd chezmoi cd
     abbr -a czdf chezmoi diff
