@@ -29,6 +29,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Add implementation plan for enhancements
 - Add Atuin integration design doc
 - Add Atuin implementation plan
+- Add mise integration design
+- Add mise implementation plan
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
@@ -64,5 +66,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add atuin config
 - Add atuin Fish shell integration
 - Add atuin 1Password login script
+- Add mise to cargo packages
+- Add mise global tool config with node lts
+- Add mise tool install script
+- Add mise Fish shell integration
 
 
