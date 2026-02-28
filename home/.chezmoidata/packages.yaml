@@ -6,6 +6,7 @@ packages:
     - difftastic
     - eza
     - git-cliff
+    - mise
     - ripgrep
     - starship
     - topgrade
