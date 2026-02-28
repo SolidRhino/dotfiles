@@ -34,6 +34,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add Atuin implementation plan
 - Add mise integration design
 - Add mise implementation plan
+- Update CLAUDE.md with mise integration details
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
