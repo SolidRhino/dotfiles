@@ -1,0 +1,18 @@
+# macOS metadata
+.DS_Store
+.wget-hsts
+
+# SSH private keys — never manage via chezmoi
+.ssh/id_*
+.ssh/known_hosts
+
+# Cloud/tool credentials
+.aws/
+.config/gh/hosts.yml
+.kube/
+
+# Managed externally (chezmoi external)
+.config/nvim
+
+# Prevent circular management
+.local/share/chezmoi
