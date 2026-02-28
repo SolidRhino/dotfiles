@@ -14,6 +14,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Bake Claude OAuth token at apply time via onepasswordRead
 - Exclude chezmoi-managed apps from mackup backup
 - Ignore nvim and wget in mackup (managed by chezmoi)
+- Ignore lazygit in mackup
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
