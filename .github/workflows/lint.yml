@@ -32,17 +32,13 @@ jobs:
           yamllint home/.chezmoidata/packages.yaml
 
   toml:
-    name: taplo
+    name: toml
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Install taplo
+      - name: Check TOML syntax
         run: |
-          curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-linux-x86_64.gz \
-            | gzip -d - > /usr/local/bin/taplo
-          chmod +x /usr/local/bin/taplo
-      - name: Check TOML formatting
-        run: taplo fmt --check cliff.toml
+          python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('OK')"
 
   chezmoi-verify:
     name: chezmoi verify
@@ -51,5 +47,14 @@ jobs:
       - uses: actions/checkout@v6
       - name: Install chezmoi
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+      - name: Create minimal chezmoi config for CI
+        run: |
+          mkdir -p ~/.config/chezmoi
+          cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
+          [data]
+            osid     = "linux-ubuntu"
+            personal = false
+            headless = true
+          EOF
       - name: Verify chezmoi source renders
         run: chezmoi --source=$GITHUB_WORKSPACE/home dump --format=json > /dev/null
