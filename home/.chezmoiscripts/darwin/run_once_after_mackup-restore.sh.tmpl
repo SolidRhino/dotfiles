@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Restore GUI app settings from iCloud via Mackup (copy mode)
+MACKUP_DIR="${HOME}/Library/Mobile Documents/com~apple~CloudDocs/Mackup"
+
+if ! command -v mackup >/dev/null 2>&1; then
+    echo "mackup not found, skipping restore"
+elif [[ ! -d "${MACKUP_DIR}" ]]; then
+    echo "Mackup iCloud folder not found — run 'mackup backup' on your primary Mac first"
+else
+    echo "Restoring app settings with mackup..."
+    mackup restore --force
+fi
+{{- end }}

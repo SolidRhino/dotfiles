@@ -23,7 +23,8 @@ packages:
     - wget
 
   darwin:
-    brews: []
+    brews:
+      - mackup
     casks:
       - 1password
       - 1password-cli
