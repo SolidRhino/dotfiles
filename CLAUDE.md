@@ -81,7 +81,7 @@ Modular layout under `home/dot_config/fish/`:
 - `config.fish` — entry point, sources `conf.d/` (alphabetical load order)
 - `conf.d/abbreviations.fish` — Git, Docker, chezmoi, and `upd` → topgrade abbreviations
 - `conf.d/aliases.fish` — command aliases with fallbacks (bat/cat, eza/ls, rg/grep, nvim/vi)
-- `conf.d/claude.fish.tmpl` — reads `CLAUDE_CODE_OAUTH_TOKEN` from 1Password at shell startup (macOS only)
+- `conf.d/claude.fish.tmpl` — sets `CLAUDE_CODE_OAUTH_TOKEN` baked in at `chezmoi apply` time via `onepasswordRead` (macOS only)
 - `conf.d/homebrew.fish.tmpl` — Homebrew shellenv (macOS only; handles both Apple Silicon and Intel)
 - `conf.d/op-plugins.fish` — sources `~/.config/op/plugins.sh` when present
 - `conf.d/path.fish` — PATH (`~/.local/bin`, `~/.cargo/bin`) and env vars; `EDITOR=nvim`
@@ -101,10 +101,9 @@ Fish abbreviations: `czap`, `czed`, `czdf`, `czad`, `czcd`.
 
 ## 1Password Integration
 
-Two approaches are used depending on context:
+All secrets use **apply-time** resolution via `onepasswordRead` in `.tmpl` files. The secret is baked into the rendered file during `chezmoi apply` and requires `op` to be authenticated at that point.
 
-- **Apply-time** (`onepasswordRead` in `.tmpl` files): used where the secret needs to be baked into a static file. Requires `op` to be authenticated during `chezmoi apply`.
-- **Runtime** (`op read` in Fish scripts): used for environment variables like `CLAUDE_CODE_OAUTH_TOKEN`. Evaluated on each shell startup; fails gracefully with a warning if `op` is unavailable or the item is renamed.
+**Never use `op read` at shell startup or in Fish config.** Runtime `op read` calls block every new shell until 1Password responds, which makes the shell slow and unreliable when the app is locked or unavailable.
 
 The `op` CLI is installed on all platforms:
 - macOS: via `1password-cli` cask
