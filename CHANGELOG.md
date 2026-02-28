@@ -17,6 +17,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Ignore nvim and wget in mackup (managed by chezmoi)
 - Ignore lazygit in mackup
 - Replace taplo fmt check with tomllib and inject chezmoi data for CI
+- Correct without argument order in install-packages template
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
