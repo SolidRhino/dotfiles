@@ -13,6 +13,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Skip Claude token read if 1Password is not unlocked
 - Bake Claude OAuth token at apply time via onepasswordRead
 - Exclude chezmoi-managed apps from mackup backup
+- Ignore nvim and wget in mackup (managed by chezmoi)
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
