@@ -56,6 +56,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add Dependabot for automatic GitHub Actions updates
 - Add emoji headers and filter changelog noise from cliff.toml
 - Rename Unreleased to 🌿 Latest in changelog
+- Gitignore Claude-generated plan docs and local settings
 
 ### 🚀 Features
 - Add chezmoi dotfiles for Fish shell environment
