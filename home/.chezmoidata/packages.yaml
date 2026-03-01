@@ -39,6 +39,7 @@ packages:
       - iterm2
       - itermai
       - neovide-app
+      - tailscale
       - visual-studio-code
 
   apt:
