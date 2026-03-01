@@ -39,8 +39,10 @@ packages:
       - iterm2
       - itermai
       - neovide-app
-      - tailscale
+      - ollama-app
+      - tailscale-app
       - visual-studio-code
+      - whatsapp
 
   apt:
     - build-essential
