@@ -7,7 +7,10 @@ if ! command -v brew >/dev/null 2>&1; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew bundle --file=/dev/stdin <<EOF
+BREWFILE=$(mktemp)
+trap 'rm -f "$BREWFILE"' EXIT
+
+cat > "$BREWFILE" <<'EOF'
 {{ range (concat .packages.common .packages.darwin.brews) -}}
 brew "{{ . }}"
 {{ end -}}
@@ -15,4 +18,7 @@ brew "{{ . }}"
 cask "{{ . }}"
 {{ end -}}
 EOF
+
+brew bundle install --file="$BREWFILE"
+brew bundle cleanup --force --file="$BREWFILE"
 {{ end -}}
