@@ -5,7 +5,7 @@ set -eufo pipefail
 # Setapp bundle hash: {{ .packages.darwin.setapp | toJson | sha256sum }}
 
 if ! command -v setapp-cli >/dev/null 2>&1; then
-    echo "setapp-cli not found. Run 'chezmoi apply' again after installation completes."
+    echo "setapp-cli not found. Re-run 'chezmoi apply' to reinstall it."
     exit 0
 fi
 

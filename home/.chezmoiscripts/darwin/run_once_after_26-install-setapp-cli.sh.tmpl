@@ -3,6 +3,6 @@
 set -eufo pipefail
 
 if ! command -v setapp-cli >/dev/null 2>&1; then
-    curl -fsSL https://raw.githubusercontent.com/maximlevey/setapp-cli/main/install.sh | bash
+    curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/maximlevey/setapp-cli/main/install.sh | bash
 fi
 {{ end -}}
