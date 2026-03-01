@@ -1,0 +1,5 @@
+[tools]
+node = "lts"
+{{- if eq .chezmoi.os "darwin" }}
+"npm:@smithery/cli" = "latest"
+{{- end }}
