@@ -76,5 +76,6 @@ All notable changes to this dotfiles repository will be documented here.
 - Add mise tool install script
 - Add mise Fish shell integration
 - Add tailscale cask for macOS
+- Add ollama-app and whatsapp casks for macOS
 
 
