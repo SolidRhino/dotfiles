@@ -75,5 +75,6 @@ All notable changes to this dotfiles repository will be documented here.
 - Add mise global tool config with node lts
 - Add mise tool install script
 - Add mise Fish shell integration
+- Add tailscale cask for macOS
 
 
