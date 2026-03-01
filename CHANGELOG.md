@@ -83,5 +83,6 @@ All notable changes to this dotfiles repository will be documented here.
 - Add tailscale cask for macOS
 - Add ollama-app and whatsapp casks for macOS
 - Add brew bundle cleanup to remove unmanaged packages
+- Add smithery CLI via mise on macOS only
 
 
