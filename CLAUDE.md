@@ -51,6 +51,8 @@ Scripts are organised into subdirectories:
 | after 10 | `run_once_after_10-install-rust.sh` | once | Install Rust via rustup |
 | after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
+| after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
+| after 27 | `darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl` | onchange | Install Setapp apps from bundle |
 | after 30 | `run_onchange_after_30-set-default-shell.sh` | onchange | Set Fish as default shell |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
 
