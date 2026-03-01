@@ -23,6 +23,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Ignore lazygit in mackup
 - Replace taplo fmt check with tomllib and inject chezmoi data for CI
 - Correct without argument order in install-packages template
+- Add [misc] to topgrade template and exclude mise from Mackup
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
