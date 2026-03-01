@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -eufo pipefail
+
+if ! command -v setapp-cli >/dev/null 2>&1; then
+    curl -fsSL https://raw.githubusercontent.com/maximlevey/setapp-cli/main/install.sh | bash
+fi
+{{ end -}}
