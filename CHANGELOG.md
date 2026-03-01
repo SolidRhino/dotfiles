@@ -24,6 +24,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Replace taplo fmt check with tomllib and inject chezmoi data for CI
 - Correct without argument order in install-packages template
 - Add [misc] to topgrade template and exclude mise from Mackup
+- Reference config.toml.tmpl in mise tools script include
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
@@ -84,5 +85,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add ollama-app and whatsapp casks for macOS
 - Add brew bundle cleanup to remove unmanaged packages
 - Add smithery CLI via mise on macOS only
+- Add Setapp cask to macOS packages
+- Add router SSH host entry
 
 
