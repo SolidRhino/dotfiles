@@ -44,6 +44,11 @@ packages:
       - tailscale-app
       - visual-studio-code
       - whatsapp
+    setapp:
+      - CleanMyMac
+      - AlDente Pro
+      - Elmedia Player
+      - Numi
 
   apt:
     - build-essential
