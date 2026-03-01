@@ -10,6 +10,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🎨 Styling
 - Add comment header to mise.fish
 - Reformat cliff.toml commit_parsers with taplo
+- Add clarifying comments to brew bundle script
 
 ### 🐛 Bug Fixes
 - Enforce rust-before-cargo script execution order
