@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Setapp bundle hash: {{ .packages.darwin.setapp | toJson | sha256sum }}
+
+if ! command -v setapp-cli >/dev/null 2>&1; then
+    echo "setapp-cli not found. Run 'chezmoi apply' again after installation completes."
+    exit 0
+fi
+
+if ! setapp-cli bundle install --file "$HOME/.setapp/bundle"; then
+    echo "Setapp bundle install failed."
+    echo "Log into Setapp first, then run: setapp-cli bundle install"
+    exit 0
+fi
+{{ end -}}
