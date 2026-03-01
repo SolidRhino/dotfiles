@@ -4,3 +4,6 @@ Host *
 {{ else if eq .chezmoi.os "linux" -}}
 	IdentityAgent "~/.1password/agent.sock"
 {{ end -}}
+
+Host router
+	user router
