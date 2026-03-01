@@ -36,6 +36,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Add mise integration design
 - Add mise implementation plan
 - Update CLAUDE.md with mise integration details
+- Add brew bundle cleanup design
+- Add brew bundle cleanup implementation plan
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
