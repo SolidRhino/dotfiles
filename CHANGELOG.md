@@ -25,6 +25,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Correct without argument order in install-packages template
 - Add [misc] to topgrade template and exclude mise from Mackup
 - Reference config.toml.tmpl in mise tools script include
+- Add TLS flags to curl and improve fallback message
 
 ### 📚 Documentation
 - Update CLAUDE.md to reflect all recent changes
@@ -41,6 +42,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update CLAUDE.md with mise integration details
 - Add brew bundle cleanup design
 - Add brew bundle cleanup implementation plan
+- Document setapp-cli scripts in CLAUDE.md
 
 ### 📦 Refactoring
 - Manage cargo packages via packages.yaml
@@ -87,5 +89,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add smithery CLI via mise on macOS only
 - Add Setapp cask to macOS packages
 - Add router SSH host entry
+- Add setapp app list to packages.yaml
+- Add chezmoi-managed setapp bundle template
+- Add run_once script to install setapp-cli
+- Add run_onchange script to install setapp bundle
 
 
