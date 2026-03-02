@@ -2,7 +2,7 @@
 
 All notable changes to this dotfiles repository will be documented here.
 
-## 🌿 Latest
+## 02-03-2026
 ### ⚙️ CI
 - Auto-merge Dependabot PRs
 - Add lint workflow (shellcheck, yamllint, taplo, chezmoi verify)
