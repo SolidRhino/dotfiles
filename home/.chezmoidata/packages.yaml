@@ -47,7 +47,10 @@ packages:
       - whatsapp
     mas:
       # Format: - <app_id>  # App Name
-      []
+      - 497799835   # Xcode
+      - 361309726   # Pages
+      - 409201541   # Numbers
+      - 1496833156  # Swift Playgrounds
 
     setapp:
       - CleanMyMac
