@@ -2,6 +2,10 @@
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 🌿 Latest
+### 🚀 Features
+- Add mas support for Mac App Store app installation
+
 ## 02-03-2026
 ### ⚙️ CI
 - Auto-merge Dependabot PRs
