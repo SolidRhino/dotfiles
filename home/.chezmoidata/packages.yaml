@@ -28,6 +28,7 @@ packages:
   darwin:
     brews:
       - mackup
+      - mas
     casks:
       - setapp
       - 1password
@@ -44,6 +45,10 @@ packages:
       - tailscale-app
       - visual-studio-code
       - whatsapp
+    mas:
+      # Format: - <app_id>  # App Name
+      []
+
     setapp:
       - CleanMyMac
       - AlDente Pro

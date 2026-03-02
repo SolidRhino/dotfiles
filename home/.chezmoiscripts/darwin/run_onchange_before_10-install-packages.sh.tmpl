@@ -22,4 +22,11 @@ EOF
 
 brew bundle install --file="$BREWFILE"
 brew bundle cleanup --force --file="$BREWFILE"  # intentionally removes packages not in list
+
+{{ if .packages.darwin.mas -}}
+# Install Mac App Store apps
+{{ range .packages.darwin.mas -}}
+mas install {{ . }}
+{{ end -}}
+{{ end -}}
 {{ end -}}
