@@ -3,6 +3,9 @@
 All notable changes to this dotfiles repository will be documented here.
 
 ## 🌿 Latest
+### 🎨 Styling
+- Align comment format in mas section
+
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
 - Add Mac App Store apps to packages.yaml
