@@ -9,6 +9,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
 - Add Mac App Store apps to packages.yaml
+- Add uv to mise tools
 
 ## 02-03-2026
 ### ⚙️ CI
