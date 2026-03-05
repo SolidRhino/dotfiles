@@ -14,6 +14,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Remove duplicate docker aliases from aliases.fish
 - Remove duplicate chezmoi aliases from aliases.fish
 
+### 🔧 Miscellaneous
+- Add Serena MCP project config and memory files
+
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
 - Add Mac App Store apps to packages.yaml
