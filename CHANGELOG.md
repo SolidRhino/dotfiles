@@ -6,6 +6,9 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🎨 Styling
 - Align comment format in mas section
 
+### 🐛 Bug Fixes
+- Move zoxide to cargo packages instead of common
+
 ### 📚 Documentation
 - Update CLAUDE.md with script table, atuin.fish, and mise path corrections
 
