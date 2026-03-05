@@ -23,6 +23,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add uv to mise tools
 - Add telegram, tor-browser casks and Luminar Neo, Moonlock, Shortcutie setapp apps; sort alphabetically
 - Add router and docker SSH host entries
+- Add zoxide with cd command override
 
 ## 02-03-2026
 ### ⚙️ CI
