@@ -39,12 +39,6 @@ if command -q lazygit
     alias lg="lazygit"
 end
 
-# Docker
-if command -q docker
-    alias d="docker"
-    alias dc="docker compose"
-end
-
 # Chezmoi
 if command -q chezmoi
     alias cz="chezmoi"
