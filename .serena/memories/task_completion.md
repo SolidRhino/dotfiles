@@ -17,4 +17,4 @@ When finishing any change to this dotfiles repo:
 
 ## Notes
 - `docs/plans/` is **gitignored** — design docs stay local only, not tracked in git
-- `.serena/` should NOT be committed — it's the Serena MCP project config, untracked by design
+- `.serena/` **should be committed** — contains Serena project config and memory files (its own `.gitignore` excludes `/cache`)

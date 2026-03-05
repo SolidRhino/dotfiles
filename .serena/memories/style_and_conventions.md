@@ -44,6 +44,10 @@
 - `home/dot_config/mise/config.toml.tmpl` — Go template for OS-specific tools
 - Use `{{- if eq .chezmoi.os "darwin" }}` for macOS-only tools
 
+## Cargo Package Naming
+- Cargo crate name ≠ binary name in some cases: `git-delta` installs the `delta` binary
+- Always use the crate name in `packages.cargo` in `packages.yaml`
+
 ## CHANGELOG
 - **Never** run `git-cliff` locally — GitHub Actions handles `CHANGELOG.md` automatically
 

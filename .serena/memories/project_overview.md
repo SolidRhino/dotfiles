@@ -13,6 +13,8 @@ Uses 1Password for secrets management and Fish shell as the primary shell.
 - **Starship** — shell prompt
 - **Atuin** — shell history
 - **Neovim** — editor
+- **zoxide** — smart `cd` replacement (cargo; Fish initialized via `--cmd cd` in `conf.d/zoxide.fish`)
+- **delta** — git pager with syntax highlighting (cargo crate: `git-delta`; configured in `dot_gitconfig.tmpl`)
 
 ## Repository Structure
 ```
