@@ -39,14 +39,5 @@ if command -q lazygit
     alias lg="lazygit"
 end
 
-# Chezmoi
-if command -q chezmoi
-    alias cz="chezmoi"
-    alias czap="chezmoi apply"
-    alias czed="chezmoi edit"
-    alias czcd="chezmoi cd"
-    alias czad="chezmoi add"
-end
-
 # Reload fish config
 alias reload="source ~/.config/fish/config.fish"
