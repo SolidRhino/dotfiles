@@ -30,21 +30,24 @@ packages:
       - mackup
       - mas
     casks:
-      - setapp
       - 1password
       - 1password-cli
       - brave-browser
       - claude
       - codex
-      - font-jetbrains-mono-nerd-font
       - font-fira-code-nerd-font
+      - font-jetbrains-mono-nerd-font
       - iterm2
       - itermai
       - neovide-app
       - ollama-app
+      - setapp
       - tailscale-app
+      - telegram
+      - tor-browser
       - visual-studio-code
       - whatsapp
+
     mas:
       # Format: - <app_id>    # App Name
       - 497799835   # Xcode
@@ -53,10 +56,13 @@ packages:
       - 1496833156  # Swift Playgrounds
 
     setapp:
-      - CleanMyMac
       - AlDente Pro
+      - CleanMyMac
       - Elmedia Player
+      - Luminar Neo
+      - Moonlock
       - Numi
+      - Shortcutie
 
   apt:
     - build-essential
