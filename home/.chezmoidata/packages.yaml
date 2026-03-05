@@ -24,6 +24,7 @@ packages:
     - shellcheck
     - tree-sitter-cli
     - wget
+    - zoxide
 
   darwin:
     brews:
