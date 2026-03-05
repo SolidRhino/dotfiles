@@ -6,10 +6,20 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🎨 Styling
 - Align comment format in mas section
 
+### 📚 Documentation
+- Update CLAUDE.md with script table, atuin.fish, and mise path corrections
+
+### 📦 Refactoring
+- Remove duplicate git alias from aliases.fish
+- Remove duplicate docker aliases from aliases.fish
+- Remove duplicate chezmoi aliases from aliases.fish
+
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
 - Add Mac App Store apps to packages.yaml
 - Add uv to mise tools
+- Add telegram, tor-browser casks and Luminar Neo, Moonlock, Shortcutie setapp apps; sort alphabetically
+- Add router and docker SSH host entries
 
 ## 02-03-2026
 ### ⚙️ CI
