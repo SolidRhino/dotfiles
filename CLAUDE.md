@@ -50,10 +50,12 @@ Scripts are organised into subdirectories:
 | before 20 | `linux/run_onchange_before_20-install-packages.sh.tmpl` | onchange | System packages (Linux) |
 | after 10 | `run_once_after_10-install-rust.sh` | once | Install Rust via rustup |
 | after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages |
+| after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
 | after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
 | after 27 | `darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl` | onchange | Install Setapp apps from bundle |
 | after 30 | `run_onchange_after_30-set-default-shell.sh` | onchange | Set Fish as default shell |
+| after 35 | `run_once_after_35-login-atuin.sh.tmpl` | once | Log in to Atuin sync |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
 
 ## Linux Package Management Strategy
@@ -68,7 +70,7 @@ Scripts are organised into subdirectories:
 **dnf-based** (Fedora, RHEL, Rocky, AlmaLinux): native `dnf` with upstream repo added for:
 - `linux/run_onchange_before_10-install-op.sh.tmpl` — 1Password CLI official RPM repo
 
-**mise** manages language runtime versions (node, python, go, ruby). Installed via `packages.cargo`. Global tool config at `home/dot_config/mise/config.toml`; Fish init at `home/dot_config/fish/conf.d/mise.fish`. Adding a new runtime means adding a line to `config.toml` — the `run_onchange_after_21` script reruns automatically.
+**mise** manages language runtime versions (node, python, go, ruby). Installed via `packages.cargo`. Global tool config at `home/dot_config/mise/config.toml.tmpl` (Go template); Fish init at `home/dot_config/fish/conf.d/mise.fish`. Adding a new runtime means adding a line to `config.toml.tmpl` — the `run_onchange_after_21` script reruns automatically.
 
 ## Package Naming Differences (packages.yaml)
 
@@ -83,6 +85,7 @@ Modular layout under `home/dot_config/fish/`:
 - `config.fish` — entry point, sources `conf.d/` (alphabetical load order)
 - `conf.d/abbreviations.fish` — Git, Docker, chezmoi, and `upd` → topgrade abbreviations
 - `conf.d/aliases.fish` — command aliases with fallbacks (bat/cat, eza/ls, rg/grep, nvim/vi)
+- `conf.d/atuin.fish` — Atuin shell history initialisation
 - `conf.d/claude.fish.tmpl` — sets `CLAUDE_CODE_OAUTH_TOKEN` baked in at `chezmoi apply` time via `onepasswordRead` (macOS only)
 - `conf.d/homebrew.fish.tmpl` — Homebrew shellenv (macOS only; handles both Apple Silicon and Intel)
 - `conf.d/op-plugins.fish` — sources `~/.config/op/plugins.sh` when present
