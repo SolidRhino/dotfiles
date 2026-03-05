@@ -10,6 +10,7 @@ packages:
     - ripgrep
     - starship
     - topgrade
+    - zoxide
 
   common:
     - curl
@@ -24,7 +25,6 @@ packages:
     - shellcheck
     - tree-sitter-cli
     - wget
-    - zoxide
 
   darwin:
     brews:
