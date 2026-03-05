@@ -34,11 +34,6 @@ if command -q nvim
     alias vi="nvim"
 end
 
-# Git
-if command -q git
-    alias g="git"
-end
-
 # Lazygit
 if command -q lazygit
     alias lg="lazygit"
