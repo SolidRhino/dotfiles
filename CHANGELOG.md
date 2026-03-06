@@ -40,6 +40,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add packages.aur scaffold for AUR packages
 - Add yay AUR helper install script for Arch
 - Use yay instead of pacman for Arch package installs
+- Add mise fish completion (auto-generated at apply time)
 
 ## 02-03-2026
 ### ⚙️ CI
