@@ -9,6 +9,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🐛 Bug Fixes
 - Move zoxide to cargo packages instead of common
 - Correct lint workflow and add go to mise
+- Further lint workflow corrections
 
 ### 📚 Documentation
 - Update CLAUDE.md with script table, atuin.fish, and mise path corrections
