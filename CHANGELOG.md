@@ -11,6 +11,8 @@ All notable changes to this dotfiles repository will be documented here.
 
 ### 📚 Documentation
 - Update CLAUDE.md with script table, atuin.fish, and mise path corrections
+- Update script table for ephemeral gating and yay AUR helper
+- Update Arch package strategy to reflect yay usage
 
 ### 📦 Refactoring
 - Remove duplicate git alias from aliases.fish
@@ -20,6 +22,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🔧 Miscellaneous
 - Add Serena MCP project config and memory files
 - Update Serena memories with zoxide, delta, and cargo naming notes
+- Add .worktrees to gitignore
 
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
@@ -29,6 +32,13 @@ All notable changes to this dotfiles repository will be documented here.
 - Add router and docker SSH host entries
 - Add zoxide with cd command override
 - Add delta as git pager
+- Skip rust install on ephemeral machines
+- Skip cargo packages install on ephemeral machines
+- Skip mise tools install on ephemeral machines
+- Skip set-default-shell on ephemeral machines
+- Add packages.aur scaffold for AUR packages
+- Add yay AUR helper install script for Arch
+- Use yay instead of pacman for Arch package installs
 
 ## 02-03-2026
 ### ⚙️ CI
