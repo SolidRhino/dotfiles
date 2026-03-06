@@ -1,0 +1,7 @@
+{{ if not .ephemeral -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Generate Fish completions from installed man pages
+fish -c fish_update_completions
+{{ end -}}
