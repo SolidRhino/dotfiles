@@ -13,6 +13,7 @@ packages:
     - ripgrep
     - starship
     - topgrade
+    - usage-cli
     - zoxide
 
   common:
