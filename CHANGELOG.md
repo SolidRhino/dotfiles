@@ -23,6 +23,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add Serena MCP project config and memory files
 - Update Serena memories with zoxide, delta, and cargo naming notes
 - Add .worktrees to gitignore
+- Update Serena memories with ephemeral gating and AUR/yay notes
 
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
