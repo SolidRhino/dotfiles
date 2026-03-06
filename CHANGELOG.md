@@ -49,6 +49,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Auto-update fish completions when packages change
 - Add chezmoi fish completions
 - Add usage-cli for mise fish completions
+- Add python to mise tools
 
 ## 02-03-2026
 ### ⚙️ CI
