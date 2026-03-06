@@ -15,9 +15,9 @@ jobs:
       - name: Run shellcheck on plain shell scripts
         run: |
           shellcheck \
-            home/.chezmoiscripts/run_once_after_10-install-rust.sh \
+            home/.chezmoiscripts/run_once_after_10-install-rust.sh.tmpl \
             home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
-            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh
+            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh.tmpl
 
   yamllint:
     name: yamllint
@@ -47,6 +47,10 @@ jobs:
       - uses: actions/checkout@v6
       - name: Install chezmoi
         run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+      - name: Install mise
+        run: |
+          curl https://mise.run | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Create minimal chezmoi config for CI
         run: |
           mkdir -p ~/.config/chezmoi
