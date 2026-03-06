@@ -23,7 +23,8 @@ chezmoi/                   # repo root
 │   ├── dot_config/        # ~/.config/
 │   │   ├── fish/          # Fish shell config
 │   │   │   ├── config.fish
-│   │   │   └── conf.d/    # modular Fish config files
+│   │   │   ├── conf.d/    # modular Fish config files
+│   │   │   └── completions/ # tool completions (e.g. mise.fish.tmpl)
 │   │   ├── mise/          # mise config
 │   │   ├── atuin/         # atuin config
 │   │   └── starship.toml
