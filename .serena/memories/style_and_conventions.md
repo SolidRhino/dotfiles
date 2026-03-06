@@ -50,6 +50,7 @@
 ## Fish Completions
 - Tool completions live in `home/dot_config/fish/completions/`
 - Use `{{ output "tool" "completion" "fish" -}}` in a `.tmpl` file to auto-generate at apply time (e.g. `mise.fish.tmpl`)
+- `usage-cli` (cargo) is required for `mise completion fish` to work — already in `packages.cargo`
 - Use `run_onchange_after_40-fish-update-completions.sh.tmpl` to regenerate man-page completions; triggered by a `# Packages: {{ concat .packages.cargo .packages.common | join ", " }}` comment so it reruns when packages change
 
 ## Fish Config
