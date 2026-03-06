@@ -19,9 +19,7 @@ czcd   # chezmoi cd
 ## Linting (run locally to mirror CI)
 ```fish
 # Shell scripts (plain .sh only, not .tmpl):
-shellcheck home/.chezmoiscripts/run_once_after_10-install-rust.sh
 shellcheck home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh
-shellcheck home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh
 
 # YAML:
 yamllint .github/workflows/

@@ -23,6 +23,20 @@
 - Use `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid` variables
 - Secrets: use `onepasswordRead` at template render time, never `op read` at shell runtime
 
+## Ephemeral Gating
+- Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}}` ... `{{ end -}}`
+- The shebang and `set -eufo pipefail` go INSIDE the guard (they are part of the rendered script)
+- Scripts gated on ephemeral: `run_once_after_10-install-rust.sh.tmpl`, `run_onchange_after_20-install-cargo-packages.sh.tmpl`, `run_onchange_after_21-install-mise-tools.sh.tmpl`, `run_onchange_after_30-set-default-shell.sh.tmpl`
+- Scripts gated on headless: Atuin login (`not .headless`)
+- Scripts with runtime TTY check (no template gate needed): `run_once_after_25-setup-op-gh-plugin.sh`
+
+## AUR Support (Arch Linux)
+- yay is used instead of pacman for all Arch package installs — yay wraps pacman and also handles AUR
+- yay must NOT be run with `sudo` — it handles privilege escalation internally
+- `linux/run_onchange_before_15-install-aur-helper.sh.tmpl` bootstraps yay: installs `git base-devel` via pacman, builds yay with `makepkg -si --noconfirm --rmdeps` (--rmdeps removes go after build), then removes git + base-devel (reinstalled by yay in before_20)
+- AUR packages go in `packages.aur` in `packages.yaml`; currently empty scaffold (`aur: []`)
+- The Arch install command: `yay -S --noconfirm --needed {{ concat .packages.aur .packages.pacman (...) }}`
+
 ## Package Naming
 - `packages.common` uses Homebrew/dnf names
 - Known apt differences handled in `packages.apt`:
