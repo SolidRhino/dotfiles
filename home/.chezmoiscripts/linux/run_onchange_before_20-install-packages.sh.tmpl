@@ -3,10 +3,11 @@
 set -eufo pipefail
 
 {{ if eq .osid "linux-arch" "linux-manjaro" "linux-endeavouros" -}}
-# Arch-based: rolling release, always latest
+# Arch-based: use yay for official + AUR packages
+# yay must not be run with sudo — it handles privilege escalation internally
 # Note: 'gh' is 'github-cli' in Arch; 'tree-sitter-cli' is 'tree-sitter' in Arch
-sudo pacman -S --noconfirm --needed \
-    {{ concat .packages.pacman (without .packages.common "gh" "tree-sitter-cli") | join " " }}
+yay -S --noconfirm --needed \
+    {{ concat .packages.aur .packages.pacman (without .packages.common "gh" "tree-sitter-cli") | join " " }}
 
 {{ else if eq .osid "linux-ubuntu" "linux-debian" "linux-linuxmint" "linux-pop" -}}
 # Debian-based: repos for gh and git-lfs are set up by dedicated scripts
