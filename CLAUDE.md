@@ -47,14 +47,15 @@ Scripts are organised into subdirectories:
 | before 10 | `linux/run_onchange_before_10-install-gh.sh.tmpl` | onchange | GitHub CLI apt repo |
 | before 10 | `linux/run_onchange_before_10-install-git-lfs.sh.tmpl` | onchange | git-lfs apt repo |
 | before 10 | `linux/run_onchange_before_10-install-op.sh.tmpl` | onchange | 1Password CLI apt/rpm repo |
+| before 15 | `linux/run_onchange_before_15-install-aur-helper.sh.tmpl` | onchange | Install yay AUR helper (Arch only) |
 | before 20 | `linux/run_onchange_before_20-install-packages.sh.tmpl` | onchange | System packages (Linux) |
-| after 10 | `run_once_after_10-install-rust.sh` | once | Install Rust via rustup |
-| after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages |
-| after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes |
+| after 10 | `run_once_after_10-install-rust.sh.tmpl` | once | Install Rust via rustup (skipped on ephemeral) |
+| after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages (skipped on ephemeral) |
+| after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes (skipped on ephemeral) |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
 | after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
 | after 27 | `darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl` | onchange | Install Setapp apps from bundle |
-| after 30 | `run_onchange_after_30-set-default-shell.sh` | onchange | Set Fish as default shell |
+| after 30 | `run_onchange_after_30-set-default-shell.sh.tmpl` | onchange | Set Fish as default shell (skipped on ephemeral) |
 | after 35 | `run_once_after_35-login-atuin.sh.tmpl` | once | Log in to Atuin sync |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
 
