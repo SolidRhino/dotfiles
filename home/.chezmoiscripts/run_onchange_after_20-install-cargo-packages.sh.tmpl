@@ -1,3 +1,4 @@
+{{ if not .ephemeral -}}
 #!/bin/bash
 set -eufo pipefail
 
@@ -10,4 +11,5 @@ fi
 
 {{ range .packages.cargo -}}
 cargo install --locked {{ . }}
+{{ end -}}
 {{ end -}}
