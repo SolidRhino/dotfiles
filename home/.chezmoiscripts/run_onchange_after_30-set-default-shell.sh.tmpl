@@ -1,3 +1,4 @@
+{{ if not .ephemeral -}}
 #!/bin/bash
 set -eufo pipefail
 
@@ -10,3 +11,4 @@ fi
 if [ "$SHELL" != "$FISH_PATH" ]; then
   chsh -s "$FISH_PATH"
 fi
+{{ end -}}
