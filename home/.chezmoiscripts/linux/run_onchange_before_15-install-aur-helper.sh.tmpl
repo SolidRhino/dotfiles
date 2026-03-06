@@ -1,0 +1,29 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .osid "linux-arch" "linux-manjaro" "linux-endeavouros" -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Skip if yay is already installed
+if command -v yay >/dev/null 2>&1; then
+    echo "yay: already installed, skipping"
+    exit 0
+fi
+
+# Bootstrap: minimal deps to build yay
+# git and base-devel are removed after the build;
+# they are reinstalled via yay in the next step (before_20)
+sudo pacman -S --noconfirm --needed git base-devel
+
+# Build and install yay from AUR
+# --rmdeps removes makedependencies (go) automatically after build
+BUILDDIR="$(mktemp -d)"
+trap 'rm -rf "$BUILDDIR"' EXIT
+
+git clone https://aur.archlinux.org/yay.git "$BUILDDIR/yay"
+cd "$BUILDDIR/yay"
+makepkg -si --noconfirm --rmdeps
+
+# Remove bootstrap deps — reinstalled via yay in before_20
+sudo pacman -Rns --noconfirm git base-devel
+{{ end -}}
+{{ end -}}
