@@ -45,6 +45,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Run fish_update_completions once on setup
 - Auto-update fish completions when packages change
 - Add chezmoi fish completions
+- Add usage-cli for mise fish completions
 
 ## 02-03-2026
 ### ⚙️ CI
