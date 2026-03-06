@@ -6,4 +6,5 @@ node_modules
 
 # Claude Code generated files
 docs/plans/
+.worktrees/
 .claude/settings.local.json
