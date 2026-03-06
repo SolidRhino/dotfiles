@@ -15,9 +15,7 @@ jobs:
       - name: Run shellcheck on plain shell scripts
         run: |
           shellcheck \
-            home/.chezmoiscripts/run_once_after_10-install-rust.sh.tmpl \
-            home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
-            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh.tmpl
+            home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh
 
   yamllint:
     name: yamllint
@@ -56,9 +54,10 @@ jobs:
           mkdir -p ~/.config/chezmoi
           cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
           [data]
-            osid     = "linux-ubuntu"
-            personal = false
-            headless = true
+            osid      = "linux-ubuntu"
+            personal  = false
+            headless  = true
+            ephemeral = false
           EOF
       - name: Verify chezmoi source renders
         run: chezmoi --source=$GITHUB_WORKSPACE/home dump --format=json > /dev/null
