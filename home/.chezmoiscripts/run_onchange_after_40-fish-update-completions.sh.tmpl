@@ -2,6 +2,8 @@
 #!/bin/bash
 set -eufo pipefail
 
+# Packages: {{ concat .packages.cargo .packages.common | join ", " }}
+
 # Generate Fish completions from installed man pages
 fish -c fish_update_completions
 {{ end -}}
