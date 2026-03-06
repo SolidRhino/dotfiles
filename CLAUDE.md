@@ -61,7 +61,7 @@ Scripts are organised into subdirectories:
 
 ## Linux Package Management Strategy
 
-**Arch-based** (Arch, Manjaro, EndeavourOS): native `pacman` — rolling release always has latest versions.
+**Arch-based** (Arch, Manjaro, EndeavourOS): `yay` (AUR helper wrapping pacman) — rolling release always has latest versions; AUR packages available via `packages.aur`.
 
 **apt-based** (Ubuntu, Debian, Mint, Pop!_OS): native `apt` with upstream repos added by dedicated per-tool scripts for tools where distro versions lag significantly:
 - `linux/run_onchange_before_10-install-gh.sh.tmpl` — GitHub CLI official apt repo
