@@ -16,3 +16,7 @@
 
 # Prevent circular management
 .local/share/chezmoi
+
+# macOS-only tools
+{{ if ne .chezmoi.os "darwin" }}.local/bin/oscar-update
+{{ end -}}
