@@ -15,6 +15,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Use ditto instead of cp -R to preserve code signature when installing OSCAR
 - Re-sign OSCAR after install to fix broken DMG signature on macOS 26
 - Run oscar-update on every chezmoi apply to pick up new versions
+- Exclude oscar-update from non-darwin systems
 
 ### 📚 Documentation
 - Update CLAUDE.md with script table, atuin.fish, and mise path corrections
