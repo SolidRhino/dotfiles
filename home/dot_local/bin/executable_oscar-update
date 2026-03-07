@@ -6,7 +6,7 @@ OSCAR_APP="/Applications/OSCAR.app"
 PLIST="$OSCAR_APP/Contents/Info.plist"
 
 # Scrape the latest version from the directory listing
-LATEST=$(curl -fsSL "$OSCAR_URL" | grep -oE 'href="[0-9]+\.[0-9]+\.[0-9]+/"' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
+LATEST=$(curl -fsSL "$OSCAR_URL" | grep -oE '/OSCAR/[0-9]+\.[0-9]+\.[0-9]+/' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
 
 if [[ -z "$LATEST" ]]; then
   echo "Error: could not determine latest OSCAR version." >&2
