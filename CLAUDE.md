@@ -30,6 +30,7 @@ Available in all templates as `.personal`, `.headless`, `.ephemeral`, `.hostname
 Scripts in `home/.chezmoiscripts/` follow chezmoi conventions:
 - `run_once_*` — runs only once per machine
 - `run_onchange_*` — runs when the rendered script content changes
+- `run_*` (no modifier) — runs on every `chezmoi apply`
 - `before_` / `after_` — timing relative to file changes
 - Numeric prefixes enforce execution order within the same timing group
 - All scripts use `set -eufo pipefail`
