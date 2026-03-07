@@ -42,7 +42,7 @@ else
   exit 1
 fi
 
-DMG_NAME="OSCAR-${LATEST}-macOS-${ARCH_LABEL}.dmg"
+DMG_NAME="OSCAR-${LATEST}-${ARCH_LABEL}.dmg"
 DMG_URL="${OSCAR_URL}${LATEST}/${DMG_NAME}"
 
 # Create temp working directory; clean it up (and detach any mount) on exit
