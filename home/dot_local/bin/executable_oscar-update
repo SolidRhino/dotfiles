@@ -62,7 +62,7 @@ echo "Installing OSCAR.app..."
 if [[ -d "$OSCAR_APP" ]]; then
   rm -rf "$OSCAR_APP"
 fi
-cp -R "$MOUNT/OSCAR.app" /Applications/
+ditto "$MOUNT/OSCAR.app" /Applications/OSCAR.app
 
 echo "Detaching disk image..."
 hdiutil detach "$MOUNT" -quiet
