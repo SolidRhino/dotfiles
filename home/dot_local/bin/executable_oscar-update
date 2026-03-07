@@ -1,0 +1,73 @@
+#!/bin/bash
+set -euo pipefail
+
+OSCAR_URL="https://www.sleepfiles.com/OSCAR/"
+OSCAR_APP="/Applications/OSCAR.app"
+PLIST="$OSCAR_APP/Contents/Info.plist"
+
+# Scrape the latest version from the directory listing
+LATEST=$(curl -fsSL "$OSCAR_URL" | grep -oE 'href="[0-9]+\.[0-9]+\.[0-9]+/"' | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
+
+if [[ -z "$LATEST" ]]; then
+  echo "Error: could not determine latest OSCAR version." >&2
+  exit 1
+fi
+
+# Read installed version (empty string if not installed)
+if [[ -f "$PLIST" ]]; then
+  INSTALLED=$(defaults read "$PLIST" CFBundleShortVersionString 2>/dev/null || echo "")
+else
+  INSTALLED=""
+fi
+
+if [[ "$INSTALLED" == "$LATEST" ]]; then
+  echo "OSCAR $LATEST is already installed. Nothing to do."
+  exit 0
+fi
+
+if [[ -z "$INSTALLED" ]]; then
+  echo "Installing OSCAR $LATEST..."
+else
+  echo "Upgrading OSCAR from $INSTALLED to $LATEST..."
+fi
+
+# Detect architecture
+ARCH=$(uname -m)
+if [[ "$ARCH" == "arm64" ]]; then
+  ARCH_LABEL="AppleSilicon"
+elif [[ "$ARCH" == "x86_64" ]]; then
+  ARCH_LABEL="Intel"
+else
+  echo "Error: unsupported architecture: $ARCH" >&2
+  exit 1
+fi
+
+DMG_NAME="OSCAR-${LATEST}-macOS-${ARCH_LABEL}.dmg"
+DMG_URL="${OSCAR_URL}${LATEST}/${DMG_NAME}"
+
+# Create temp working directory; clean it up (and detach any mount) on exit
+WORK_DIR=$(mktemp -d)
+MOUNT="$WORK_DIR/mount"
+trap 'hdiutil detach "$MOUNT" -quiet 2>/dev/null || true; rm -rf "$WORK_DIR"' EXIT
+
+mkdir -p "$MOUNT"
+
+echo "Downloading $DMG_URL..."
+curl -fsSL -o "$WORK_DIR/$DMG_NAME" "$DMG_URL"
+
+echo "Mounting disk image..."
+hdiutil attach -nobrowse -quiet -mountpoint "$MOUNT" "$WORK_DIR/$DMG_NAME"
+
+echo "Installing OSCAR.app..."
+if [[ -d "$OSCAR_APP" ]]; then
+  rm -rf "$OSCAR_APP"
+fi
+cp -R "$MOUNT/OSCAR.app" /Applications/
+
+echo "Detaching disk image..."
+hdiutil detach "$MOUNT" -quiet
+
+echo "Removing quarantine attribute..."
+xattr -dr com.apple.quarantine "$OSCAR_APP"
+
+echo "OSCAR $LATEST installed successfully."
