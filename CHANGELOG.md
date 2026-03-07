@@ -22,6 +22,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update script table for ephemeral gating and yay AUR helper
 - Update Arch package strategy to reflect yay usage
 - Add OSCAR script to CLAUDE.md execution order table
+- Document run_ (always-run) script type in CLAUDE.md
 
 ### 📦 Refactoring
 - Remove duplicate git alias from aliases.fish
