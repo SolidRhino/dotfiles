@@ -55,6 +55,7 @@ Scripts are organised into subdirectories:
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
 | after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
 | after 27 | `darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl` | onchange | Install Setapp apps from bundle |
+| after 28 | `darwin/run_after_28-install-oscar.sh.tmpl` | always | Install/update OSCAR via `~/.local/bin/oscar-update` (macOS) |
 | after 30 | `run_onchange_after_30-set-default-shell.sh.tmpl` | onchange | Set Fish as default shell (skipped on ephemeral) |
 | after 35 | `run_once_after_35-login-atuin.sh.tmpl` | once | Log in to Atuin sync |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
