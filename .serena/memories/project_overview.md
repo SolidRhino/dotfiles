@@ -32,8 +32,11 @@ chezmoi/                   # repo root
 │   │   ├── darwin/        # macOS-only scripts
 │   │   ├── linux/         # Linux-only scripts
 │   │   └── *.sh[.tmpl]    # cross-platform scripts
+│   ├── .chezmoiexternal.toml.tmpl  # external git repos (nvim config; claude skill macOS-only)
 │   ├── .chezmoidata/
 │   │   └── packages.yaml  # cross-platform package declarations
+│   ├── dot_local/
+│   │   └── bin/           # ~/.local/bin/ (macOS-only scripts, e.g. oscar-update)
 │   ├── private_dot_ssh/   # ~/.ssh/ (mode 600)
 │   ├── dot_gitconfig.tmpl
 │   ├── dot_mackup.cfg.tmpl

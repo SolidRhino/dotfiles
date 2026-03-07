@@ -1,0 +1,9 @@
+[application]
+name = IntelliJ IDEA (modern)
+
+[configuration_files]
+{{ range (output "sh" "-c" "ls \"$HOME/Library/Application Support/JetBrains\" 2>/dev/null | grep '^IntelliJIdea' || true" | trim | splitList "\n") -}}
+{{ if . -}}
+Library/Application Support/JetBrains/{{ . }}
+{{ end -}}
+{{ end -}}

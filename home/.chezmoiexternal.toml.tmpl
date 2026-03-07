@@ -1,8 +1,10 @@
+{{- if eq .chezmoi.os "darwin" -}}
 [".claude/skills/chezmoi"]
     type = "git-repo"
     url = "https://github.com/cosgroveb/chezmoi-skill.git"
     refreshPeriod = "168h"
 
+{{ end -}}
 [".config/nvim"]
     type = "git-repo"
     url = "https://github.com/SolidRhino/nvim.git"

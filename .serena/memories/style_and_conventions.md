@@ -73,4 +73,5 @@
 
 ## Mackup + Chezmoi Overlap
 - When adding a file to chezmoi, also add the app to `applications_to_ignore` in `dot_mackup.cfg.tmpl`
-- Currently ignored: fish, git, lazygit, mackup, mise, nvim, ssh, starship, wget
+- Currently ignored: fish, git, lazygit, mackup, mise, neovim, ssh, starship, wget
+- Note: mackup app name is `neovim` (not `nvim`) — nvim config is managed via `.chezmoiexternal.toml.tmpl` as a git repo

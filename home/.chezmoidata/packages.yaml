@@ -44,6 +44,7 @@ packages:
       - font-jetbrains-mono-nerd-font
       - iterm2
       - itermai
+      - intellij-idea
       - neovide-app
       - ollama-app
       - setapp
