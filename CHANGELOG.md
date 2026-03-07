@@ -36,6 +36,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update Serena memories with ephemeral gating and AUR/yay notes
 - Update Serena memories with fish completions patterns
 - Update Serena memory with usage-cli requirement for mise completions
+- Improve mackup and chezmoi external config
 
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
