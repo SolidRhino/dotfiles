@@ -10,11 +10,17 @@ All notable changes to this dotfiles repository will be documented here.
 - Move zoxide to cargo packages instead of common
 - Correct lint workflow and add go to mise
 - Further lint workflow corrections
+- Remove spurious -macOS- from OSCAR DMG filename
+- Fix version scraping regex to match full URLs in OSCAR page HTML
+- Use ditto instead of cp -R to preserve code signature when installing OSCAR
+- Re-sign OSCAR after install to fix broken DMG signature on macOS 26
+- Run oscar-update on every chezmoi apply to pick up new versions
 
 ### 📚 Documentation
 - Update CLAUDE.md with script table, atuin.fish, and mise path corrections
 - Update script table for ephemeral gating and yay AUR helper
 - Update Arch package strategy to reflect yay usage
+- Add OSCAR script to CLAUDE.md execution order table
 
 ### 📦 Refactoring
 - Remove duplicate git alias from aliases.fish
@@ -50,6 +56,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add chezmoi fish completions
 - Add usage-cli for mise fish completions
 - Add python to mise tools
+- Add oscar-update script
+- Add chezmoi run_once script to bootstrap OSCAR install
+- Add OSCAR to topgrade update commands
 
 ## 02-03-2026
 ### ⚙️ CI
