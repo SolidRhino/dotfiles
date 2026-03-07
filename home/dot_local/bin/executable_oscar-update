@@ -70,4 +70,7 @@ hdiutil detach "$MOUNT" -quiet
 echo "Removing quarantine attribute..."
 xattr -dr com.apple.quarantine "$OSCAR_APP"
 
+echo "Re-signing app (original DMG signature is invalid)..."
+codesign --force --deep --sign - "$OSCAR_APP"
+
 echo "OSCAR $LATEST installed successfully."
