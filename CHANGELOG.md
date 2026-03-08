@@ -62,6 +62,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add oscar-update script
 - Add chezmoi run_once script to bootstrap OSCAR install
 - Add OSCAR to topgrade update commands
+- Add encrypted archive with age encryption
 
 ## 02-03-2026
 ### ⚙️ CI
