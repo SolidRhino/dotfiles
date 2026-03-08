@@ -3,6 +3,9 @@
 All notable changes to this dotfiles repository will be documented here.
 
 ## 🌿 Latest
+### ⚙️ CI
+- Exclude encrypted files from chezmoi verify in CI
+
 ### 🎨 Styling
 - Align comment format in mas section
 
