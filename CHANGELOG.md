@@ -43,6 +43,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update Serena memory with usage-cli requirement for mise completions
 - Improve mackup and chezmoi external config
 - Add ipfs-desktop to darwin casks
+- Silence output from age identity and archive extraction scripts
 
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
