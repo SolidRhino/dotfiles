@@ -14,6 +14,5 @@ mkdir -p "$(dirname "$AGE_KEY_PATH")"
 if command -v op >/dev/null 2>&1; then
     if op read "op://Private/chezmoi-age/private" > "$AGE_KEY_PATH" 2>/dev/null; then
         chmod 600 "$AGE_KEY_PATH"
-        echo "Age identity written to $AGE_KEY_PATH"
     fi
 fi
