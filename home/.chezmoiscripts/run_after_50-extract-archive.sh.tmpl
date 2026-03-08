@@ -23,8 +23,7 @@ elif [ -d "${HOME}/.config/JetBrains" ] && \
 fi
 
 if [ "${JETBRAINS_FOUND}" = "false" ]; then
-    echo "No JetBrains product found — removing archive without extracting"
-    rm "${ARCHIVE_PATH}"
+    echo "No JetBrains product found — skipping extraction"
     exit 0
 fi
 
@@ -32,5 +31,4 @@ echo "Extracting archive..."
 rm -rf "${EXTRACT_PATH}"
 mkdir -p "${EXTRACT_PATH}"
 tar -xzf "${ARCHIVE_PATH}" -C "${EXTRACT_PATH}" --strip-components=1
-rm "${ARCHIVE_PATH}"
 echo "Archive extracted to ${EXTRACT_PATH}"
