@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Extract encrypted archive after chezmoi apply
+# The archive is decrypted by chezmoi, then this script extracts it
+
+set -e
+
+ARCHIVE_PATH="${HOME}/.local/share/x7k9m2p.tar.gz"
+EXTRACT_PATH="${HOME}/.local/share/x7k9m2p"
+
+# Check if archive exists (chezmoi decrypts it to this path)
+if [ -f "${ARCHIVE_PATH}" ]; then
+    echo "Extracting archive..."
+    rm -rf "${EXTRACT_PATH}"
+    mkdir -p "${EXTRACT_PATH}"
+    tar -xzf "${ARCHIVE_PATH}" -C "${EXTRACT_PATH}" --strip-components=1
+    rm "${ARCHIVE_PATH}"
+    echo "Archive extracted to ${EXTRACT_PATH}"
+fi

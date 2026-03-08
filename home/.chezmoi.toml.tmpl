@@ -31,9 +31,15 @@
 {{-   end -}}
 {{- end -}}
 
+encryption = "age"
+
 [data]
     ephemeral = {{ $ephemeral }}
     headless  = {{ $headless }}
     hostname  = {{ $hostname | quote }}
     osid      = {{ $osID | quote }}
     personal  = {{ $personal }}
+
+[age]
+    identity = "~/.config/chezmoi/age-key.txt"
+    recipient = {{ onepasswordRead "op://Private/chezmoi-age/public" | trim | quote }}
