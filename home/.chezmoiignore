@@ -20,3 +20,9 @@
 # macOS-only tools
 {{ if ne .chezmoi.os "darwin" }}.local/bin/oscar-update
 {{ end -}}
+# Encrypted archive — only managed when a JetBrains product is installed
+# macOS: ~/Library/Application Support/JetBrains, Linux: ~/.config/JetBrains
+{{- $jbFound := or (stat (joinPath .chezmoi.homeDir "Library/Application Support/JetBrains")) (stat (joinPath .chezmoi.homeDir ".config/JetBrains")) }}
+{{- if not $jbFound }}
+.local/share/x7k9m2p.tar.gz
+{{- end }}
