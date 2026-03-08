@@ -23,6 +23,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update Arch package strategy to reflect yay usage
 - Add OSCAR script to CLAUDE.md execution order table
 - Document run_ (always-run) script type in CLAUDE.md
+- Update CLAUDE.md and Serena memories; gate archive extraction on JetBrains
 
 ### 📦 Refactoring
 - Remove duplicate git alias from aliases.fish
