@@ -42,9 +42,10 @@ packages:
       - codex
       - font-fira-code-nerd-font
       - font-jetbrains-mono-nerd-font
+      - intellij-idea
+      - ipfs-desktop
       - iterm2
       - itermai
-      - intellij-idea
       - neovide-app
       - ollama-app
       - setapp
