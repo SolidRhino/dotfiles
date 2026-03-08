@@ -68,6 +68,21 @@
 - Cargo crate name ≠ binary name in some cases: `git-delta` installs the `delta` binary
 - Always use the crate name in `packages.cargo` in `packages.yaml`
 
+## Age Encryption
+- Chezmoi decrypts `.age` files using `~/.config/chezmoi/age-key.txt` (written by `run_before_00-write-age-identity.sh` from 1Password: `op://Private/chezmoi-age/private`)
+- Age key is always fetched fresh on every `chezmoi apply` (plain `run_before_*`, not `run_once_*`)
+- Encrypted files use the `encrypted_` prefix in chezmoi source
+- After apply, `run_after_50-extract-archive.sh.tmpl` extracts the decrypted archive and removes the intermediate `.tar.gz`
+
+## Custom Mackup App Configs
+- `home/dot_mackup/*.cfg.tmpl` — custom Mackup application definitions for apps not in Mackup's built-in registry
+- These are Go templates; use `{{ output "sh" "-c" "..." }}` to dynamically list paths (e.g. JetBrains versioned dirs)
+- Each file defines `[application]` + `[configuration_files]` sections in Mackup's INI format
+
+## Topgrade Config
+- `home/dot_config/topgrade.toml.tmpl` — custom `[commands]` section for tools topgrade doesn't know about
+- Current custom commands: `Chezmoi Externals`, `Mackup Backup` (macOS), `OSCAR` (macOS)
+
 ## CHANGELOG
 - **Never** run `git-cliff` locally — GitHub Actions handles `CHANGELOG.md` automatically
 

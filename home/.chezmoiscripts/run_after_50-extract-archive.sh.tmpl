@@ -2,18 +2,35 @@
 
 # Extract encrypted archive after chezmoi apply
 # The archive is decrypted by chezmoi, then this script extracts it
+# Only extracts if a JetBrains product is installed; removes the archive otherwise
 
 set -e
 
 ARCHIVE_PATH="${HOME}/.local/share/x7k9m2p.tar.gz"
 EXTRACT_PATH="${HOME}/.local/share/x7k9m2p"
 
-# Check if archive exists (chezmoi decrypts it to this path)
-if [ -f "${ARCHIVE_PATH}" ]; then
-    echo "Extracting archive..."
-    rm -rf "${EXTRACT_PATH}"
-    mkdir -p "${EXTRACT_PATH}"
-    tar -xzf "${ARCHIVE_PATH}" -C "${EXTRACT_PATH}" --strip-components=1
-    rm "${ARCHIVE_PATH}"
-    echo "Archive extracted to ${EXTRACT_PATH}"
+# Skip entirely if no archive was decrypted
+[ -f "${ARCHIVE_PATH}" ] || exit 0
+
+# Detect JetBrains installation (macOS: ~/Library/Application Support/JetBrains, Linux: ~/.config/JetBrains)
+JETBRAINS_FOUND=false
+if [ -d "${HOME}/Library/Application Support/JetBrains" ] && \
+   ls "${HOME}/Library/Application Support/JetBrains" | grep -q .; then
+    JETBRAINS_FOUND=true
+elif [ -d "${HOME}/.config/JetBrains" ] && \
+     ls "${HOME}/.config/JetBrains" | grep -q .; then
+    JETBRAINS_FOUND=true
 fi
+
+if [ "${JETBRAINS_FOUND}" = "false" ]; then
+    echo "No JetBrains product found — removing archive without extracting"
+    rm "${ARCHIVE_PATH}"
+    exit 0
+fi
+
+echo "Extracting archive..."
+rm -rf "${EXTRACT_PATH}"
+mkdir -p "${EXTRACT_PATH}"
+tar -xzf "${ARCHIVE_PATH}" -C "${EXTRACT_PATH}" --strip-components=1
+rm "${ARCHIVE_PATH}"
+echo "Archive extracted to ${EXTRACT_PATH}"

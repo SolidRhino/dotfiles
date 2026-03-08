@@ -44,6 +44,7 @@ Scripts are organised into subdirectories:
 
 | Step | Script | Type | Purpose |
 |------|--------|------|---------|
+| before 00 | `run_before_00-write-age-identity.sh` | always | Write age key from 1Password for encrypted file decryption |
 | before 10 | `darwin/run_onchange_before_10-install-packages.sh.tmpl` | onchange | Homebrew + packages (macOS) |
 | before 10 | `linux/run_onchange_before_10-install-gh.sh.tmpl` | onchange | GitHub CLI apt repo |
 | before 10 | `linux/run_onchange_before_10-install-git-lfs.sh.tmpl` | onchange | git-lfs apt repo |
@@ -59,7 +60,10 @@ Scripts are organised into subdirectories:
 | after 28 | `darwin/run_after_28-install-oscar.sh.tmpl` | always | Install/update OSCAR via `~/.local/bin/oscar-update` (macOS) |
 | after 30 | `run_onchange_after_30-set-default-shell.sh.tmpl` | onchange | Set Fish as default shell (skipped on ephemeral) |
 | after 35 | `run_once_after_35-login-atuin.sh.tmpl` | once | Log in to Atuin sync |
+| after 40 | `run_onchange_after_40-fish-update-completions.sh.tmpl` | onchange | Regenerate Fish man-page completions |
+| after 50 | `run_after_50-extract-archive.sh.tmpl` | always | Extract age-decrypted archive to `~/.local/share/` |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
+| after | `darwin/run_once_after_mackup-restore.sh.tmpl` | once | Restore GUI app settings via Mackup (macOS) |
 
 ## Linux Package Management Strategy
 
@@ -94,6 +98,9 @@ Modular layout under `home/dot_config/fish/`:
 - `conf.d/op-plugins.fish` — sources `~/.config/op/plugins.sh` when present
 - `conf.d/path.fish` — PATH (`~/.local/bin`, `~/.cargo/bin`) and env vars; `EDITOR=nvim`
 - `conf.d/starship.fish` — Starship prompt initialisation
+- `conf.d/zoxide.fish` — zoxide initialisation (`--cmd cd` replaces `cd`)
+- `completions/mise.fish.tmpl` — mise Fish completions (generated via `{{ output ... }}`)
+- `completions/chezmoi.fish.tmpl` — chezmoi Fish completions
 
 ## Key Chezmoi Commands
 
@@ -118,6 +125,32 @@ The `op` CLI is installed on all platforms:
 - Linux: via dedicated repo scripts (`install-op.sh.tmpl`) + `1password-cli` package
 
 `op-plugins.fish` sources `~/.config/op/plugins.sh` for the GitHub CLI plugin (set up by `run_once_after_25-setup-op-gh-plugin.sh`).
+
+## Age Encryption
+
+Chezmoi is configured to decrypt files using an age key stored in 1Password:
+
+- `home/dot_local/share/encrypted_x7k9m2p.tar.gz.age` — age-encrypted archive managed by chezmoi
+- `run_before_00-write-age-identity.sh` — writes `~/.config/chezmoi/age-key.txt` from `op://Private/chezmoi-age/private` before every apply
+- `run_after_50-extract-archive.sh.tmpl` — extracts the decrypted archive to `~/.local/share/x7k9m2p/` and removes the intermediate `.tar.gz`
+
+The age key file is written with mode `600` and requires `op` to be authenticated at apply time.
+
+## Setapp
+
+Setapp app list is managed via `home/dot_setapp/bundle.tmpl`, which renders from `packages.darwin.setapp` in `packages.yaml`. The `run_onchange_after_27` script installs apps from this bundle on macOS.
+
+## Topgrade
+
+`home/dot_config/topgrade.toml.tmpl` configures topgrade with custom commands:
+- `Chezmoi Externals` — refreshes external git repos
+- `Mackup Backup` — runs `mackup backup --force` (macOS only)
+- `OSCAR` — runs `oscar-update` (macOS only)
+
+## Custom Mackup App Configs
+
+`home/dot_mackup/` contains custom Mackup application config files (`.cfg.tmpl`) for apps not in Mackup's built-in registry. Currently:
+- `intellijidea-modern.cfg.tmpl` — dynamically discovers installed IntelliJ IDEA versions via `ls ~/Library/Application Support/JetBrains`
 
 ## SSH Configuration
 

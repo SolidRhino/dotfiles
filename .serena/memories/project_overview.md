@@ -27,17 +27,24 @@ chezmoi/                   # repo root
 │   │   │   └── completions/ # tool completions (e.g. mise.fish.tmpl)
 │   │   ├── mise/          # mise config
 │   │   ├── atuin/         # atuin config
-│   │   └── starship.toml
+│   │   ├── starship.toml
+│   │   └── topgrade.toml.tmpl
 │   ├── .chezmoiscripts/   # setup scripts
 │   │   ├── darwin/        # macOS-only scripts
 │   │   ├── linux/         # Linux-only scripts
 │   │   └── *.sh[.tmpl]    # cross-platform scripts
-│   ├── .chezmoiexternal.toml.tmpl  # external git repos (nvim config; claude skill macOS-only)
+│   ├── .chezmoiexternal.toml.tmpl  # external git repos (nvim config; chezmoi skill macOS-only)
+│   │                               # chezmoi skill: cosgroveb/chezmoi-skill.git
 │   ├── .chezmoidata/
 │   │   └── packages.yaml  # cross-platform package declarations
 │   ├── dot_local/
-│   │   └── bin/           # ~/.local/bin/ (macOS-only scripts, e.g. oscar-update)
+│   │   ├── bin/           # ~/.local/bin/ (macOS-only scripts, e.g. oscar-update)
+│   │   └── share/         # ~/.local/share/ (includes encrypted_x7k9m2p.tar.gz.age)
 │   ├── private_dot_ssh/   # ~/.ssh/ (mode 600)
+│   ├── dot_setapp/
+│   │   └── bundle.tmpl    # Setapp app list (rendered from packages.darwin.setapp)
+│   ├── dot_mackup/
+│   │   └── intellijidea-modern.cfg.tmpl  # custom Mackup app config
 │   ├── dot_gitconfig.tmpl
 │   ├── dot_mackup.cfg.tmpl
 │   └── .chezmoi.toml.tmpl # machine type variables
