@@ -24,6 +24,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add OSCAR script to CLAUDE.md execution order table
 - Document run_ (always-run) script type in CLAUDE.md
 - Update CLAUDE.md and Serena memories; gate archive extraction on JetBrains
+- Update CLAUDE.md and Serena memories to reflect archive behaviour
 
 ### 📦 Refactoring
 - Remove duplicate git alias from aliases.fish
@@ -38,6 +39,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update Serena memories with fish completions patterns
 - Update Serena memory with usage-cli requirement for mise completions
 - Improve mackup and chezmoi external config
+- Add ipfs-desktop to darwin casks
 
 ### 🚀 Features
 - Add mas support for Mac App Store app installation
@@ -64,6 +66,8 @@ All notable changes to this dotfiles repository will be documented here.
 - Add chezmoi run_once script to bootstrap OSCAR install
 - Add OSCAR to topgrade update commands
 - Add encrypted archive with age encryption
+- Gate archive extraction on JetBrains presence
+- Conditionally ignore encrypted archive when no JetBrains installed
 
 ## 02-03-2026
 ### ⚙️ CI
