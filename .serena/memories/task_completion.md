@@ -11,7 +11,12 @@ When finishing any change to this dotfiles repo:
 4. **Mackup check**: Before adding a new file to chezmoi, run `mackup backup --dry-run` (or check `~/.mackup/`) to see if mackup already backs up that file — if so, migrate it to chezmoi instead of having both manage it
 5. **Mackup overlap**: If a new file was added to chezmoi, add its app to `applications_to_ignore` in `home/dot_mackup.cfg.tmpl`
 5. **CLAUDE.md**: Keep project CLAUDE.md updated if conventions change
-6. **Commit**: `git add <files> && git commit -m "type: description"`
+6. **Commit**: Follow a logical git commit strategy — one commit per logical change, never bundle unrelated changes together. Examples:
+   - Script behaviour change → own commit
+   - Config/ignore change → own commit
+   - Package addition → own commit
+   - Docs/memory update → own commit
+   - `git add <files> && git commit -m "type: description"`
    - Do NOT include Co-Authored-By Claude lines
    - CHANGELOG is updated automatically by CI (git-cliff) — do not run locally
 7. **Push**: `git push origin main`

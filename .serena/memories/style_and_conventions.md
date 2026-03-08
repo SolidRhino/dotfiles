@@ -72,7 +72,8 @@
 - Chezmoi decrypts `.age` files using `~/.config/chezmoi/age-key.txt` (written by `run_before_00-write-age-identity.sh` from 1Password: `op://Private/chezmoi-age/private`)
 - Age key is always fetched fresh on every `chezmoi apply` (plain `run_before_*`, not `run_once_*`)
 - Encrypted files use the `encrypted_` prefix in chezmoi source
-- After apply, `run_after_50-extract-archive.sh.tmpl` extracts the decrypted archive and removes the intermediate `.tar.gz`
+- After apply, `run_after_50-extract-archive.sh.tmpl` extracts the decrypted archive if a JetBrains product is installed; skips otherwise (tar.gz stays on disk)
+- `.chezmoiignore` conditionally excludes `x7k9m2p.tar.gz` via `stat (joinPath .chezmoi.homeDir ...)` — when no JetBrains dir exists, chezmoi ignores the file entirely (re-evaluated on every apply)
 
 ## Custom Mackup App Configs
 - `home/dot_mackup/*.cfg.tmpl` — custom Mackup application definitions for apps not in Mackup's built-in registry

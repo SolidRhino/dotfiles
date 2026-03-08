@@ -132,7 +132,8 @@ Chezmoi is configured to decrypt files using an age key stored in 1Password:
 
 - `home/dot_local/share/encrypted_x7k9m2p.tar.gz.age` — age-encrypted archive managed by chezmoi
 - `run_before_00-write-age-identity.sh` — writes `~/.config/chezmoi/age-key.txt` from `op://Private/chezmoi-age/private` before every apply
-- `run_after_50-extract-archive.sh.tmpl` — extracts the decrypted archive to `~/.local/share/x7k9m2p/` and removes the intermediate `.tar.gz`
+- `run_after_50-extract-archive.sh.tmpl` — extracts the decrypted archive to `~/.local/share/x7k9m2p/` if a JetBrains product is installed; skips silently otherwise (tar.gz stays on disk, managed by chezmoi)
+- `.chezmoiignore` conditionally excludes `x7k9m2p.tar.gz` using `stat` when no JetBrains directory is found — so chezmoi won't write/track the file on non-JetBrains machines
 
 The age key file is written with mode `600` and requires `op` to be authenticated at apply time.
 
