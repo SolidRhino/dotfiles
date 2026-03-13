@@ -26,7 +26,7 @@
 ## Ephemeral Gating
 - Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}}` ... `{{ end -}}`
 - The shebang and `set -eufo pipefail` go INSIDE the guard (they are part of the rendered script)
-- Scripts gated on ephemeral: `run_once_after_10-install-rust.sh.tmpl`, `run_onchange_after_20-install-cargo-packages.sh.tmpl`, `run_onchange_after_21-install-mise-tools.sh.tmpl`, `run_onchange_after_30-set-default-shell.sh.tmpl`, `run_onchange_after_40-fish-update-completions.sh.tmpl`
+- Scripts gated on ephemeral: `run_once_after_10-install-rust.sh.tmpl`, `run_once_after_19-install-mise.sh.tmpl`, `run_onchange_after_20-install-cargo-packages.sh.tmpl`, `run_onchange_after_21-install-mise-tools.sh.tmpl`, `run_onchange_after_30-set-default-shell.sh.tmpl`, `run_onchange_after_40-fish-update-completions.sh.tmpl`
 - Scripts gated on headless: Atuin login (`not .headless`)
 - Scripts with runtime TTY check (no template gate needed): `run_once_after_25-setup-op-gh-plugin.sh`
 
