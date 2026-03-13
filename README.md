@@ -33,21 +33,37 @@ chezmoi apply          # or: czap
 
 | File | Target | Notes |
 |------|--------|-------|
-| `dot_gitconfig.tmpl` | `~/.gitconfig` | SSH signing via 1Password, LFS, difftastic |
+| `dot_gitconfig.tmpl` | `~/.gitconfig` | SSH signing via 1Password, LFS, delta pager, difftastic diff |
 | `dot_config/fish/` | `~/.config/fish/` | Modular Fish config (conf.d/ pattern) |
 | `dot_config/starship.toml` | `~/.config/starship.toml` | Catppuccin Mocha theme |
+| `dot_config/mise/config.toml.tmpl` | `~/.config/mise/config.toml` | Language runtime versions (node, python, go, etc.) |
+| `dot_config/atuin/config.toml` | `~/.config/atuin/config.toml` | Shell history settings |
+| `dot_config/topgrade.toml.tmpl` | `~/.config/topgrade.toml` | Update automation config |
+| `dot_mackup.cfg.tmpl` | `~/.mackup.cfg` | Mackup config (macOS) |
+| `dot_setapp/bundle.tmpl` | `~/.setapp/bundle` | Setapp app bundle (macOS) |
 | `private_dot_ssh/private_config.tmpl` | `~/.ssh/config` | 1Password SSH agent socket (mode 600) |
 
 ### Packages Installed Everywhere
 
-`bat` · `difftastic` · `eza` · `fd` · `fish` · `fzf` · `gh` · `git` · `git-lfs` · `lazygit` · `neovim` · `ripgrep` · `starship` · `topgrade` · `tree-sitter` · `wget`
+**System packages** (via Homebrew / pacman / apt / dnf):
 
-**Rust (via rustup):** `bat` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `ripgrep` · `starship`
+`curl` · `fd` · `fish` · `fzf` · `gh` · `git` · `git-lfs` · `lazygit` · `neovim` · `shellcheck` · `tree-sitter-cli` · `wget`
+
+**Rust (via cargo):**
+
+`atuin` · `bat` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `git-delta` · `mise` · `ripgrep` · `starship` · `topgrade` · `usage-cli` · `xh` · `zoxide`
 
 ### macOS-only (Homebrew)
 
-Casks: `1password` · `brave-browser` · `claude` · `iterm2` · `neovide` · `visual-studio-code`
-Fonts: JetBrains Mono Nerd · Fira Code Nerd
+**Casks:** `1password` · `1password-cli` · `brave-browser` · `claude` · `codex` · `discord` · `intellij-idea` · `ipfs-desktop` · `iterm2` · `itermai` · `neovide-app` · `ollama-app` · `setapp` · `tailscale-app` · `telegram` · `tor-browser` · `visual-studio-code` · `whatsapp`
+
+**Fonts:** JetBrains Mono Nerd · Fira Code Nerd
+
+**Brews:** `mackup` · `mas`
+
+**App Store (via mas):** Xcode · Pages · Numbers · Swift Playgrounds
+
+**Setapp:** AlDente Pro · CleanMyMac · Elmedia Player · Luminar Neo · Moonlock · Numi · Shortcutie
 
 ---
 
@@ -57,7 +73,9 @@ Fonts: JetBrains Mono Nerd · Fira Code Nerd
 
 | Command | Abbreviation | Description |
 |---------|-------------|-------------|
+| `chezmoi` | `cz` | Chezmoi base command |
 | `chezmoi apply` | `czap` | Apply dotfiles |
+| `chezmoi apply --refresh-externals --force` | `czre` | Apply with forced external refresh |
 | `chezmoi diff` | `czdf` | Preview pending changes |
 | `chezmoi edit <file>` | `czed` | Edit a managed file |
 | `chezmoi add <file>` | `czad` | Track a new file |
@@ -82,15 +100,33 @@ Fonts: JetBrains Mono Nerd · Fira Code Nerd
 | `gl` | `git log --oneline --graph --decorate` |
 | `lg` | `lazygit` |
 
+### Docker
+
+| Abbreviation | Command |
+|-------------|---------|
+| `d` | `docker` |
+| `dc` | `docker compose` |
+| `dcu` | `docker compose up -d` |
+| `dcd` | `docker compose down` |
+| `dcl` | `docker compose logs -f` |
+| `dcp` | `docker compose pull` |
+
 ### Shell
 
 | Alias | Expands to |
 |-------|-----------|
 | `ll` | `eza -lah --icons --git` |
+| `ls` | `eza --icons` |
+| `la` | `eza -a --icons` |
 | `lt` | `eza --tree --icons` |
 | `cat` | `bat` |
 | `grep` | `rg` |
 | `v` / `vi` | `nvim` |
+| `..` | `cd ..` |
+| `...` | `cd ../..` |
+| `....` | `cd ../../..` |
+| `mkdir` | `mkdir -p` |
+| `cls` | `clear` |
 | `reload` | `source ~/.config/fish/config.fish` |
 
 ---
