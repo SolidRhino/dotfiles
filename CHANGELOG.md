@@ -2,6 +2,14 @@
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 🌿 Latest
+### 📚 Documentation
+- Update README to reflect current state
+
+### 📝 Other Changes
+- Add xh, discord, jellyfin-media-player, CleanShot X; fix Numbers mas ID
+- Add proxmox host to SSH config
+
 ## 09-03-2026
 ### ⚙️ CI
 - Exclude encrypted files from chezmoi verify in CI
