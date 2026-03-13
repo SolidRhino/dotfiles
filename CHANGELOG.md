@@ -13,6 +13,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add xh, discord, jellyfin-media-player, CleanShot X; fix Numbers mas ID
 - Add proxmox host to SSH config
 
+### 🔧 Miscellaneous
+- Remove vestigial cargo fallback from mise tools script
+
 ## 09-03-2026
 ### ⚙️ CI
 - Exclude encrypted files from chezmoi verify in CI
