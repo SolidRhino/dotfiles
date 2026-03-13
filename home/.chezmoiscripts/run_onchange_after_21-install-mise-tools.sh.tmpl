@@ -4,10 +4,5 @@ set -eufo pipefail
 
 # Tools config: {{ include "dot_config/mise/config.toml.tmpl" | trim | replace "\n" "\n# " }}
 
-if ! command -v mise >/dev/null 2>&1; then
-    # shellcheck source=/dev/null
-    source "${HOME}/.cargo/env"
-fi
-
 mise install
 {{ end -}}
