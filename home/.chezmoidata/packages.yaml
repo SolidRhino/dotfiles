@@ -9,7 +9,6 @@ packages:
     - eza
     - git-cliff
     - git-delta
-    - mise
     - ripgrep
     - starship
     - topgrade

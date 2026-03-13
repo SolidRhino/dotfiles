@@ -52,6 +52,7 @@ Scripts are organised into subdirectories:
 | before 15 | `linux/run_onchange_before_15-install-aur-helper.sh.tmpl` | onchange | Install yay AUR helper (Arch only) |
 | before 20 | `linux/run_onchange_before_20-install-packages.sh.tmpl` | onchange | System packages (Linux) |
 | after 10 | `run_once_after_10-install-rust.sh.tmpl` | once | Install Rust via rustup (skipped on ephemeral) |
+| after 19 | `run_once_after_19-install-mise.sh.tmpl` | once | Install mise via `curl https://mise.run \| sh` (skipped on ephemeral) |
 | after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages (skipped on ephemeral) |
 | after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes (skipped on ephemeral) |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |

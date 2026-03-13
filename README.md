@@ -51,7 +51,9 @@ chezmoi apply          # or: czap
 
 **Rust (via cargo):**
 
-`atuin` · `bat` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `git-delta` · `mise` · `ripgrep` · `starship` · `topgrade` · `usage-cli` · `xh` · `zoxide`
+`atuin` · `bat` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `git-delta` · `ripgrep` · `starship` · `topgrade` · `usage-cli` · `xh` · `zoxide`
+
+**mise** is installed via its official installer (`curl https://mise.run | sh`) and manages its own updates.
 
 ### macOS-only (Homebrew)
 
