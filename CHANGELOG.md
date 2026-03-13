@@ -15,6 +15,7 @@ All notable changes to this dotfiles repository will be documented here.
 
 ### 🔧 Miscellaneous
 - Remove vestigial cargo fallback from mise tools script
+- Update serena memory with run_once_after_19-install-mise in ephemeral-gated scripts list
 
 ## 09-03-2026
 ### ⚙️ CI
