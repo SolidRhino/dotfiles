@@ -6,3 +6,6 @@ python = "latest"
 {{- if eq .chezmoi.os "darwin" }}
 "npm:@smithery/cli" = "latest"
 {{- end }}
+{{- if not .headless }}
+"npm:fish-lsp" = "latest"
+{{- end }}
