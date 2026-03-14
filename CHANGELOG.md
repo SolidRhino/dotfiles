@@ -17,6 +17,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Remove vestigial cargo fallback from mise tools script
 - Update serena memory with run_once_after_19-install-mise in ephemeral-gated scripts list
 
+### 🚀 Features
+- Add fish-lsp to mise global tools on non-headless machines
+
 ## 09-03-2026
 ### ⚙️ CI
 - Exclude encrypted files from chezmoi verify in CI
