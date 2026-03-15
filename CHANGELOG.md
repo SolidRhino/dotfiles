@@ -9,6 +9,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🐛 Bug Fixes
 - Install mise via official curl installer instead of cargo
 - Use full path for pam_reattach.so in sudo_local
+- Upgrade withastro/action to v5 for Node.js 22 support
 
 ### 📚 Documentation
 - Update README to reflect current state
