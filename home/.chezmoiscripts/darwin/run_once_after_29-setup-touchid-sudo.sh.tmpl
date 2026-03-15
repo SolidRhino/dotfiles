@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -eufo pipefail
+
+SUDO_LOCAL="/etc/pam.d/sudo_local"
+
+EXPECTED="# sudo_local: local config file which survives system update and is included for sudo
+auth       optional       pam_reattach.so
+auth       sufficient     pam_tid.so"
+
+if [ -f "$SUDO_LOCAL" ] && [ "$(cat "$SUDO_LOCAL")" = "$EXPECTED" ]; then
+    exit 0
+fi
+
+echo "$EXPECTED" | sudo tee "$SUDO_LOCAL" > /dev/null
+{{ end -}}
