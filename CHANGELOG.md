@@ -10,6 +10,7 @@ All notable changes to this dotfiles repository will be documented here.
 ## 🌿 Latest
 ### ⏪ Reverts
 - Remove Jekyll setup, switching to Starlight (Astro)
+- Remove conflicting custom 404 page (conflicts with Starlight built-in route)
 
 ### ⚙️ CI
 - Upgrade actions/checkout to v6 (Node.js 24)
@@ -44,6 +45,9 @@ All notable changes to this dotfiles repository will be documented here.
 - Add Gemfile for Jekyll + just-the-docs
 - Add Jekyll front matter to docs pages
 - Add Starlight (Astro) docs site with Catppuccin Mocha/Latte theme
+- Add hero section to home page
+- Add OpenGraph meta tags and edit-on-GitHub link
+- Add custom 404 page
 
 ## 09-03-2026
 ### ⚙️ CI
