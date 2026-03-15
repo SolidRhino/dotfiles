@@ -1,13 +1,11 @@
----
-title: Changelog
-description: All notable changes to this dotfiles repository.
----
-
 # Changelog
 
 All notable changes to this dotfiles repository will be documented here.
 
 ## 🌿 Latest
+### ⏪ Reverts
+- Remove Jekyll setup, switching to Starlight (Astro)
+
 ### 🐛 Bug Fixes
 - Install mise via official curl installer instead of cargo
 - Use full path for pam_reattach.so in sudo_local
@@ -26,10 +24,15 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🔧 Miscellaneous
 - Remove vestigial cargo fallback from mise tools script
 - Update serena memory with run_once_after_19-install-mise in ephemeral-gated scripts list
+- Add Jekyll build artifacts to .gitignore
 
 ### 🚀 Features
 - Add fish-lsp to mise global tools on non-headless machines
 - Enable TouchID for sudo via /etc/pam.d/sudo_local
+- Add Jekyll _config.yml for GitHub Pages site
+- Add Gemfile for Jekyll + just-the-docs
+- Add Jekyll front matter to docs pages
+- Add Starlight (Astro) docs site with Catppuccin Mocha/Latte theme
 
 ## 09-03-2026
 ### ⚙️ CI
