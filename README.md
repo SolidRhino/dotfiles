@@ -1,9 +1,18 @@
 ---
 title: Home
 description: Personal dotfiles for macOS & Linux managed with chezmoi.
+hero:
+  tagline: Personal dotfiles for macOS & Linux — one command to get started.
+  actions:
+    - text: Quick Start
+      link: /dotfiles/#quick-start
+      icon: right-arrow
+      variant: primary
+    - text: GitHub
+      link: https://github.com/SolidRhino/dotfiles
+      icon: github
+      variant: secondary
 ---
-
-# dotfiles
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Supports macOS and Linux (Arch, Ubuntu/Debian, Fedora/RHEL). Uses 1Password for secrets and Fish as the default shell.
 
