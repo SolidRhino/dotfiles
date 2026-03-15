@@ -9,6 +9,10 @@ All notable changes to this dotfiles repository will be documented here.
 
 ### 📚 Documentation
 - Update README to reflect current state
+- Simplify CLAUDE.md to critical rules only
+- Add CHEATSHEET.md with commands and naming conventions
+- Restructure README for onboarding, move commands to CHEATSHEET
+- Add machine type variables to Serena project_overview memory
 
 ### 📝 Other Changes
 - Add xh, discord, jellyfin-media-player, CleanShot X; fix Numbers mas ID
