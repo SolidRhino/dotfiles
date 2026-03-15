@@ -15,6 +15,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Install mise via official curl installer instead of cargo
 - Use full path for pam_reattach.so in sudo_local
 - Upgrade withastro/action to v5 for Node.js 22 support
+- Add Starlight front matter to cliff.toml header so CI preserves it
 
 ### 📚 Documentation
 - Update README to reflect current state
