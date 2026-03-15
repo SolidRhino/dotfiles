@@ -11,6 +11,9 @@ All notable changes to this dotfiles repository will be documented here.
 ### ⏪ Reverts
 - Remove Jekyll setup, switching to Starlight (Astro)
 
+### ⚙️ CI
+- Upgrade actions/checkout to v6 (Node.js 24)
+
 ### 🐛 Bug Fixes
 - Install mise via official curl installer instead of cargo
 - Use full path for pam_reattach.so in sudo_local
