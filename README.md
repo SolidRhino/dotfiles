@@ -1,9 +1,3 @@
----
-title: Home
-layout: default
-nav_order: 1
----
-
 # dotfiles
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Supports macOS and Linux (Arch, Ubuntu/Debian, Fedora/RHEL). Uses 1Password for secrets and Fish as the default shell.

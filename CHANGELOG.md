@@ -1,8 +1,3 @@
----
-title: Changelog
-nav_order: 3
----
-
 # Changelog
 
 All notable changes to this dotfiles repository will be documented here.

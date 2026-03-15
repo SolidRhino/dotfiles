@@ -7,13 +7,4 @@ node_modules
 # Claude Code generated files
 docs/plans/
 .worktrees/
-.claude/settings.local.json.superpowers/
-
-# Jekyll build output
-_site/
-.jekyll-cache/
-.jekyll-metadata/
-vendor/bundle/
-vendor/cache/
-vendor/gems/
-vendor/ruby/
+.claude/settings.local.json
