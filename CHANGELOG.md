@@ -5,6 +5,7 @@ All notable changes to this dotfiles repository will be documented here.
 ## 🌿 Latest
 ### 🐛 Bug Fixes
 - Install mise via official curl installer instead of cargo
+- Use full path for pam_reattach.so in sudo_local
 
 ### 📚 Documentation
 - Update README to reflect current state
