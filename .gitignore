@@ -8,3 +8,8 @@ node_modules
 docs/plans/
 .worktrees/
 .claude/settings.local.json
+
+# Astro / Starlight
+site/node_modules/
+site/dist/
+site/.astro/

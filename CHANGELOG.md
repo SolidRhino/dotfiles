@@ -1,3 +1,8 @@
+---
+title: Changelog
+description: All notable changes to this dotfiles repository.
+---
+
 # Changelog
 
 All notable changes to this dotfiles repository will be documented here.

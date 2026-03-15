@@ -1,3 +1,8 @@
+---
+title: Cheatsheet
+description: Commands, abbreviations, and chezmoi naming conventions.
+---
+
 # Cheatsheet
 
 ## Chezmoi Commands
