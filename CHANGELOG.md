@@ -19,6 +19,7 @@ All notable changes to this dotfiles repository will be documented here.
 
 ### 🚀 Features
 - Add fish-lsp to mise global tools on non-headless machines
+- Enable TouchID for sudo via /etc/pam.d/sudo_local
 
 ## 09-03-2026
 ### ⚙️ CI
