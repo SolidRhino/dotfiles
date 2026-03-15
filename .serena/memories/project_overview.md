@@ -65,3 +65,14 @@ chezmoi/                   # repo root
 - `.tmpl` suffix → Go template
 - `home/` is chezmoi root (set in `.chezmoiroot`)
 - Secrets baked in at `chezmoi apply` time, never at shell startup
+
+## Machine Type Variables
+
+Available in all Go templates as: `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid`
+
+- `osid` — combined OS+distro string: `"darwin"`, `"linux-ubuntu"`, `"linux-arch"`, etc.
+- `personal` — true on personal machines (prompted once on first apply)
+- `headless` — true on servers/CI without a display
+- `ephemeral` — true in Codespaces, containers, CI environments
+
+Defined in `home/.chezmoi.toml.tmpl`.
