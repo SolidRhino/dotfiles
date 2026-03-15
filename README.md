@@ -2,7 +2,7 @@
 
 Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Supports macOS and Linux (Arch, Ubuntu/Debian, Fedora/RHEL). Uses 1Password for secrets and Fish as the default shell.
 
-## Bootstrap
+## Quick Start
 
 Works on macOS and Linux. Installs chezmoi to `~/.local/bin` and applies the dotfiles in one shot:
 
@@ -27,7 +27,7 @@ chezmoi apply          # or: czap
 
 ---
 
-## What's Managed
+## What You Get
 
 ### Dotfiles & Config
 
@@ -61,7 +61,7 @@ chezmoi apply          # or: czap
 
 **Fonts:** JetBrains Mono Nerd · Fira Code Nerd
 
-**Brews:** `mackup` · `mas`
+**Brews:** `mackup` · `mas` · `pam-reattach`
 
 **App Store (via mas):** Xcode · Pages · Numbers · Swift Playgrounds
 
@@ -69,67 +69,9 @@ chezmoi apply          # or: czap
 
 ---
 
-## Key Commands
+## Reference
 
-### Chezmoi
-
-| Command | Abbreviation | Description |
-|---------|-------------|-------------|
-| `chezmoi` | `cz` | Chezmoi base command |
-| `chezmoi apply` | `czap` | Apply dotfiles |
-| `chezmoi apply --refresh-externals --force` | `czre` | Apply with forced external refresh |
-| `chezmoi diff` | `czdf` | Preview pending changes |
-| `chezmoi edit <file>` | `czed` | Edit a managed file |
-| `chezmoi add <file>` | `czad` | Track a new file |
-| `chezmoi cd` | `czcd` | cd into this repo |
-| `topgrade` | `upd` | Update everything (system + cargo + etc.) |
-
-### Git
-
-| Abbreviation | Command |
-|-------------|---------|
-| `g` | `git` |
-| `ga` | `git add` |
-| `gaa` | `git add --all` |
-| `gc` | `git commit` |
-| `gcm` | `git commit -m` |
-| `gp` | `git push` |
-| `gpl` | `git pull` |
-| `gs` | `git status` |
-| `gd` | `git diff` |
-| `gco` | `git checkout` |
-| `gb` | `git branch` |
-| `gl` | `git log --oneline --graph --decorate` |
-| `lg` | `lazygit` |
-
-### Docker
-
-| Abbreviation | Command |
-|-------------|---------|
-| `d` | `docker` |
-| `dc` | `docker compose` |
-| `dcu` | `docker compose up -d` |
-| `dcd` | `docker compose down` |
-| `dcl` | `docker compose logs -f` |
-| `dcp` | `docker compose pull` |
-
-### Shell
-
-| Alias | Expands to |
-|-------|-----------|
-| `ll` | `eza -lah --icons --git` |
-| `ls` | `eza --icons` |
-| `la` | `eza -a --icons` |
-| `lt` | `eza --tree --icons` |
-| `cat` | `bat` |
-| `grep` | `rg` |
-| `v` / `vi` | `nvim` |
-| `..` | `cd ..` |
-| `...` | `cd ../..` |
-| `....` | `cd ../../..` |
-| `mkdir` | `mkdir -p` |
-| `cls` | `clear` |
-| `reload` | `source ~/.config/fish/config.fish` |
+→ See [CHEATSHEET.md](CHEATSHEET.md) for all commands, abbreviations, and file naming conventions.
 
 ---
 
