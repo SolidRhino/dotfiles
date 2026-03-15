@@ -25,6 +25,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Remove vestigial cargo fallback from mise tools script
 - Update serena memory with run_once_after_19-install-mise in ephemeral-gated scripts list
 - Add Jekyll build artifacts to .gitignore
+- Exclude docs/ and .superpowers/ from git
 
 ### 🚀 Features
 - Add fish-lsp to mise global tools on non-headless machines
