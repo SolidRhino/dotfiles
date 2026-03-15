@@ -5,7 +5,8 @@ node_modules
 .DS_Store
 
 # Claude Code generated files
-docs/plans/
+docs/
+.superpowers/
 .worktrees/
 .claude/settings.local.json
 
