@@ -4,8 +4,10 @@ set -eufo pipefail
 
 SUDO_LOCAL="/etc/pam.d/sudo_local"
 
+PAM_REATTACH="$(brew --prefix)/lib/pam/pam_reattach.so"
+
 EXPECTED="# sudo_local: local config file which survives system update and is included for sudo
-auth       optional       pam_reattach.so
+auth       optional       ${PAM_REATTACH}
 auth       sufficient     pam_tid.so"
 
 if [ -f "$SUDO_LOCAL" ] && [ "$(cat "$SUDO_LOCAL")" = "$EXPECTED" ]; then
