@@ -12,8 +12,10 @@ All notable changes to this dotfiles repository will be documented here.
 - Only deploy on documentation file changes
 - Use actor-based loop guard in changelog workflow
 - Add manual dispatch trigger to deploy workflow
+- Add npm dependabot and set schedule to daily
 
 ### 🔧 Miscellaneous
+- Update changelog
 - Update changelog
 
 ## 16-03-2026
