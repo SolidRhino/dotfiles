@@ -7,7 +7,7 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
-## 🌿 Latest
+## 16-03-2026
 ### ⏪ Reverts
 - Remove Jekyll setup, switching to Starlight (Astro)
 - Remove conflicting custom 404 page (conflicts with Starlight built-in route)
