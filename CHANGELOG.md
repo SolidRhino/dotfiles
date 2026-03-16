@@ -11,6 +11,10 @@ All notable changes to this dotfiles repository will be documented here.
 ### ⚙️ CI
 - Only deploy on documentation file changes
 - Use actor-based loop guard in changelog workflow
+- Add manual dispatch trigger to deploy workflow
+
+### 🔧 Miscellaneous
+- Update changelog
 
 ## 16-03-2026
 ### ⏪ Reverts
