@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'README.md'
+      - 'CHEATSHEET.md'
+      - 'CHANGELOG.md'
+      - 'site/**'
 
 permissions:
   contents: read
