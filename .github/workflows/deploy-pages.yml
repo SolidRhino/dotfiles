@@ -9,6 +9,7 @@ on:
       - 'CHEATSHEET.md'
       - 'CHANGELOG.md'
       - 'site/**'
+  workflow_dispatch:
 
 permissions:
   contents: read
