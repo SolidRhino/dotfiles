@@ -7,6 +7,11 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 🌿 Latest
+### ⚙️ CI
+- Only deploy on documentation file changes
+- Use actor-based loop guard in changelog workflow
+
 ## 16-03-2026
 ### ⏪ Reverts
 - Remove Jekyll setup, switching to Starlight (Astro)
