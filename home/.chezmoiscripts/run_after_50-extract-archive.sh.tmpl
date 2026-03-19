@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 # Extract encrypted archive after chezmoi apply
 # The archive is decrypted by chezmoi, then this script extracts it
 # Only extracts if a JetBrains product is installed; removes the archive otherwise
 
-set -e
+set -eufo pipefail
 
 ARCHIVE_PATH="${HOME}/.local/share/x7k9m2p.tar.gz"
 EXTRACT_PATH="${HOME}/.local/share/x7k9m2p"

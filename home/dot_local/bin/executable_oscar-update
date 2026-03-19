@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -eufo pipefail
 
 OSCAR_URL="https://www.sleepfiles.com/OSCAR/"
 OSCAR_APP="/Applications/OSCAR.app"
