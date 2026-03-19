@@ -2,12 +2,12 @@
 
 When finishing any change to this dotfiles repo:
 
-1. **Verify templates render**: `chezmoi --source=home dump --format=json > /dev/null`
+1. **Verify templates render**: `chezmoi --source=home dump --format=json --exclude=encrypted > /dev/null`
 2. **Preview changes**: `chezmoi diff`
 3. **Lint if modified**:
-   - Plain shell scripts: `shellcheck <script>`
+   - Plain shell scripts: `shellcheck <script>` (CI covers: `run_before_00-write-age-identity.sh`, `run_once_after_25-setup-op-gh-plugin.sh`, `executable_oscar-update`)
    - YAML files: `yamllint <file>`
-   - TOML files: `python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb'))"`
+   - TOML files: `python3 -c "import tomllib; tomllib.load(open('<file>', 'rb'))"` (CI covers: `cliff.toml`, `starship.toml`, `atuin/config.toml`)
 4. **Mackup check**: Before adding a new file to chezmoi, run `mackup backup --dry-run` (or check `~/.mackup/`) to see if mackup already backs up that file — if so, migrate it to chezmoi instead of having both manage it
 5. **Mackup overlap**: If a new file was added to chezmoi, add its app to `applications_to_ignore` in `home/dot_mackup.cfg.tmpl`
 5. **CLAUDE.md**: Keep project CLAUDE.md updated if conventions change

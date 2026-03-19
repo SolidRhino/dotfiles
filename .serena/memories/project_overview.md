@@ -7,7 +7,7 @@ Uses 1Password for secrets management and Fish shell as the primary shell.
 ## Tech Stack
 - **chezmoi** — dotfiles manager
 - **Fish shell** — primary shell
-- **1Password** — secrets management (apply-time resolution via `onepasswordRead`)
+- **1Password** — secrets management (apply-time resolution via `onepasswordRead` in templates; `op read` in scripts at apply time)
 - **mise** — language runtime version management
 - **Homebrew** — macOS package management
 - **Starship** — shell prompt
@@ -49,7 +49,7 @@ chezmoi/                   # repo root
 │   ├── dot_mackup.cfg.tmpl
 │   └── .chezmoi.toml.tmpl # machine type variables
 ├── .github/
-│   └── workflows/         # CI: lint.yml, dotfiles-changelog.yml
+│   └── workflows/         # CI: lint.yml, dotfiles-changelog.yml, deploy-pages.yml, dependabot-auto-merge.yml
 ├── docs/
 ├── CLAUDE.md
 ├── CHANGELOG.md

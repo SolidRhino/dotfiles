@@ -19,7 +19,9 @@ czcd   # chezmoi cd
 ## Linting (run locally to mirror CI)
 ```fish
 # Shell scripts (plain .sh only, not .tmpl):
-shellcheck home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh
+shellcheck home/.chezmoiscripts/run_before_00-write-age-identity.sh \
+  home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
+  home/dot_local/bin/executable_oscar-update
 
 # YAML:
 yamllint .github/workflows/
@@ -27,9 +29,11 @@ yamllint home/.chezmoidata/packages.yaml
 
 # TOML syntax:
 python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('OK')"
+python3 -c "import tomllib; tomllib.load(open('home/dot_config/starship.toml', 'rb')); print('OK')"
+python3 -c "import tomllib; tomllib.load(open('home/dot_config/atuin/config.toml', 'rb')); print('OK')"
 
 # Verify chezmoi templates render (CI uses chezmoi dump):
-chezmoi --source=home dump --format=json > /dev/null
+chezmoi --source=home dump --format=json --exclude=encrypted > /dev/null
 ```
 
 ## GitHub CLI (use 1Password plugin)

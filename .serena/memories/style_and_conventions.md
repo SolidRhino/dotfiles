@@ -5,6 +5,7 @@
 - Line endings: LF
 - Default indent: tabs, size 2
 - YAML/JSON: spaces, size 2
+- TOML: spaces, size 2
 - Insert final newline: yes
 - Trim trailing whitespace: yes
 
@@ -14,14 +15,20 @@
 - Truthy values: `true` / `false` only
 
 ## Shell Scripts
+- All scripts use `#!/bin/bash` shebang (never `#!/bin/sh` — POSIX sh doesn't support `pipefail`)
 - All scripts use `set -eufo pipefail` (strict mode)
+- Scripts should fail loudly on errors — never silently swallow failures with `2>/dev/null` on critical operations
 - Scripts are only shellchecked if they are plain `.sh` (not `.sh.tmpl`) — templates have chezmoi/Go template syntax that shellcheck doesn't understand
+- CI shellchecks: `run_before_00-write-age-identity.sh`, `run_once_after_25-setup-op-gh-plugin.sh`, `executable_oscar-update`
 - Scripts use numeric prefixes for ordering (e.g., `before_10`, `after_20`)
+- Scripts that depend on external tools should guard with `command -v <tool>` checks
 
 ## Chezmoi Templates (Go templates)
 - Machine conditionals: `{{- if eq .chezmoi.os "darwin" }}` for macOS-only
 - Use `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid` variables
-- Secrets: use `onepasswordRead` at template render time, never `op read` at shell runtime
+- Secrets in templates: use `onepasswordRead` at template render time
+- Secrets in scripts: `op read` is allowed in chezmoi scripts (they run at apply time, not shell startup)
+- Never use `op read` in Fish config files (slow / unreliable when 1Password locked)
 
 ## Ephemeral Gating
 - Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}}` ... `{{ end -}}`
@@ -57,8 +64,10 @@
 - Modular layout: `conf.d/` files load alphabetically
 - No `op read` calls in Fish config (slow / unreliable when 1Password locked)
 - Homebrew shellenv handled in `homebrew.fish.tmpl` (macOS only)
-- **File separation**: `aliases.fish` = tool replacements + navigation only (eza, bat, rg, nvim, lg, `..`); `abbreviations.fish` = all workflow shortcuts (git, docker, chezmoi, topgrade)
+- **File separation**: `aliases.fish` = tool replacements + navigation only (eza, bat, rg, nvim, lg, `..`, reload); `abbreviations.fish` = all workflow shortcuts (git, docker, chezmoi, topgrade)
 - Fish abbreviations (inline-expanding) are preferred over aliases for workflow shortcuts
+- `reload` alias uses `exec fish` (restarts shell entirely, ensuring all conf.d/ files reload)
+- `EDITOR`/`VISUAL` in `path.fish` uses cascading fallback: nvim → vim → vi
 
 ## mise Config
 - `home/dot_config/mise/config.toml.tmpl` — Go template for OS-specific tools
@@ -70,7 +79,8 @@
 
 ## Age Encryption
 - Chezmoi decrypts `.age` files using `~/.config/chezmoi/age-key.txt` (written by `run_before_00-write-age-identity.sh` from 1Password: `op://Private/chezmoi-age/private`)
-- Age key is always fetched fresh on every `chezmoi apply` (plain `run_before_*`, not `run_once_*`)
+- Age **private** key: fetched fresh on every `chezmoi apply` via `op read` in `run_before_00` (plain `run_before_*`, not `run_once_*`). If `op` is missing → warning + exit 0; if `op read` fails → error + exit 1.
+- Age **public** key (recipient): hardcoded directly in `.chezmoi.toml.tmpl` — it's not sensitive and avoids requiring 1Password auth just to render the chezmoi config
 - Encrypted files use the `encrypted_` prefix in chezmoi source
 - After apply, `run_after_50-extract-archive.sh.tmpl` extracts the decrypted archive if a JetBrains product is installed; skips otherwise (tar.gz stays on disk)
 - `.chezmoiignore` conditionally excludes `x7k9m2p.tar.gz` via `stat (joinPath .chezmoi.homeDir ...)` — when no JetBrains dir exists, chezmoi ignores the file entirely (re-evaluated on every apply)
