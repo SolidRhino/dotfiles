@@ -13,10 +13,35 @@ All notable changes to this dotfiles repository will be documented here.
 - Use actor-based loop guard in changelog workflow
 - Add manual dispatch trigger to deploy workflow
 - Add npm dependabot and set schedule to daily
+- Gate dependabot auto-merge on required status checks
+- Expand lint coverage for shellcheck and TOML validation
+
+### 🐛 Bug Fixes
+- Enforce bash strict mode in all scripts
+- Surface 1Password errors in age identity script
+- Make git gone alias portable across macOS and Linux
+- Hardcode age public key to remove 1Password config dependency
+- Add error handling and tool guards to setup scripts
+- Add EDITOR fallback and use exec fish for reload
+
+### 📚 Documentation
+- Update project memories and conventions after code review fixes
+
+### 📝 Other Changes
+- Merge pull request #1 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.0.5
+
+chore(deps): bump astro from 6.0.4 to 6.0.5 in /site
+- Merge pull request #2 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.0.6
+
+chore(deps): bump astro from 6.0.5 to 6.0.6 in /site
 
 ### 🔧 Miscellaneous
 - Update changelog
 - Update changelog
+- Update changelog
+- **deps:** Bump astro from 6.0.4 to 6.0.5 in /site
+- **deps:** Bump astro from 6.0.5 to 6.0.6 in /site
+- Tune atuin sync frequency and add toml editorconfig rule
 
 ## 16-03-2026
 ### ⏪ Reverts
