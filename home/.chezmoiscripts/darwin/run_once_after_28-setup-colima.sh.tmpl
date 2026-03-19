@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -eufo pipefail
+
+if ! command -v colima >/dev/null 2>&1; then
+    echo "Error: colima not found" >&2
+    exit 1
+fi
+
+if colima status >/dev/null 2>&1; then
+    echo "Colima is already running, skipping setup"
+    exit 0
+fi
+
+colima start --cpu 4 --memory 4 --disk 60
+
+brew services start colima
+{{ end -}}
