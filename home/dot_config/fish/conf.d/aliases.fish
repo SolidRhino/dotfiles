@@ -40,4 +40,4 @@ if command -q lazygit
 end
 
 # Reload fish config
-alias reload="source ~/.config/fish/config.fish"
+alias reload="exec fish"
