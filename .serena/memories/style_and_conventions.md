@@ -34,6 +34,7 @@
 - Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}}` ... `{{ end -}}`
 - The shebang and `set -eufo pipefail` go INSIDE the guard (they are part of the rendered script)
 - Scripts gated on ephemeral: `run_once_after_10-install-rust.sh.tmpl`, `run_once_after_19-install-mise.sh.tmpl`, `run_onchange_after_20-install-cargo-packages.sh.tmpl`, `run_onchange_after_21-install-mise-tools.sh.tmpl`, `run_onchange_after_30-set-default-shell.sh.tmpl`, `run_onchange_after_40-fish-update-completions.sh.tmpl`
+- Darwin-only scripts (gated on `eq .chezmoi.os "darwin"`): `run_once_after_28-setup-colima.sh.tmpl`, `run_once_after_29-setup-touchid-sudo.sh.tmpl`, etc.
 - Scripts gated on headless: Atuin login (`not .headless`)
 - Scripts with runtime TTY check (no template gate needed): `run_once_after_25-setup-op-gh-plugin.sh`
 
@@ -89,6 +90,13 @@
 - `home/dot_mackup/*.cfg.tmpl` — custom Mackup application definitions for apps not in Mackup's built-in registry
 - These are Go templates; use `{{ output "sh" "-c" "..." }}` to dynamically list paths (e.g. JetBrains versioned dirs)
 - Each file defines `[application]` + `[configuration_files]` sections in Mackup's INI format
+
+## Docker / Colima (macOS)
+- Colima is the container runtime on macOS (no Docker Desktop)
+- `colima`, `docker`, `docker-buildx`, `docker-compose` are darwin-only brews
+- `ddev/ddev/ddev` (from tap) is also darwin-only; Brewfile handles auto-tapping via the full formula name
+- `run_once_after_28-setup-colima.sh.tmpl` initializes colima on first apply: 4 CPU, 4GB RAM, 60GB disk
+- Colima auto-starts on login via `brew services start colima`
 
 ## Topgrade Config
 - `home/dot_config/topgrade.toml.tmpl` — custom `[commands]` section for tools topgrade doesn't know about
