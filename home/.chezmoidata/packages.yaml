@@ -32,10 +32,16 @@ packages:
 
   darwin:
     brews:
+      - colima
+      - ddev/ddev/ddev
+      - docker
+      - docker-buildx
+      - docker-compose
       - mackup
       - mas
       - pam-reattach
     casks:
+      - chatgpt
       - 1password
       - 1password-cli
       - brave-browser
@@ -62,7 +68,7 @@ packages:
       # Format: - <app_id>    # App Name
       - 497799835   # Xcode
       - 361309726   # Pages
-      - 409183694   # Numbers
+      - 361304891   # Numbers
       - 1496833156  # Swift Playgrounds
 
     setapp:
