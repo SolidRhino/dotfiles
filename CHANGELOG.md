@@ -44,10 +44,12 @@ chore(deps): bump astro from 6.0.5 to 6.0.6 in /site
 - **deps:** Bump astro from 6.0.5 to 6.0.6 in /site
 - Tune atuin sync frequency and add toml editorconfig rule
 - Update changelog
+- Update changelog
 
 ### 🚀 Features
 - Add Docker toolchain (colima, docker, ddev) and ChatGPT to macOS packages
 - Add colima setup script with auto-start on macOS
+- Add bun, opencode-ai, and oh-my-opencode to mise toolchain
 
 ## 16-03-2026
 ### ⏪ Reverts
