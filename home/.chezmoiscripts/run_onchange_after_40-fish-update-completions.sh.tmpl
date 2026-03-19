@@ -4,6 +4,10 @@ set -eufo pipefail
 
 # Packages: {{ concat .packages.cargo .packages.common | join ", " }}
 
-# Generate Fish completions from installed man pages
+if ! command -v fish >/dev/null 2>&1; then
+    echo "fish not found, skipping completions update"
+    exit 0
+fi
+
 fish -c fish_update_completions
 {{ end -}}

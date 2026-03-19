@@ -12,5 +12,10 @@ if [ ! -f /etc/apt/sources.list.d/github-cli.list ]; then
         | sudo tee /etc/apt/sources.list.d/github-cli.list
     sudo apt-get update -y
 fi
+
+if [ ! -s /etc/apt/sources.list.d/github-cli.list ]; then
+    echo "Error: GitHub CLI apt source not found after setup" >&2
+    exit 1
+fi
 {{ end -}}
 {{ end -}}

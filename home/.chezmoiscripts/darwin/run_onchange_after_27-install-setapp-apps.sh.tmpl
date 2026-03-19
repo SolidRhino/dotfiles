@@ -10,8 +10,8 @@ if ! command -v setapp-cli >/dev/null 2>&1; then
 fi
 
 if ! setapp-cli bundle install --file "$HOME/.setapp/bundle"; then
-    echo "Setapp bundle install failed."
-    echo "Log into Setapp first, then run: setapp-cli bundle install"
-    exit 0
+    echo "Setapp bundle install failed." >&2
+    echo "Log into Setapp first, then run: setapp-cli bundle install" >&2
+    exit 1
 fi
 {{ end -}}

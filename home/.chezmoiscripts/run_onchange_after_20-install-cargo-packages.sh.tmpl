@@ -9,6 +9,11 @@ if ! command -v cargo >/dev/null 2>&1; then
     source "$HOME/.cargo/env"
 fi
 
+if ! command -v cargo >/dev/null 2>&1; then
+    echo "Error: cargo not found even after sourcing ~/.cargo/env" >&2
+    exit 1
+fi
+
 {{ range .packages.cargo -}}
 cargo install --locked {{ . }}
 {{ end -}}

@@ -8,5 +8,10 @@ if [ ! -f /etc/apt/sources.list.d/github_git-lfs.list ]; then
     curl --proto '=https' --tlsv1.2 -fsSL https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh \
         | sudo bash
 fi
+
+if [ ! -s /etc/apt/sources.list.d/github_git-lfs.list ]; then
+    echo "Error: git-lfs apt source not found after setup" >&2
+    exit 1
+fi
 {{ end -}}
 {{ end -}}
