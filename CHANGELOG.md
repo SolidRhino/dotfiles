@@ -26,6 +26,7 @@ All notable changes to this dotfiles repository will be documented here.
 
 ### 📚 Documentation
 - Update project memories and conventions after code review fixes
+- Update memories with Docker/colima conventions
 
 ### 📝 Other Changes
 - Merge pull request #1 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.0.5
@@ -42,6 +43,11 @@ chore(deps): bump astro from 6.0.5 to 6.0.6 in /site
 - **deps:** Bump astro from 6.0.4 to 6.0.5 in /site
 - **deps:** Bump astro from 6.0.5 to 6.0.6 in /site
 - Tune atuin sync frequency and add toml editorconfig rule
+- Update changelog
+
+### 🚀 Features
+- Add Docker toolchain (colima, docker, ddev) and ChatGPT to macOS packages
+- Add colima setup script with auto-start on macOS
 
 ## 16-03-2026
 ### ⏪ Reverts
