@@ -15,7 +15,9 @@ jobs:
       - name: Run shellcheck on plain shell scripts
         run: |
           shellcheck \
-            home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh
+            home/.chezmoiscripts/run_before_00-write-age-identity.sh \
+            home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
+            home/dot_local/bin/executable_oscar-update
 
   yamllint:
     name: yamllint
@@ -36,7 +38,9 @@ jobs:
       - uses: actions/checkout@v6
       - name: Check TOML syntax
         run: |
-          python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('OK')"
+          python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('cliff.toml OK')"
+          python3 -c "import tomllib; tomllib.load(open('home/dot_config/starship.toml', 'rb')); print('starship.toml OK')"
+          python3 -c "import tomllib; tomllib.load(open('home/dot_config/atuin/config.toml', 'rb')); print('atuin/config.toml OK')"
 
   chezmoi-verify:
     name: chezmoi verify
