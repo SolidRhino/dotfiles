@@ -7,6 +7,14 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 🌿 Latest
+### 📚 Documentation
+- Clarify project guidance sources
+
+### 🔧 Miscellaneous
+- Update changelog
+- Stabilize local tooling setup
+
 ## 23-03-2026
 ### ⚙️ CI
 - Only deploy on documentation file changes
