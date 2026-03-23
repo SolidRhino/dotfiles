@@ -73,6 +73,15 @@
 ## mise Config
 - `home/dot_config/mise/config.toml.tmpl` — Go template for OS-specific tools
 - Use `{{- if eq .chezmoi.os "darwin" }}` for macOS-only tools
+- Ruby is managed with mise as `ruby = "4"` (latest 4.x, not fully pinned)
+- `home/dot_config/mise/config.toml.tmpl` sets `[settings.ruby] compile = false` so mise prefers precompiled Ruby binaries when available
+- If a requested Ruby version has no precompiled binary for the platform, mise falls back to compiling from source
+- Ruby `psych` builds require libyaml headers; package declarations include `libyaml`/`libyaml-dev`/`libyaml-devel` across platforms, and macOS also includes `pkg-config`
+
+## Topgrade Config
+- `home/dot_config/topgrade.toml.tmpl` — custom `[commands]` section for tools topgrade doesn't know about
+- Container image updates are disabled with `disable = ["containers"]` because stale custom Docker tags can break Topgrade on arm64
+- Current custom commands: `Chezmoi Externals`, `Mackup Backup` (macOS), `OSCAR` (macOS)
 
 ## Cargo Package Naming
 - Cargo crate name ≠ binary name in some cases: `git-delta` installs the `delta` binary
