@@ -7,7 +7,7 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
-## 🌿 Latest
+## 23-03-2026
 ### ⚙️ CI
 - Only deploy on documentation file changes
 - Use actor-based loop guard in changelog workflow
@@ -35,6 +35,18 @@ chore(deps): bump astro from 6.0.4 to 6.0.5 in /site
 - Merge pull request #2 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.0.6
 
 chore(deps): bump astro from 6.0.5 to 6.0.6 in /site
+- Merge pull request #3 from SolidRhino/dependabot/github_actions/withastro/action-6
+
+chore(deps): bump withastro/action from 5 to 6
+- Merge pull request #4 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.0.8
+
+chore(deps): bump astro from 6.0.6 to 6.0.8 in /site
+- Merge pull request #5 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.38.2
+
+chore(deps): bump @astrojs/starlight from 0.38.1 to 0.38.2 in /site
+- Merge pull request #6 from SolidRhino/dependabot/npm_and_yarn/site/h3-1.15.9
+
+chore(deps): bump h3 from 1.15.6 to 1.15.9 in /site
 
 ### 🔧 Miscellaneous
 - Update changelog
@@ -45,6 +57,11 @@ chore(deps): bump astro from 6.0.5 to 6.0.6 in /site
 - Tune atuin sync frequency and add toml editorconfig rule
 - Update changelog
 - Update changelog
+- Update changelog
+- **deps:** Bump withastro/action from 5 to 6
+- **deps:** Bump astro from 6.0.6 to 6.0.8 in /site
+- **deps:** Bump @astrojs/starlight from 0.38.1 to 0.38.2 in /site
+- **deps:** Bump h3 from 1.15.6 to 1.15.9 in /site
 
 ### 🚀 Features
 - Add Docker toolchain (colima, docker, ddev) and ChatGPT to macOS packages
