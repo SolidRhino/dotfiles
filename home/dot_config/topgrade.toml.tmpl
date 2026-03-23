@@ -1,3 +1,6 @@
+# Disable container image updates: a stale custom DDEV image tag can break Topgrade on arm64.
+disable = ["containers"]
+
 [misc]
 [commands]
 "Chezmoi Externals" = "chezmoi apply --refresh-externals --force"

@@ -2,9 +2,15 @@
 #!/bin/bash
 set -eufo pipefail
 
-if command -v rustup >/dev/null 2>&1; then
-    exit 0
+if ! command -v rustup >/dev/null 2>&1; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 fi
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+RUSTUP_BIN="${HOME}/.cargo/bin/rustup"
+
+if command -v rustup >/dev/null 2>&1; then
+    rustup component add rust-analyzer
+elif [ -x "${RUSTUP_BIN}" ]; then
+    "${RUSTUP_BIN}" component add rust-analyzer
+fi
 {{ end -}}

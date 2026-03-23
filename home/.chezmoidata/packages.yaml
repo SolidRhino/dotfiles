@@ -10,10 +10,12 @@ packages:
     - git-cliff
     - git-delta
     - ripgrep
+    - taplo-cli
     - starship
     - topgrade
     - usage-cli
     - xh
+    - zellij
     - zoxide
 
   common:
@@ -37,9 +39,13 @@ packages:
       - docker
       - docker-buildx
       - docker-compose
+      - libyaml
       - mackup
+      - marksman
       - mas
+      - anomalyco/tap/opencode
       - pam-reattach
+      - pkg-config
     casks:
       - chatgpt
       - 1password
@@ -84,14 +90,17 @@ packages:
   apt:
     - build-essential
     - fd-find           # 'fd' on other package managers
+    - libyaml-dev
     - 1password-cli     # op CLI (repo added by install-op script)
 
   dnf:
     - "@development-tools"
+    - libyaml-devel
     - 1password-cli     # op CLI (repo added by install-op script)
 
   pacman:
     - base-devel
     - github-cli        # 'gh' on other package managers
+    - libyaml
     - tree-sitter       # 'tree-sitter-cli' on other package managers
     - 1password-cli     # op CLI (in official extra repo)

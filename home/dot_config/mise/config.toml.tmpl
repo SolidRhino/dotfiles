@@ -1,14 +1,22 @@
+[settings.ruby]
+compile = false
+
 [tools]
 go = "latest"
 node = "lts"
+ruby = "4"
 uv = "latest"
 python = "latest"
 bun = "latest"
 {{- if eq .chezmoi.os "darwin" }}
 "npm:@smithery/cli" = "latest"
-"npm:opencode-ai" = "latest"
-"npm:oh-my-opencode" = "latest"
-{{- end }}
-{{- if not .headless }}
+"npm:bash-language-server" = "latest"
 "npm:fish-lsp" = "latest"
+"npm:pyright" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
+"gem:ruby-lsp" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
 {{- end }}
