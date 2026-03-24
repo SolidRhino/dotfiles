@@ -50,27 +50,57 @@ WORK_DIR=$(mktemp -d)
 MOUNT="$WORK_DIR/mount"
 trap 'hdiutil detach "$MOUNT" -quiet 2>/dev/null || true; rm -rf "$WORK_DIR"' EXIT
 
+STAGED_APP="$WORK_DIR/OSCAR.app"
+TARGET_TMP="/Applications/OSCAR.app.new"
+BACKUP_APP="/Applications/OSCAR.app.backup"
+
 mkdir -p "$MOUNT"
 
 echo "Downloading $DMG_URL..."
-curl -fsSL -o "$WORK_DIR/$DMG_NAME" "$DMG_URL"
+curl --fail --silent --show-error --location --retry 3 --retry-all-errors \
+  -o "$WORK_DIR/$DMG_NAME" "$DMG_URL"
 
 echo "Mounting disk image..."
 hdiutil attach -nobrowse -quiet -mountpoint "$MOUNT" "$WORK_DIR/$DMG_NAME"
 
-echo "Installing OSCAR.app..."
-if [[ -d "$OSCAR_APP" ]]; then
-  rm -rf "$OSCAR_APP"
+# Stage app from disk image before touching the installed copy
+if [[ ! -d "$MOUNT/OSCAR.app" ]]; then
+  echo "Error: OSCAR.app not found in mounted disk image" >&2
+  exit 1
 fi
-ditto "$MOUNT/OSCAR.app" /Applications/OSCAR.app
+
+echo "Staging OSCAR.app..."
+ditto "$MOUNT/OSCAR.app" "$STAGED_APP"
 
 echo "Detaching disk image..."
 hdiutil detach "$MOUNT" -quiet
 
-echo "Removing quarantine attribute..."
-xattr -dr com.apple.quarantine "$OSCAR_APP"
+echo "Removing quarantine attribute from staged app..."
+xattr -dr com.apple.quarantine "$STAGED_APP"
 
-echo "Re-signing app (original DMG signature is invalid)..."
-codesign --force --deep --sign - "$OSCAR_APP"
+echo "Re-signing staged app (original DMG signature is invalid)..."
+codesign --force --deep --sign - "$STAGED_APP"
+
+echo "Preparing replacement app bundle..."
+rm -rf "$TARGET_TMP"
+ditto "$STAGED_APP" "$TARGET_TMP"
+
+if [[ -d "$OSCAR_APP" ]]; then
+  echo "Backing up existing OSCAR.app..."
+  rm -rf "$BACKUP_APP"
+  mv "$OSCAR_APP" "$BACKUP_APP"
+fi
+
+echo "Installing OSCAR.app..."
+if mv "$TARGET_TMP" "$OSCAR_APP"; then
+  rm -rf "$BACKUP_APP"
+else
+  echo "Error: failed to install OSCAR.app" >&2
+  rm -rf "$TARGET_TMP"
+  if [[ -d "$BACKUP_APP" ]]; then
+    mv "$BACKUP_APP" "$OSCAR_APP"
+  fi
+  exit 1
+fi
 
 echo "OSCAR $LATEST installed successfully."

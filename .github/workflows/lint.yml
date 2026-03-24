@@ -19,6 +19,103 @@ jobs:
             home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
             home/dot_local/bin/executable_oscar-update
 
+  generated-shellcheck:
+    name: generated shellcheck (${{ matrix.name }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-ubuntu-headless
+            runner: ubuntu-latest
+            os_family: linux
+            osid: linux-ubuntu
+            personal: false
+            headless: true
+            ephemeral: false
+          - name: linux-arch-personal
+            runner: ubuntu-latest
+            os_family: linux
+            osid: linux-arch
+            personal: true
+            headless: false
+            ephemeral: false
+          - name: linux-fedora-headless
+            runner: ubuntu-latest
+            os_family: linux
+            osid: linux-fedora
+            personal: false
+            headless: true
+            ephemeral: false
+          - name: darwin-personal
+            runner: macos-latest
+            os_family: darwin
+            osid: darwin
+            personal: true
+            headless: false
+            ephemeral: false
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install shellcheck (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+      - name: Install shellcheck (macOS)
+        if: runner.os == 'macOS'
+        run: brew install shellcheck
+      - name: Install chezmoi
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Create minimal chezmoi config for CI
+        run: |
+          mkdir -p ~/.config/chezmoi
+          cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
+          [data]
+            osid      = "${{ matrix.osid }}"
+            personal  = ${{ matrix.personal }}
+            headless  = ${{ matrix.headless }}
+            ephemeral = ${{ matrix.ephemeral }}
+          EOF
+      - name: Render and shellcheck templated scripts
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          render_dir="$RUNNER_TEMP/generated-shellcheck"
+          mkdir -p "$render_dir"
+
+          templates=(home/.chezmoiscripts/*.sh.tmpl)
+
+          case "${{ matrix.os_family }}" in
+            linux)
+              templates+=(home/.chezmoiscripts/linux/*.sh.tmpl)
+              ;;
+            darwin)
+              templates+=(home/.chezmoiscripts/darwin/*.sh.tmpl)
+              ;;
+          esac
+
+          if [ ${#templates[@]} -eq 0 ]; then
+            echo "No templated shell scripts found"
+            exit 1
+          fi
+
+          for template in "${templates[@]}"; do
+            output="$render_dir/$(basename "${template%.tmpl}")"
+            chezmoi --source="$GITHUB_WORKSPACE/home" execute-template -f "$template" > "$output"
+
+            if [ ! -s "$output" ]; then
+              echo "Skipping empty render: $template"
+              rm -f "$output"
+              continue
+            fi
+
+            shellcheck "$output"
+          done
+
   yamllint:
     name: yamllint
     runs-on: ubuntu-latest
@@ -43,12 +140,42 @@ jobs:
           python3 -c "import tomllib; tomllib.load(open('home/dot_config/atuin/config.toml', 'rb')); print('atuin/config.toml OK')"
 
   chezmoi-verify:
-    name: chezmoi verify
-    runs-on: ubuntu-latest
+    name: chezmoi verify (${{ matrix.name }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-ubuntu-headless
+            runner: ubuntu-latest
+            osid: linux-ubuntu
+            personal: false
+            headless: true
+            ephemeral: false
+          - name: linux-arch-personal
+            runner: ubuntu-latest
+            osid: linux-arch
+            personal: true
+            headless: false
+            ephemeral: false
+          - name: linux-fedora-headless
+            runner: ubuntu-latest
+            osid: linux-fedora
+            personal: false
+            headless: true
+            ephemeral: false
+          - name: darwin-personal
+            runner: macos-latest
+            osid: darwin
+            personal: true
+            headless: false
+            ephemeral: false
     steps:
       - uses: actions/checkout@v6
       - name: Install chezmoi
-        run: sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Install mise
         run: |
           curl https://mise.run | sh
@@ -58,10 +185,10 @@ jobs:
           mkdir -p ~/.config/chezmoi
           cat > ~/.config/chezmoi/chezmoi.toml << 'EOF'
           [data]
-            osid      = "linux-ubuntu"
-            personal  = false
-            headless  = true
-            ephemeral = false
+            osid      = "${{ matrix.osid }}"
+            personal  = ${{ matrix.personal }}
+            headless  = ${{ matrix.headless }}
+            ephemeral = ${{ matrix.ephemeral }}
           EOF
       - name: Verify chezmoi source renders
         run: chezmoi --source=$GITHUB_WORKSPACE/home dump --format=json --exclude=encrypted > /dev/null

@@ -12,13 +12,25 @@ EXTRACT_PATH="${HOME}/.local/share/x7k9m2p"
 # Skip entirely if no archive was decrypted
 [ -f "${ARCHIVE_PATH}" ] || exit 0
 
+# Check whether a directory contains any entries
+dir_has_entries() {
+    local dir="$1"
+    local entries=()
+
+    shopt -s nullglob dotglob
+    entries=("${dir}"/*)
+    shopt -u nullglob dotglob
+
+    [ ${#entries[@]} -gt 0 ]
+}
+
 # Detect JetBrains installation (macOS: ~/Library/Application Support/JetBrains, Linux: ~/.config/JetBrains)
 JETBRAINS_FOUND=false
 if [ -d "${HOME}/Library/Application Support/JetBrains" ] && \
-   ls "${HOME}/Library/Application Support/JetBrains" | grep -q .; then
+   dir_has_entries "${HOME}/Library/Application Support/JetBrains"; then
     JETBRAINS_FOUND=true
 elif [ -d "${HOME}/.config/JetBrains" ] && \
-     ls "${HOME}/.config/JetBrains" | grep -q .; then
+     dir_has_entries "${HOME}/.config/JetBrains"; then
     JETBRAINS_FOUND=true
 fi
 

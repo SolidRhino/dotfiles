@@ -19,7 +19,7 @@ fi
 
 if ! op read "op://Private/chezmoi-age/private" > "$AGE_KEY_PATH"; then
     echo "Error: failed to read age key from 1Password" >&2
-    echo "Ensure 1Password CLI is authenticated: eval \$(op signin)" >&2
+    echo "Ensure 1Password CLI is installed, unlocked, and authenticated, then rerun chezmoi apply" >&2
     rm -f "$AGE_KEY_PATH"
     exit 1
 fi
