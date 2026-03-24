@@ -16,6 +16,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Make lint workflow CI-safe
 - Harden fallback age key hydration
 - Disable Ruby gem maintenance in Topgrade
+- **tmux:** Render git branch in status bar
 
 ### 📚 Documentation
 - Clarify project guidance sources
@@ -31,6 +32,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update changelog
 - Update changelog
 - Update changelog
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
@@ -39,6 +41,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Manage OpenCode config on macOS
 - Manage tmux package
 - Add modular tmux configuration
+- **opencode:** Switch to jsonc
 
 ## 23-03-2026
 ### ⚙️ CI
