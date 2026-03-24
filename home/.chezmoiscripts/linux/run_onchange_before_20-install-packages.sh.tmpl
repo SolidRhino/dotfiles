@@ -2,8 +2,10 @@
 #!/bin/bash
 set -eufo pipefail
 
+osid="{{ .osid }}"
+
 is_arch_like() {
-    case "{{ .osid }}" in
+    case "$osid" in
         linux-arch|linux-manjaro|linux-endeavouros)
             return 0
             ;;
@@ -14,7 +16,7 @@ is_arch_like() {
 }
 
 is_debian_like() {
-    case "{{ .osid }}" in
+    case "$osid" in
         linux-ubuntu|linux-debian|linux-linuxmint|linux-pop)
             return 0
             ;;
@@ -25,7 +27,7 @@ is_debian_like() {
 }
 
 is_fedora_like() {
-    case "{{ .osid }}" in
+    case "$osid" in
         linux-fedora|linux-rhel|linux-centos|linux-rocky|linux-almalinux)
             return 0
             ;;

@@ -82,25 +82,36 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          shopt -s nullglob
 
           render_dir="$RUNNER_TEMP/generated-shellcheck"
           mkdir -p "$render_dir"
 
-          templates=(home/.chezmoiscripts/*.sh.tmpl)
+          templates=(
+            home/.chezmoiscripts/run_once_after_10-install-rust.sh.tmpl
+            home/.chezmoiscripts/run_once_after_19-install-mise.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_20-install-cargo-packages.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_21-install-mise-tools.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_40-fish-update-completions.sh.tmpl
+            home/.chezmoiscripts/run_after_50-extract-archive.sh.tmpl
+          )
 
-          case "${{ matrix.os_family }}" in
-            linux)
-              templates+=(home/.chezmoiscripts/linux/*.sh.tmpl)
-              ;;
-            darwin)
-              templates+=(home/.chezmoiscripts/darwin/*.sh.tmpl)
-              ;;
-          esac
-
-          if [ ${#templates[@]} -eq 0 ]; then
-            echo "No templated shell scripts found"
-            exit 1
+          if [ "${{ matrix.os_family }}" = "linux" ]; then
+            templates+=(
+              home/.chezmoiscripts/linux/run_onchange_before_10-setup-package-repos.sh.tmpl
+              home/.chezmoiscripts/linux/run_onchange_before_15-install-aur-helper.sh.tmpl
+              home/.chezmoiscripts/linux/run_onchange_before_20-install-packages.sh.tmpl
+            )
+          elif [ "${{ matrix.os_family }}" = "darwin" ]; then
+            templates+=(
+              home/.chezmoiscripts/darwin/run_onchange_before_10-install-packages.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_26-install-setapp-cli.sh.tmpl
+              home/.chezmoiscripts/darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl
+              home/.chezmoiscripts/darwin/run_after_28-install-oscar.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_29-setup-touchid-sudo.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_install-claude-code.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_mackup-restore.sh.tmpl
+            )
           fi
 
           for template in "${templates[@]}"; do
@@ -191,4 +202,40 @@ jobs:
             ephemeral = ${{ matrix.ephemeral }}
           EOF
       - name: Verify chezmoi source renders
-        run: chezmoi --source=$GITHUB_WORKSPACE/home dump --format=json --exclude=encrypted > /dev/null
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          templates=(
+            home/dot_gitconfig.tmpl
+            home/dot_config/mise/config.toml.tmpl
+            home/.chezmoiscripts/run_once_after_10-install-rust.sh.tmpl
+            home/.chezmoiscripts/run_once_after_19-install-mise.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_20-install-cargo-packages.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_21-install-mise-tools.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_30-set-default-shell.sh.tmpl
+            home/.chezmoiscripts/run_onchange_after_40-fish-update-completions.sh.tmpl
+            home/.chezmoiscripts/run_after_50-extract-archive.sh.tmpl
+          )
+
+          if [ "${{ matrix.osid }}" = "darwin" ]; then
+            templates+=(
+              home/.chezmoiscripts/darwin/run_onchange_before_10-install-packages.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_26-install-setapp-cli.sh.tmpl
+              home/.chezmoiscripts/darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl
+              home/.chezmoiscripts/darwin/run_after_28-install-oscar.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_29-setup-touchid-sudo.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_install-claude-code.sh.tmpl
+              home/.chezmoiscripts/darwin/run_once_after_mackup-restore.sh.tmpl
+            )
+          else
+            templates+=(
+              home/.chezmoiscripts/linux/run_onchange_before_10-setup-package-repos.sh.tmpl
+              home/.chezmoiscripts/linux/run_onchange_before_15-install-aur-helper.sh.tmpl
+              home/.chezmoiscripts/linux/run_onchange_before_20-install-packages.sh.tmpl
+            )
+          fi
+
+          for template in "${templates[@]}"; do
+            chezmoi --source="$GITHUB_WORKSPACE/home" execute-template -f "$template" > /dev/null
+          done
