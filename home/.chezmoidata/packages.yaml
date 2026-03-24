@@ -4,6 +4,7 @@ packages:
   cargo:
     - atuin
     - bat
+    - cargo-binstall
     - cargo-update
     - difftastic
     - eza

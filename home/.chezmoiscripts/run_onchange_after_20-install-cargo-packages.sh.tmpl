@@ -14,7 +14,28 @@ if ! command -v cargo >/dev/null 2>&1; then
     exit 1
 fi
 
+package_installed() {
+    local package="$1"
+
+    cargo install --list | grep -Fq "${package} v"
+}
+
+install_cargo_package() {
+    local package="$1"
+
+    if package_installed "$package"; then
+        echo "$package: already installed, skipping"
+        return 0
+    fi
+
+    if [ "$package" != "cargo-binstall" ] && command -v cargo-binstall >/dev/null 2>&1; then
+        cargo binstall --no-confirm --locked "$package"
+    else
+        cargo install --locked "$package"
+    fi
+}
+
 {{ range .packages.cargo -}}
-cargo install --locked {{ . }}
+install_cargo_package {{ . }}
 {{ end -}}
 {{ end -}}
