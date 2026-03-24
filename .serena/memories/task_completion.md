@@ -2,26 +2,39 @@
 
 When finishing any change to this dotfiles repo:
 
-1. **Verify templates render**: `chezmoi --source=home dump --format=json --exclude=encrypted > /dev/null`
-2. **Preview changes**: `chezmoi diff`
-3. **Lint if modified**:
-   - Plain shell scripts: `shellcheck <script>` (CI covers: `run_before_00-write-age-identity.sh`, `run_once_after_25-setup-op-gh-plugin.sh`, `executable_oscar-update`)
-   - YAML files: `yamllint <file>`
-   - TOML files: `python3 -c "import tomllib; tomllib.load(open('<file>', 'rb'))"` (CI covers: `cliff.toml`, `starship.toml`, `atuin/config.toml`)
-4. **Mackup check**: Before adding a new file to chezmoi, run `mackup backup --dry-run` (or check `~/.mackup/`) to see if mackup already backs up that file — if so, migrate it to chezmoi instead of having both manage it
-5. **Mackup overlap**: If a new file was added to chezmoi, add its app to `applications_to_ignore` in `home/dot_mackup.cfg.tmpl`
-5. **CLAUDE.md**: Keep project CLAUDE.md updated if conventions change
-6. **Commit**: Follow a logical git commit strategy — one commit per logical change, never bundle unrelated changes together. Examples:
-   - Script behaviour change → own commit
-   - Config/ignore change → own commit
-   - Package addition → own commit
-   - Docs/memory update → own commit
-   - `git add <files> && git commit -m "type: description"`
-   - Do NOT include Co-Authored-By Claude lines
-   - CHANGELOG is updated automatically by CI (git-cliff) — do not run locally
-7. **Push**: `git push origin main`
-8. **Pull**: `git pull origin main` — CI commits an updated CHANGELOG back; always pull after every push
+1. **Verify renderability when practical**
+   - `chezmoi --source=home dump --format=json --exclude=encrypted > /dev/null`
+   - If local secret-backed templates block full rendering, use targeted checks and rely on CI for representative template rendering.
+
+2. **Preview changes**
+   - `chezmoi diff`
+
+3. **Lint / validate modified files**
+   - Plain shell scripts: `shellcheck <script>`
+   - Rendered shell templates: rely on CI generated-shellcheck coverage
+   - YAML: `yamllint <file>`
+   - TOML: `python3 -c "import tomllib; tomllib.load(open('<file>', 'rb'))"`
+
+4. **Mackup check**
+   - Before adding a new file to chezmoi, check whether Mackup already manages it.
+
+5. **Mackup overlap**
+   - If a new file is added to chezmoi, add its app to `applications_to_ignore` in `home/dot_mackup.cfg.tmpl` if needed.
+
+6. **CLAUDE.md**
+   - Keep project CLAUDE.md updated if conventions change.
+
+7. **Commit strategy**
+   - Use logical git commits: one commit per logical change
+   - Keep scripts, docs, CI, package changes separate when they are meaningfully independent
+   - Do not include Co-Authored-By Claude lines
+   - Do not run `git-cliff` locally
+
+8. **Push / pull flow**
+   - `git push origin main`
+   - `git pull origin main`
+   - CI may push an updated `CHANGELOG.md`, so pull after pushing
 
 ## Notes
-- `docs/plans/` is **gitignored** — design docs stay local only, not tracked in git
-- `.serena/` **should be committed** — contains Serena project config and memory files (its own `.gitignore` excludes `/cache`)
+- `docs/` is gitignored in this repo; local design/plan docs under `docs/` are not tracked
+- `.serena/` should be committed; `.serena/.gitignore` only excludes cache data

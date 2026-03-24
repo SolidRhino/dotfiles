@@ -1,12 +1,12 @@
 # Suggested Commands
 
-## Chezmoi (primary workflow)
+## Chezmoi
 ```fish
-chezmoi apply          # Apply dotfiles to home directory
-chezmoi diff           # Preview pending changes
-chezmoi edit <file>    # Edit a managed file
-chezmoi add <file>     # Track a new file
-chezmoi cd             # cd into the repo
+chezmoi apply
+chezmoi diff
+chezmoi edit <file>
+chezmoi add <file>
+chezmoi cd
 
 # Fish abbreviations:
 czap   # chezmoi apply
@@ -16,10 +16,11 @@ czad   # chezmoi add
 czcd   # chezmoi cd
 ```
 
-## Linting (run locally to mirror CI)
+## Linting / Validation
 ```fish
-# Shell scripts (plain .sh only, not .tmpl):
-shellcheck home/.chezmoiscripts/run_before_00-write-age-identity.sh \
+# Plain shell scripts:
+shellcheck .install-op-and-age.sh \
+  home/.chezmoiscripts/run_before_00-write-age-identity.sh \
   home/.chezmoiscripts/run_once_after_25-setup-op-gh-plugin.sh \
   home/dot_local/bin/executable_oscar-update
 
@@ -32,11 +33,11 @@ python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('OK')"
 python3 -c "import tomllib; tomllib.load(open('home/dot_config/starship.toml', 'rb')); print('OK')"
 python3 -c "import tomllib; tomllib.load(open('home/dot_config/atuin/config.toml', 'rb')); print('OK')"
 
-# Verify chezmoi templates render (CI uses chezmoi dump):
+# Render sanity check (may be blocked by secret-backed templates locally):
 chezmoi --source=home dump --format=json --exclude=encrypted > /dev/null
 ```
 
-## GitHub CLI (use 1Password plugin)
+## GitHub CLI
 ```fish
 op plugin run -- gh <command>
 ```
@@ -48,5 +49,6 @@ git log --oneline
 git diff
 ```
 
-## No Testing Commands
-This is a dotfiles repo — no unit tests. Validation is done via `chezmoi diff` and CI linting.
+## Notes
+- This repo has no unit-test suite; validation is mostly chezmoi diff/render checks and CI linting.
+- For `.sh.tmpl` scripts, CI is the authoritative validation path because it renders representative templates before shellchecking them.

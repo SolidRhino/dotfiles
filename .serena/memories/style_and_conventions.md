@@ -15,106 +15,64 @@
 - Truthy values: `true` / `false` only
 
 ## Shell Scripts
-- All scripts use `#!/bin/bash` shebang (never `#!/bin/sh` — POSIX sh doesn't support `pipefail`)
-- All scripts use `set -eufo pipefail` (strict mode)
-- Scripts should fail loudly on errors — never silently swallow failures with `2>/dev/null` on critical operations
-- Scripts are only shellchecked if they are plain `.sh` (not `.sh.tmpl`) — templates have chezmoi/Go template syntax that shellcheck doesn't understand
-- CI shellchecks: `run_before_00-write-age-identity.sh`, `run_once_after_25-setup-op-gh-plugin.sh`, `executable_oscar-update`
-- Scripts use numeric prefixes for ordering (e.g., `before_10`, `after_20`)
-- Scripts that depend on external tools should guard with `command -v <tool>` checks
+- All scripts use `#!/bin/bash` (never `#!/bin/sh`)
+- All scripts use `set -eufo pipefail`
+- Scripts should fail loudly on critical errors
+- Plain `.sh` files are shellchecked directly
+- Representative `.sh.tmpl` scripts are rendered and shellchecked in CI
+- CI shellchecks plain scripts: `.install-op-and-age.sh`, `run_before_00-write-age-identity.sh`, `run_once_after_25-setup-op-gh-plugin.sh`, `executable_oscar-update`
+- Scripts use numeric prefixes for ordering (`before_10`, `after_20`, etc.)
+- Scripts that depend on tools should guard with `command -v <tool>` checks where appropriate
 
-## Chezmoi Templates (Go templates)
-- Machine conditionals: `{{- if eq .chezmoi.os "darwin" }}` for macOS-only
-- Use `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid` variables
-- Secrets in templates: use `onepasswordRead` at template render time
-- Secrets in scripts: `op read` is allowed in chezmoi scripts (they run at apply time, not shell startup)
-- Never use `op read` in Fish config files (slow / unreliable when 1Password locked)
+## Chezmoi Templates
+- Machine conditionals use `.chezmoi.os`, `.osid`, `.personal`, `.headless`, `.ephemeral`, `.hostname`
+- Secrets in templates: `onepasswordRead`
+- Secrets in scripts: `op read` is allowed in chezmoi scripts and bootstrap helpers
+- Never use `op read` in Fish config files
 
 ## Ephemeral Gating
-- Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}}` ... `{{ end -}}`
-- The shebang and `set -eufo pipefail` go INSIDE the guard (they are part of the rendered script)
-- Scripts gated on ephemeral: `run_once_after_10-install-rust.sh.tmpl`, `run_once_after_19-install-mise.sh.tmpl`, `run_onchange_after_20-install-cargo-packages.sh.tmpl`, `run_onchange_after_21-install-mise-tools.sh.tmpl`, `run_onchange_after_30-set-default-shell.sh.tmpl`, `run_onchange_after_40-fish-update-completions.sh.tmpl`
-- Darwin-only scripts (gated on `eq .chezmoi.os "darwin"`): `run_once_after_28-setup-colima.sh.tmpl`, `run_once_after_29-setup-touchid-sudo.sh.tmpl`, etc.
-- Scripts gated on headless: Atuin login (`not .headless`)
-- Scripts with runtime TTY check (no template gate needed): `run_once_after_25-setup-op-gh-plugin.sh`
+- Scripts that should not run on CI/Codespaces/containers are wrapped in `{{ if not .ephemeral -}} ... {{ end -}}`
+- The shebang and `set -eufo pipefail` stay inside the template guard
+- Ephemeral-gated scripts include Rust/mise install, cargo install, mise tools, default shell, and Fish completion regeneration
 
-## AUR Support (Arch Linux)
-- yay is used instead of pacman for all Arch package installs — yay wraps pacman and also handles AUR
-- yay must NOT be run with `sudo` — it handles privilege escalation internally
-- `linux/run_onchange_before_15-install-aur-helper.sh.tmpl` bootstraps yay: installs `git base-devel` via pacman, builds yay with `makepkg -si --noconfirm --rmdeps` (--rmdeps removes go after build), then removes git + base-devel (reinstalled by yay in before_20)
-- AUR packages go in `packages.aur` in `packages.yaml`; currently empty scaffold (`aur: []`)
-- The Arch install command: `yay -S --noconfirm --needed {{ concat .packages.aur .packages.pacman (...) }}`
-
-## Package Naming
-- `packages.common` uses Homebrew/dnf names
-- Known apt differences handled in `packages.apt`:
-  - `fd` → `fd-find`
-  - `gh` → comes from dedicated repo script (not packages.apt)
-- Known pacman differences in `packages.pacman`:
-  - `gh` → `github-cli`
-  - `tree-sitter-cli` → `tree-sitter`
-- `1password-cli` explicitly listed for apt, dnf, pacman; macOS uses cask
-
-## Fish Completions
-- Tool completions live in `home/dot_config/fish/completions/`
-- Use `{{ output "tool" "completion" "fish" -}}` in a `.tmpl` file to auto-generate at apply time (e.g. `mise.fish.tmpl`)
-- `usage-cli` (cargo) is required for `mise completion fish` to work — already in `packages.cargo`
-- Use `run_onchange_after_40-fish-update-completions.sh.tmpl` to regenerate man-page completions; triggered by a `# Packages: {{ concat .packages.cargo .packages.common | join ", " }}` comment so it reruns when packages change
+## Package / Bootstrap Layout
+- Package declarations live in `home/.chezmoidata/packages.yaml`
+- Linux repo bootstrap is consolidated in `home/.chezmoiscripts/linux/run_onchange_before_10-setup-package-repos.sh.tmpl`
+- Linux package install is handled in `home/.chezmoiscripts/linux/run_onchange_before_20-install-packages.sh.tmpl`
+- Arch uses `yay` for normal package installation; `yay` must not be run with `sudo`
+- Cargo packages use crate names in `packages.yaml`
+- Cargo install flow prefers `cargo-binstall` and falls back to `cargo install --locked`
 
 ## Fish Config
-- Modular layout: `conf.d/` files load alphabetically
-- No `op read` calls in Fish config (slow / unreliable when 1Password locked)
-- Homebrew shellenv handled in `homebrew.fish.tmpl` (macOS only)
-- **File separation**: `aliases.fish` = tool replacements + navigation only (eza, bat, rg, nvim, lg, `..`, reload); `abbreviations.fish` = all workflow shortcuts (git, docker, chezmoi, topgrade)
-- Fish abbreviations (inline-expanding) are preferred over aliases for workflow shortcuts
-- `reload` alias uses `exec fish` (restarts shell entirely, ensuring all conf.d/ files reload)
-- `EDITOR`/`VISUAL` in `path.fish` uses cascading fallback: nvim → vim → vi
+- Modular layout: `conf.d/` loads alphabetically
+- `aliases.fish` is for tool replacements/navigation
+- `abbreviations.fish` is for workflow shortcuts
+- Fish abbreviations are preferred over aliases for workflow shortcuts
+- `reload` uses `exec fish`
+- `EDITOR`/`VISUAL` in `path.fish` cascades `nvim -> vim -> vi`
 
 ## mise Config
-- `home/dot_config/mise/config.toml.tmpl` — Go template for OS-specific tools
-- Use `{{- if eq .chezmoi.os "darwin" }}` for macOS-only tools
-- Ruby is managed with mise as `ruby = "4"` (latest 4.x, not fully pinned)
-- `home/dot_config/mise/config.toml.tmpl` sets `[settings.ruby] compile = false` so mise prefers precompiled Ruby binaries when available
-- If a requested Ruby version has no precompiled binary for the platform, mise falls back to compiling from source
-- Ruby `psych` builds require libyaml headers; package declarations include `libyaml`/`libyaml-dev`/`libyaml-devel` across platforms, and macOS also includes `pkg-config`
+- `home/dot_config/mise/config.toml.tmpl` is a Go template
+- Use OS guards for darwin-only tools
+- Version policy:
+  - `latest` for fast-moving dev tools
+  - `lts` for ecosystem runtimes with long support windows
+  - major pins like `ruby = "4"` to track the current stable line without full pin churn
+- `[settings.ruby] compile = false` prefers precompiled Ruby when available
 
-## Topgrade Config
-- `home/dot_config/topgrade.toml.tmpl` — custom `[commands]` section for tools topgrade doesn't know about
-- Container image updates are disabled with `disable = ["containers"]` because stale custom Docker tags can break Topgrade on arm64
-- Current custom commands: `Chezmoi Externals`, `Mackup Backup` (macOS), `OSCAR` (macOS)
+## Age Encryption / 1Password Bootstrap
+- Chezmoi decrypts `.age` files using `~/.config/chezmoi/age-key.txt`
+- Current transition state:
+  - preferred path: local `hooks.read-source-state.pre` hook calling `.install-op-and-age.sh`
+  - fallback path: `home/.chezmoiscripts/run_before_00-write-age-identity.sh`
+- Both paths validate `AGE-SECRET-KEY-` and use atomic replacement when writing key material
+- Age public key is hardcoded in `.chezmoi.toml.tmpl`
+- Encrypted files use the `encrypted_` prefix
 
-## Cargo Package Naming
-- Cargo crate name ≠ binary name in some cases: `git-delta` installs the `delta` binary
-- Always use the crate name in `packages.cargo` in `packages.yaml`
-
-## Age Encryption
-- Chezmoi decrypts `.age` files using `~/.config/chezmoi/age-key.txt` (written by `run_before_00-write-age-identity.sh` from 1Password: `op://Private/chezmoi-age/private`)
-- Age **private** key: fetched fresh on every `chezmoi apply` via `op read` in `run_before_00` (plain `run_before_*`, not `run_once_*`). If `op` is missing → warning + exit 0; if `op read` fails → error + exit 1.
-- Age **public** key (recipient): hardcoded directly in `.chezmoi.toml.tmpl` — it's not sensitive and avoids requiring 1Password auth just to render the chezmoi config
-- Encrypted files use the `encrypted_` prefix in chezmoi source
-- After apply, `run_after_50-extract-archive.sh.tmpl` extracts the decrypted archive if a JetBrains product is installed; skips otherwise (tar.gz stays on disk)
-- `.chezmoiignore` conditionally excludes `x7k9m2p.tar.gz` via `stat (joinPath .chezmoi.homeDir ...)` — when no JetBrains dir exists, chezmoi ignores the file entirely (re-evaluated on every apply)
-
-## Custom Mackup App Configs
-- `home/dot_mackup/*.cfg.tmpl` — custom Mackup application definitions for apps not in Mackup's built-in registry
-- These are Go templates; use `{{ output "sh" "-c" "..." }}` to dynamically list paths (e.g. JetBrains versioned dirs)
-- Each file defines `[application]` + `[configuration_files]` sections in Mackup's INI format
-
-## Docker / Colima (macOS)
-- Colima is the container runtime on macOS (no Docker Desktop)
-- `colima`, `docker`, `docker-buildx`, `docker-compose` are darwin-only brews
-- `ddev/ddev/ddev` (from tap) is also darwin-only; Brewfile handles auto-tapping via the full formula name
-- `run_once_after_28-setup-colima.sh.tmpl` initializes colima on first apply: 4 CPU, 4GB RAM, 60GB disk
-- Colima auto-starts on login via `brew services start colima`
-
-## Topgrade Config
-- `home/dot_config/topgrade.toml.tmpl` — custom `[commands]` section for tools topgrade doesn't know about
-- Current custom commands: `Chezmoi Externals`, `Mackup Backup` (macOS), `OSCAR` (macOS)
+## Topgrade / Docker / Mackup
+- `home/dot_config/topgrade.toml.tmpl` defines custom topgrade commands
+- Colima is the macOS container runtime; no Docker Desktop
+- When adding a file to chezmoi, also update Mackup ignore settings if Mackup could otherwise manage it
 
 ## CHANGELOG
-- **Never** run `git-cliff` locally — GitHub Actions handles `CHANGELOG.md` automatically
-
-## Mackup + Chezmoi Overlap
-- When adding a file to chezmoi, also add the app to `applications_to_ignore` in `dot_mackup.cfg.tmpl`
-- Currently ignored: fish, git, lazygit, mackup, mise, neovim, ssh, starship, wget
-- Note: mackup app name is `neovim` (not `nvim`) — nvim config is managed via `.chezmoiexternal.toml.tmpl` as a git repo
+- Never run `git-cliff` locally; GitHub Actions updates `CHANGELOG.md`

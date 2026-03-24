@@ -7,72 +7,55 @@ Uses 1Password for secrets management and Fish shell as the primary shell.
 ## Tech Stack
 - **chezmoi** — dotfiles manager
 - **Fish shell** — primary shell
-- **1Password** — secrets management (apply-time resolution via `onepasswordRead` in templates; `op read` in scripts at apply time)
+- **1Password** — secrets management (`onepasswordRead` in templates; repo is transitioning from apply-time `op read` hydration to a pre-source-state bootstrap helper plus fallback apply-time hydration)
 - **mise** — language runtime version management
 - **Homebrew** — macOS package management
 - **Starship** — shell prompt
 - **Atuin** — shell history
 - **Neovim** — editor
-- **zoxide** — smart `cd` replacement (cargo; Fish initialized via `--cmd cd` in `conf.d/zoxide.fish`)
-- **delta** — git pager with syntax highlighting (cargo crate: `git-delta`; configured in `dot_gitconfig.tmpl`)
+- **zoxide** — smart `cd` replacement
+- **delta** — git pager with syntax highlighting (`git-delta` crate)
 
 ## Repository Structure
-```
-chezmoi/                   # repo root
-├── home/                  # chezmoi root (mapped to $HOME)
+```text
+chezmoi/
+├── home/                  # chezmoi source root mapped to $HOME
+│   ├── .chezmoiscripts/   # setup/apply scripts (cross-platform + darwin/linux)
+│   ├── .chezmoidata/      # package declarations and template data
 │   ├── dot_config/        # ~/.config/
-│   │   ├── fish/          # Fish shell config
-│   │   │   ├── config.fish
-│   │   │   ├── conf.d/    # modular Fish config files
-│   │   │   └── completions/ # tool completions (e.g. mise.fish.tmpl)
-│   │   ├── mise/          # mise config
-│   │   ├── atuin/         # atuin config
-│   │   ├── starship.toml
-│   │   └── topgrade.toml.tmpl
-│   ├── .chezmoiscripts/   # setup scripts
-│   │   ├── darwin/        # macOS-only scripts
-│   │   ├── linux/         # Linux-only scripts
-│   │   └── *.sh[.tmpl]    # cross-platform scripts
-│   ├── .chezmoiexternal.toml.tmpl  # external git repos (nvim config; chezmoi skill macOS-only)
-│   │                               # chezmoi skill: cosgroveb/chezmoi-skill.git
-│   ├── .chezmoidata/
-│   │   └── packages.yaml  # cross-platform package declarations
-│   ├── dot_local/
-│   │   ├── bin/           # ~/.local/bin/ (macOS-only scripts, e.g. oscar-update)
-│   │   └── share/         # ~/.local/share/ (includes encrypted_x7k9m2p.tar.gz.age)
+│   ├── dot_local/         # ~/.local/
+│   ├── dot_mackup/        # custom Mackup app configs
+│   ├── dot_setapp/        # Setapp bundle definition
 │   ├── private_dot_ssh/   # ~/.ssh/ (mode 600)
-│   ├── dot_setapp/
-│   │   └── bundle.tmpl    # Setapp app list (rendered from packages.darwin.setapp)
-│   ├── dot_mackup/
-│   │   └── intellijidea-modern.cfg.tmpl  # custom Mackup app config
 │   ├── dot_gitconfig.tmpl
 │   ├── dot_mackup.cfg.tmpl
-│   └── .chezmoi.toml.tmpl # machine type variables
-├── .github/
-│   └── workflows/         # CI: lint.yml, dotfiles-changelog.yml, deploy-pages.yml, dependabot-auto-merge.yml
-├── docs/
-├── CLAUDE.md
+│   └── .chezmoi.toml.tmpl
+├── .github/workflows/     # CI workflows
+├── .serena/               # Serena project config and memories
+├── .claude/               # local Claude-related config (some parts ignored)
+├── docs/                  # currently gitignored local docs/plans
+├── site/                  # Astro/Starlight docs site
+├── CHEATSHEET.md
 ├── CHANGELOG.md
-├── cliff.toml             # git-cliff config for changelog
-├── .editorconfig
+├── CLAUDE.md
+├── cliff.toml
 └── .yamllint.yaml
 ```
 
 ## Key Conventions
-- `dot_` prefix → `.` in target
+- `dot_` prefix → `.` in target path
 - `private_` prefix → mode 600
-- `empty_` prefix → empty file
-- `.tmpl` suffix → Go template
-- `home/` is chezmoi root (set in `.chezmoiroot`)
-- Secrets baked in at `chezmoi apply` time, never at shell startup
+- `empty_` prefix → empty file creation
+- `.tmpl` suffix → Go template rendered by chezmoi
+- `home/` is the managed chezmoi source root
+- Secrets are baked in at render/apply time, never at shell startup
 
 ## Machine Type Variables
+Available in templates as: `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid`
 
-Available in all Go templates as: `.personal`, `.headless`, `.ephemeral`, `.hostname`, `.osid`
-
-- `osid` — combined OS+distro string: `"darwin"`, `"linux-ubuntu"`, `"linux-arch"`, etc.
-- `personal` — true on personal machines (prompted once on first apply)
+- `osid` — combined OS/distro string: `darwin`, `linux-ubuntu`, `linux-arch`, etc.
+- `personal` — true on personal machines
 - `headless` — true on servers/CI without a display
-- `ephemeral` — true in Codespaces, containers, CI environments
+- `ephemeral` — true in CI/Codespaces/containers
 
 Defined in `home/.chezmoi.toml.tmpl`.
