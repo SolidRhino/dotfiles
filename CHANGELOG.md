@@ -11,6 +11,9 @@ All notable changes to this dotfiles repository will be documented here.
 ### ⚙️ CI
 - Expand dotfiles validation coverage
 
+### 🐛 Bug Fixes
+- Make lint workflow CI-safe
+
 ### 📚 Documentation
 - Clarify project guidance sources
 - Document tool versioning and install policy
@@ -18,6 +21,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🔧 Miscellaneous
 - Update changelog
 - Stabilize local tooling setup
+- Update changelog
 - Update changelog
 
 ### 🚀 Features
