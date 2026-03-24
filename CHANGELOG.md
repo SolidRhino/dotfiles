@@ -10,23 +10,30 @@ All notable changes to this dotfiles repository will be documented here.
 ## 🌿 Latest
 ### ⚙️ CI
 - Expand dotfiles validation coverage
+- Validate bootstrap helper in lint workflow
 
 ### 🐛 Bug Fixes
 - Make lint workflow CI-safe
+- Harden fallback age key hydration
 
 ### 📚 Documentation
 - Clarify project guidance sources
 - Document tool versioning and install policy
+- Document pre-source-state 1Password bootstrap
+- Refresh Serena project memory
+- Require English by default
 
 ### 🔧 Miscellaneous
 - Update changelog
 - Stabilize local tooling setup
 - Update changelog
 - Update changelog
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
 - Speed up cargo package installs
+- Add pre-source-state 1Password bootstrap helper
 
 ## 23-03-2026
 ### ⚙️ CI
