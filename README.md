@@ -18,20 +18,48 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Supports macO
 
 ## Quick Start
 
-Works on macOS and Linux. Installs chezmoi to `~/.local/bin` and applies the dotfiles in one shot:
+Works on macOS and Linux.
+
+### First-time bootstrap
+
+Install chezmoi to `~/.local/bin`, clone the source repo without applying it yet, then add the local pre-source-state hook that bootstraps 1Password CLI + the age key before the first full apply:
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply SolidRhino/dotfiles
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init SolidRhino/dotfiles
+mkdir -p ~/.config/chezmoi
+touch ~/.config/chezmoi/chezmoi.toml
+# If you already have a [hooks.read-source-state.pre] section, merge this block into it manually.
+grep -Fq '.install-op-and-age.sh' ~/.config/chezmoi/chezmoi.toml || cat >> ~/.config/chezmoi/chezmoi.toml <<'EOF'
+[hooks.read-source-state.pre]
+command = "/bin/bash"
+args = ["-lc", "$HOME/.local/share/chezmoi/.install-op-and-age.sh"]
+EOF
+chezmoi apply
 ```
 
-> **macOS with Homebrew already installed:** `brew install chezmoi && chezmoi init --apply SolidRhino/dotfiles`
+> **macOS with Homebrew already installed:** use `brew install chezmoi` instead of the installer in the first line, then run the same `chezmoi init`, local config, and `chezmoi apply` steps shown above.
 
 **What to expect:**
 - On first run, chezmoi prompts for `headless` and `personal` flags (answered once, stored in `~/.config/chezmoi/chezmoi.toml`)
-- 1Password CLI must be authenticated during apply for secrets to be baked in
+- The local pre-source-state hook tries to ensure `op` exists and hydrates `~/.config/chezmoi/age-key.txt` before the first full apply
+- If 1Password CLI is present but not authenticated, unlock/authenticate it and rerun `chezmoi apply`
 - Fish is set as the default shell (may prompt for password)
 - macOS: Homebrew and all casks/formulae are installed automatically
 - The 1Password GitHub CLI plugin setup (`after_25`) is interactive — run it manually if it fails in a non-interactive shell: `op plugin init gh`
+
+### Existing machines
+
+If this repo is already initialized locally, add the same hook block to `~/.config/chezmoi/chezmoi.toml` with the same `touch` + `grep ... || cat >> ...` command shown above, then run:
+
+```sh
+touch ~/.config/chezmoi/chezmoi.toml
+grep -Fq '.install-op-and-age.sh' ~/.config/chezmoi/chezmoi.toml || cat >> ~/.config/chezmoi/chezmoi.toml <<'EOF'
+[hooks.read-source-state.pre]
+command = "/bin/bash"
+args = ["-lc", "$HOME/.local/share/chezmoi/.install-op-and-age.sh"]
+EOF
+chezmoi apply
+```
 
 ### Re-apply after changes
 
@@ -99,7 +127,19 @@ Version policy for `mise` tools:
 ## Troubleshooting
 
 **1Password not unlocked during apply**
-Secrets baked into templates (SSH config, git config) will fail. Run `eval $(op signin)` first, then `chezmoi apply`.
+Secrets baked into templates (SSH config, git config) will fail. Unlock/authenticate 1Password CLI, then rerun `chezmoi apply`.
+
+**Automatic 1Password bootstrap failed on Linux**
+Unsupported Linux variants are not auto-detected. Install `1password-cli` manually, then rerun `chezmoi apply`.
+
+**Automatic 1Password bootstrap failed on Arch-based Linux**
+If the package database is stale on a fresh machine, refresh the system package state first, then rerun `chezmoi apply`.
+
+**Automatic 1Password bootstrap failed on macOS**
+The bootstrap hook expects Homebrew to be installed already. Install Homebrew first, then rerun `chezmoi apply`.
+
+**I already have a `read-source-state.pre` hook section**
+Do not append a second `[hooks.read-source-state.pre]` table. Merge the `command` / `args` entry into your existing hook configuration manually.
 
 **Commit signing not showing "Verified" on GitHub**
 Add the SSH public key as a **signing key** in GitHub Settings → SSH and GPG keys → New signing key. (Separate from the authentication key.)
