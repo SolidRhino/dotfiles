@@ -15,6 +15,7 @@ All notable changes to this dotfiles repository will be documented here.
 ### 🐛 Bug Fixes
 - Make lint workflow CI-safe
 - Harden fallback age key hydration
+- Disable Ruby gem maintenance in Topgrade
 
 ### 📚 Documentation
 - Clarify project guidance sources
@@ -29,11 +30,15 @@ All notable changes to this dotfiles repository will be documented here.
 - Update changelog
 - Update changelog
 - Update changelog
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
 - Speed up cargo package installs
 - Add pre-source-state 1Password bootstrap helper
+- Manage OpenCode config on macOS
+- Manage tmux package
+- Add modular tmux configuration
 
 ## 23-03-2026
 ### ⚙️ CI
