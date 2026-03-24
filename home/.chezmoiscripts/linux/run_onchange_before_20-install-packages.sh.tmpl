@@ -2,27 +2,68 @@
 #!/bin/bash
 set -eufo pipefail
 
-{{ if eq .osid "linux-arch" "linux-manjaro" "linux-endeavouros" -}}
-# Arch-based: use yay for official + AUR packages
-# yay must not be run with sudo — it handles privilege escalation internally
-# Note: 'gh' is 'github-cli' in Arch; 'tree-sitter-cli' is 'tree-sitter' in Arch
-yay -S --noconfirm --needed \
-    {{ concat .packages.aur .packages.pacman (without .packages.common "gh" "tree-sitter-cli") | join " " }}
+is_arch_like() {
+    case "{{ .osid }}" in
+        linux-arch|linux-manjaro|linux-endeavouros)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
 
-{{ else if eq .osid "linux-ubuntu" "linux-debian" "linux-linuxmint" "linux-pop" -}}
-# Debian-based: repos for gh and git-lfs are set up by dedicated scripts
-# Note: 'fd' is 'fd-find' in apt; 'gh' comes from the GitHub CLI repo
-sudo apt-get update -y
-sudo apt-get install -y --no-install-recommends \
-    {{ concat .packages.apt (without .packages.common "fd") | join " " }}
+is_debian_like() {
+    case "{{ .osid }}" in
+        linux-ubuntu|linux-debian|linux-linuxmint|linux-pop)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
 
-{{ else if eq .osid "linux-fedora" "linux-rhel" "linux-centos" "linux-rocky" "linux-almalinux" -}}
-sudo dnf install -y \
-    {{ concat .packages.dnf .packages.common | join " " }}
+is_fedora_like() {
+    case "{{ .osid }}" in
+        linux-fedora|linux-rhel|linux-centos|linux-rocky|linux-almalinux)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
 
-{{ else -}}
-echo "Unsupported distribution: {{ .osid }}"
-echo "Please install manually: {{ .packages.common | join ", " }}"
-exit 1
-{{ end -}}
+install_arch_packages() {
+    # Arch-based: use yay for official + AUR packages.
+    # yay must not be run with sudo — it handles privilege escalation internally.
+    # Note: 'gh' is 'github-cli' in Arch; 'tree-sitter-cli' is 'tree-sitter' in Arch.
+    yay -S --noconfirm --needed \
+        {{ concat .packages.aur .packages.pacman (without .packages.common "gh" "tree-sitter-cli") | join " " }}
+}
+
+install_debian_packages() {
+    # Debian-based: external repos for gh and git-lfs are set up in before_10.
+    # Note: 'fd' is 'fd-find' in apt; 'gh' comes from the GitHub CLI repo.
+    sudo apt-get install -y --no-install-recommends \
+        {{ concat .packages.apt (without .packages.common "fd") | join " " }}
+}
+
+install_fedora_packages() {
+    sudo dnf install -y \
+        {{ concat .packages.dnf .packages.common | join " " }}
+}
+
+if is_arch_like; then
+    install_arch_packages
+elif is_debian_like; then
+    install_debian_packages
+elif is_fedora_like; then
+    install_fedora_packages
+else
+    echo "Unsupported distribution: {{ .osid }}"
+    echo "Please install manually: {{ .packages.common | join ", " }}"
+    exit 1
+fi
 {{ end -}}

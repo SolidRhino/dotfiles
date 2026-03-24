@@ -1,0 +1,99 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -eufo pipefail
+
+is_debian_like() {
+    case "{{ .osid }}" in
+        linux-ubuntu|linux-debian|linux-linuxmint|linux-pop)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+is_fedora_like() {
+    case "{{ .osid }}" in
+        linux-fedora|linux-rhel|linux-centos|linux-rocky|linux-almalinux)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+ensure_apt_source() {
+    local name="$1"
+    local path="$2"
+
+    if [ ! -s "$path" ]; then
+        echo "Error: ${name} apt source not found after setup" >&2
+        exit 1
+    fi
+}
+
+setup_github_cli_apt_repo() {
+    local keyring="/usr/share/keyrings/githubcli-archive-keyring.gpg"
+    local list_file="/etc/apt/sources.list.d/github-cli.list"
+
+    if [ ! -f "$list_file" ]; then
+        curl --proto '=https' --tlsv1.2 -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+            | sudo dd of="$keyring"
+        sudo chmod go+r "$keyring"
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=$keyring] https://cli.github.com/packages stable main" \
+            | sudo tee "$list_file" >/dev/null
+    fi
+
+    ensure_apt_source "GitHub CLI" "$list_file"
+}
+
+setup_git_lfs_apt_repo() {
+    local list_file="/etc/apt/sources.list.d/github_git-lfs.list"
+
+    if [ ! -f "$list_file" ]; then
+        curl --proto '=https' --tlsv1.2 -fsSL https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh \
+            | sudo bash
+    fi
+
+    ensure_apt_source "git-lfs" "$list_file"
+}
+
+setup_onepassword_apt_repo() {
+    local keyring="/usr/share/keyrings/1password-archive-keyring.gpg"
+    local list_file="/etc/apt/sources.list.d/1password.list"
+
+    if [ ! -f "$list_file" ]; then
+        curl --proto '=https' --tlsv1.2 -fsSL https://downloads.1password.com/linux/keys/1password.asc \
+            | sudo gpg --dearmor --output "$keyring"
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=$keyring] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" \
+            | sudo tee "$list_file" >/dev/null
+    fi
+
+    ensure_apt_source "1Password" "$list_file"
+}
+
+setup_onepassword_rpm_repo() {
+    local repo_file="/etc/yum.repos.d/1password.repo"
+
+    if [ ! -f "$repo_file" ]; then
+        sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
+        sudo sh -c 'printf "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://downloads.1password.com/linux/keys/1password.asc\n" > /etc/yum.repos.d/1password.repo'
+    fi
+
+    if [ ! -f "$repo_file" ]; then
+        echo "Error: 1Password rpm repo not found after setup" >&2
+        exit 1
+    fi
+}
+
+if is_debian_like; then
+    setup_github_cli_apt_repo
+    setup_git_lfs_apt_repo
+    setup_onepassword_apt_repo
+    sudo apt-get update -y
+elif is_fedora_like; then
+    setup_onepassword_rpm_repo
+fi
+{{ end -}}
