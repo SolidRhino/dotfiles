@@ -30,6 +30,7 @@ packages:
     - lazygit
     - neovim
     - shellcheck
+    - tmux
     - tree-sitter-cli
     - wget
 
