@@ -1,6 +1,10 @@
 [settings.ruby]
 compile = false
 
+# Versioning policy:
+# - Use "latest" for fast-moving developer tooling where staying current matters more than pin stability.
+# - Use "lts" for runtimes with broad ecosystem support windows.
+# - Use a major version when tracking the newest stable line without churn from full version pins.
 [tools]
 go = "latest"
 node = "lts"

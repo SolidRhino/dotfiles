@@ -65,9 +65,16 @@ chezmoi apply          # or: czap
 
 **Rust (via cargo):**
 
-`atuin` · `bat` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `git-delta` · `ripgrep` · `starship` · `topgrade` · `usage-cli` · `xh` · `zoxide`
+`atuin` · `bat` · `cargo-binstall` · `cargo-update` · `difftastic` · `eza` · `git-cliff` · `git-delta` · `ripgrep` · `starship` · `topgrade` · `usage-cli` · `xh` · `zoxide`
+
+Cargo CLI tools install with a binary-first path when available (`cargo-binstall`), and fall back to `cargo install --locked` for reproducible source builds.
 
 **mise** is installed via its official installer (`curl https://mise.run | sh`) and manages its own updates.
+
+Version policy for `mise` tools:
+- use `latest` for fast-moving developer tooling
+- use `lts` for ecosystem runtimes with broad support windows
+- use a major pin (for example `ruby = "4"`) when tracking the current stable line without full pin churn
 
 ### macOS-only (Homebrew)
 

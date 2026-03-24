@@ -53,14 +53,12 @@ description: Commands, abbreviations, and chezmoi naming conventions.
 |------|--------|------|---------|
 | before 00 | `run_before_00-write-age-identity.sh` | always | Write age key from 1Password for encrypted file decryption |
 | before 10 | `darwin/run_onchange_before_10-install-packages.sh.tmpl` | onchange | Homebrew + packages (macOS) |
-| before 10 | `linux/run_onchange_before_10-install-gh.sh.tmpl` | onchange | GitHub CLI apt repo |
-| before 10 | `linux/run_onchange_before_10-install-git-lfs.sh.tmpl` | onchange | git-lfs apt repo |
-| before 10 | `linux/run_onchange_before_10-install-op.sh.tmpl` | onchange | 1Password CLI apt/rpm repo |
+| before 10 | `linux/run_onchange_before_10-setup-package-repos.sh.tmpl` | onchange | Linux package repo bootstrap (gh, git-lfs, 1Password) |
 | before 15 | `linux/run_onchange_before_15-install-aur-helper.sh.tmpl` | onchange | Install yay AUR helper (Arch only) |
 | before 20 | `linux/run_onchange_before_20-install-packages.sh.tmpl` | onchange | System packages (Linux) |
 | after 10 | `run_once_after_10-install-rust.sh.tmpl` | once | Install Rust via rustup (skipped on ephemeral) |
 | after 19 | `run_once_after_19-install-mise.sh.tmpl` | once | Install mise via `curl https://mise.run \| sh` (skipped on ephemeral) |
-| after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages (skipped on ephemeral) |
+| after 20 | `run_onchange_after_20-install-cargo-packages.sh.tmpl` | onchange | Install cargo packages with `cargo-binstall` fallback to `cargo install --locked` (skipped on ephemeral) |
 | after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes (skipped on ephemeral) |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
 | after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
@@ -73,6 +71,14 @@ description: Commands, abbreviations, and chezmoi naming conventions.
 | after 50 | `run_after_50-extract-archive.sh.tmpl` | always | Extract age-decrypted archive to `~/.local/share/` |
 | after | `darwin/run_once_after_install-claude-code.sh.tmpl` | once | Install Claude Code (macOS) |
 | after | `darwin/run_once_after_mackup-restore.sh.tmpl` | once | Restore GUI app settings via Mackup (macOS) |
+
+## mise Versioning Policy
+
+| Pattern | Use for |
+|---------|---------|
+| `latest` | Fast-moving developer tooling where staying current matters most |
+| `lts` | Runtimes with long support windows and broad ecosystem expectations |
+| major pin like `4` | Track the current stable line without full version pin churn |
 
 ## Git Abbreviations
 
