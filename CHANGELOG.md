@@ -8,12 +8,21 @@ description: All notable changes to this dotfiles repository.
 All notable changes to this dotfiles repository will be documented here.
 
 ## 🌿 Latest
+### ⚙️ CI
+- Expand dotfiles validation coverage
+
 ### 📚 Documentation
 - Clarify project guidance sources
+- Document tool versioning and install policy
 
 ### 🔧 Miscellaneous
 - Update changelog
 - Stabilize local tooling setup
+- Update changelog
+
+### 🚀 Features
+- Consolidate linux package repo bootstrap
+- Speed up cargo package installs
 
 ## 23-03-2026
 ### ⚙️ CI
