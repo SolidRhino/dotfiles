@@ -1,0 +1,68 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-opencode-slim"
+  ],
+  "agent": {
+    "explore": {
+      "disable": true
+    },
+    "general": {
+      "disable": true
+    }
+  },
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server"
+      ],
+      "enabled": true
+    }
+  },
+  "lsp": {
+    "fish-lsp": {
+      "command": [
+        "fish-lsp",
+        "start"
+      ],
+      "extensions": [
+        ".fish"
+      ]
+    },
+    "taplo": {
+      "command": [
+        "taplo",
+        "lsp",
+        "stdio"
+      ],
+      "extensions": [
+        ".toml"
+      ]
+    },
+    "vscode-json-language-server": {
+      "command": [
+        "vscode-json-language-server",
+        "--stdio"
+      ],
+      "extensions": [
+        ".json",
+        ".jsonc"
+      ]
+    },
+    "marksman": {
+      "command": [
+        "marksman",
+        "server"
+      ],
+      "extensions": [
+        ".md",
+        ".markdown"
+      ]
+    }
+  }
+}

@@ -19,6 +19,8 @@
 
 # macOS-only tools
 {{ if ne .chezmoi.os "darwin" }}.local/bin/oscar-update
+.config/opencode/opencode.json
+.config/opencode/oh-my-opencode-slim.json
 {{ end -}}
 # Encrypted archive — only managed when a JetBrains product is installed
 # macOS: ~/Library/Application Support/JetBrains, Linux: ~/.config/JetBrains
