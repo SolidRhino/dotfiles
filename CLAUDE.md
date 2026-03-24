@@ -17,6 +17,7 @@ Chezmoi dotfiles repo (macOS + Linux).
 - `op read` is allowed in chezmoi scripts because they run at apply time, not shell startup
 - Age public key is hardcoded in `.chezmoi.toml.tmpl` — only the private key requires 1Password access
 - Scripts should fail loudly on errors, not silently swallow them
+- Use English by default; only use another language when the user explicitly asks for it
 
 ## Source of Truth
 
