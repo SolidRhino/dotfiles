@@ -62,6 +62,7 @@ description: Commands, abbreviations, and chezmoi naming conventions.
 | after 21 | `run_onchange_after_21-install-mise-tools.sh.tmpl` | onchange | Install mise-managed runtimes (skipped on ephemeral) |
 | after 25 | `run_once_after_25-setup-op-gh-plugin.sh` | once | 1Password GitHub CLI plugin |
 | after 26 | `darwin/run_once_after_26-install-setapp-cli.sh.tmpl` | once | Install setapp-cli binary |
+| after 27 | `darwin/run_once_after_27-install-ocx.sh.tmpl` | once | Install OCX via the official shell installer (macOS) |
 | after 27 | `darwin/run_onchange_after_27-install-setapp-apps.sh.tmpl` | onchange | Install Setapp apps from bundle |
 | after 28 | `darwin/run_after_28-install-oscar.sh.tmpl` | always | Install/update OSCAR via `~/.local/bin/oscar-update` (macOS) |
 | after 29 | `darwin/run_once_after_29-setup-touchid-sudo.sh.tmpl` | once | Configure TouchID for sudo via /etc/pam.d/sudo_local (macOS) |

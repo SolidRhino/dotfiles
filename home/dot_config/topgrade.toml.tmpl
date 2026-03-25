@@ -6,5 +6,6 @@ disable = ["containers", "gem", "ruby_gems"]
 "Chezmoi Externals" = "chezmoi apply --refresh-externals --force"
 {{- if eq .chezmoi.os "darwin" }}
 "Mackup Backup" = "mackup backup --force"
+"OCX" = "if command -v ocx >/dev/null 2>&1; then ocx self update; fi"
 "OSCAR" = "oscar-update"
 {{- end }}
