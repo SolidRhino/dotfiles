@@ -33,6 +33,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Update changelog
 - Update changelog
 - Update changelog
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
@@ -42,6 +43,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Manage tmux package
 - Add modular tmux configuration
 - **opencode:** Switch to jsonc
+- **ocx:** Install and update OCX on macOS
 
 ## 23-03-2026
 ### ⚙️ CI
