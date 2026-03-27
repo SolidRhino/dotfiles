@@ -12,6 +12,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Expand dotfiles validation coverage
 - Validate bootstrap helper in lint workflow
 - Align mise install command hardening
+- Quote workflow trigger key for yamllint
 
 ### 🐛 Bug Fixes
 - Make lint workflow CI-safe
@@ -60,6 +61,8 @@ chore(deps): bump astro from 6.0.8 to 6.1.0 in /site
 - **deps:** Bump picomatch in /site
 - **deps:** Bump astro from 6.0.8 to 6.1.0 in /site
 - **serena:** Record warning cleanup maintenance notes
+- Update changelog
+- **serena:** Record pull-before-push workflow preference
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
