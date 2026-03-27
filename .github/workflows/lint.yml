@@ -195,7 +195,7 @@ jobs:
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Install mise
         run: |
-          curl https://mise.run | sh
+          curl --proto '=https' --tlsv1.2 -fsSL https://mise.run | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Create minimal chezmoi config for CI
         run: |
