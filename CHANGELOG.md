@@ -11,12 +11,15 @@ All notable changes to this dotfiles repository will be documented here.
 ### ⚙️ CI
 - Expand dotfiles validation coverage
 - Validate bootstrap helper in lint workflow
+- Align mise install command hardening
 
 ### 🐛 Bug Fixes
 - Make lint workflow CI-safe
 - Harden fallback age key hydration
 - Disable Ruby gem maintenance in Topgrade
 - **tmux:** Render git branch in status bar
+- **bootstrap:** Harden installer and login scripts
+- **bootstrap:** Restore Atuin login flags for non-interactive runs
 
 ### 📚 Documentation
 - Clarify project guidance sources
@@ -24,6 +27,23 @@ All notable changes to this dotfiles repository will be documented here.
 - Document pre-source-state 1Password bootstrap
 - Refresh Serena project memory
 - Require English by default
+
+### 📝 Other Changes
+- Merge pull request #7 from SolidRhino/dependabot/github_actions/actions/deploy-pages-5
+
+chore(deps): bump actions/deploy-pages from 4 to 5
+- Merge pull request #8 from SolidRhino/dependabot/npm_and_yarn/site/smol-toml-1.6.1
+
+chore(deps): bump smol-toml from 1.6.0 to 1.6.1 in /site
+- Merge pull request #9 from SolidRhino/dependabot/npm_and_yarn/site/multi-bf05dc1ecf
+
+chore(deps): bump picomatch in /site
+- Merge pull request #10 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.0
+
+chore(deps): bump astro from 6.0.8 to 6.1.0 in /site
+
+### 📦 Refactoring
+- **dotfiles:** Tighten script and template consistency
 
 ### 🔧 Miscellaneous
 - Update changelog
@@ -34,6 +54,12 @@ All notable changes to this dotfiles repository will be documented here.
 - Update changelog
 - Update changelog
 - Update changelog
+- Update changelog
+- **deps:** Bump actions/deploy-pages from 4 to 5
+- **deps:** Bump smol-toml from 1.6.0 to 1.6.1 in /site
+- **deps:** Bump picomatch in /site
+- **deps:** Bump astro from 6.0.8 to 6.1.0 in /site
+- **serena:** Record warning cleanup maintenance notes
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
@@ -44,6 +70,7 @@ All notable changes to this dotfiles repository will be documented here.
 - Add modular tmux configuration
 - **opencode:** Switch to jsonc
 - **ocx:** Install and update OCX on macOS
+- **fish:** Add guarded atuin completion template
 
 ## 23-03-2026
 ### ⚙️ CI
