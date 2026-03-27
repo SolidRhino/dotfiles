@@ -1,0 +1,1 @@
+User preference for this repository: always run `git pull origin main` before any `git push` to GitHub, then push after pull/rebase completes.
