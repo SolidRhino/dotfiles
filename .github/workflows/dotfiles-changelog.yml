@@ -1,6 +1,6 @@
 name: Dotfiles Changelog
 
-on:
+'on':
   push:
     branches: [main]
   schedule:
