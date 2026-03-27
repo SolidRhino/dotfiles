@@ -17,6 +17,8 @@ ATUIN_USERNAME="{{ onepasswordRead "op://Private/Atuin/CLI/gebruikersnaam" }}"
 ATUIN_PASSWORD="{{ onepasswordRead "op://Private/Atuin/CLI/wachtwoord" }}"
 ATUIN_KEY="{{ onepasswordRead "op://Private/Atuin/CLI/key" }}"
 
-printf '%s\n%s\n' "${ATUIN_PASSWORD}" "${ATUIN_KEY}" \
-    | atuin login -u "${ATUIN_USERNAME}"
+atuin login \
+    -u "${ATUIN_USERNAME}" \
+    -p "${ATUIN_PASSWORD}" \
+    -k "${ATUIN_KEY}"
 {{ end -}}
