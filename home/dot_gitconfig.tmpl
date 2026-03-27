@@ -51,7 +51,7 @@
     process  = git-lfs filter-process
     required = true
 
-{{- if eq .chezmoi.os "darwin" }}
+{{- if or (eq .chezmoi.os "darwin") (and (eq .chezmoi.os "linux") .personal (not .headless)) }}
 
 [credential "https://github.com"]
     helper =
@@ -64,27 +64,14 @@
     format = ssh
 
 [gpg "ssh"]
+{{- if eq .chezmoi.os "darwin" }}
     # Requires the full 1Password app (not just 1password-cli)
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
-[commit]
-    gpgsign = true
-{{- else if and (eq .chezmoi.os "linux") .personal (not .headless) }}
-
-[credential "https://github.com"]
-    helper =
-    helper = !gh auth git-credential
-[credential "https://gist.github.com"]
-    helper =
-    helper = !gh auth git-credential
-
-[gpg]
-    format = ssh
-
-[gpg "ssh"]
+{{- else }}
     # Requires the full 1Password app (not just 1password-cli)
     # Install from: https://1password.com/downloads/linux/
     program = "/opt/1Password/op-ssh-sign"
+{{- end }}
 
 [commit]
     gpgsign = true

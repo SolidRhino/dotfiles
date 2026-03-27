@@ -20,8 +20,10 @@ BUILDDIR="$(mktemp -d)"
 trap 'rm -rf "$BUILDDIR"' EXIT
 
 git clone https://aur.archlinux.org/yay.git "$BUILDDIR/yay"
-cd "$BUILDDIR/yay"
-makepkg -si --noconfirm --rmdeps
+(
+    cd "$BUILDDIR/yay"
+    makepkg -si --noconfirm --rmdeps
+)
 
 # Remove bootstrap deps — reinstalled via yay in before_20
 sudo pacman -Rns --noconfirm git base-devel

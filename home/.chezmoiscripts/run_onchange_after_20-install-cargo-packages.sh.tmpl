@@ -17,7 +17,7 @@ fi
 package_installed() {
     local package="$1"
 
-    cargo install --list | grep -Fq "${package} v"
+    cargo install --list | grep -Eq "^${package} v"
 }
 
 install_cargo_package() {
