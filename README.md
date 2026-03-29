@@ -76,7 +76,7 @@ chezmoi apply          # or: czap
 | File | Target | Notes |
 |------|--------|-------|
 | `dot_gitconfig.tmpl` | `~/.gitconfig` | SSH signing via 1Password, LFS, delta pager, difftastic diff |
-| `dot_config/fish/` | `~/.config/fish/` | Modular Fish config (conf.d/ pattern) |
+| `dot_config/fish/` | `~/.config/fish/` | Modular Fish config (conf.d/ pattern); completions auto-generated per tool |
 | `dot_config/starship.toml` | `~/.config/starship.toml` | Catppuccin Mocha theme |
 | `dot_config/mise/config.toml.tmpl` | `~/.config/mise/config.toml` | Language runtime versions (node, python, go, etc.) |
 | `dot_config/atuin/config.toml` | `~/.config/atuin/config.toml` | Shell history settings |

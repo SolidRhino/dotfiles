@@ -1,0 +1,15 @@
+{
+  "journal": {
+    "enabled": true,
+    "tags": [
+      { "name": "decision", "description": "Decisions worth remembering later" },
+      { "name": "debugging", "description": "Bug investigations and root-cause notes" },
+      { "name": "gotcha", "description": "Non-obvious pitfalls or caveats" },
+      { "name": "tooling", "description": "Tool behavior, configuration, or workflow notes" },
+      { "name": "workflow", "description": "Execution-process or collaboration workflow notes" },
+      { "name": "review", "description": "Code review findings or follow-up patterns" },
+      { "name": "research", "description": "Exploration and investigation findings" },
+      { "name": "plugin-update-check", "description": "Periodic review of pinned plugin versions" }
+    ]
+  }
+}
