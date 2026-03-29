@@ -68,6 +68,7 @@ chore(deps): bump astro from 6.1.0 to 6.1.1 in /site
 - **serena:** Record pull-before-push workflow preference
 - Update changelog
 - **deps:** Bump astro from 6.1.0 to 6.1.1 in /site
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
@@ -80,6 +81,7 @@ chore(deps): bump astro from 6.1.0 to 6.1.1 in /site
 - **ocx:** Install and update OCX on macOS
 - **fish:** Add guarded atuin completion template
 - **opencode:** Add dynamic fish completion and memory strategy
+- **opencode:** Add startup wrapper and local command config
 
 ## 23-03-2026
 ### ⚙️ CI
