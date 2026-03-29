@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+
+  "enabled": true,
+  "debug": false,
+  "pruneNotification": "minimal",
+  "pruneNotificationType": "chat",
+
+  // Protect important config files from being pruned
+  "protectedFilePatterns": [
+    "**/opencode.jsonc",
+    "**/dcp.jsonc",
+    "**/.opencode/instructions.md",
+    "**/.serena/project.yml",
+    "**/.env",
+    "**/.env.*"
+  ],
+
+  "commands": {
+    "enabled": true,
+    "protectedTools": []
+  },
+
+  // Let DCP manage context automatically
+  "manualMode": {
+    "enabled": false,
+    "automaticStrategies": true
+  },
+
+  // Protect the last N turns from pruning — 10 is safer for long agentic tasks
+  // that span many tool calls before the agent returns to the user.
+  "turnProtection": {
+    "enabled": true,
+    "turns": 10
+  },
+
+  "experimental": {
+    "allowSubAgents": false,
+    "customPrompts": false
+  },
+
+  "compress": {
+    "mode": "range",
+    "permission": "allow",
+    "showCompression": false,
+    "summaryBuffer": true,
+    "maxContextLimit": "75%",
+    "minContextLimit": "40%",
+    "nudgeFrequency": 4,
+    "iterationNudgeThreshold": 15,
+    "nudgeForce": "soft",
+    "protectedTools": [
+      "serena",
+      "sequential-thinking",
+      "memory_list",
+      "memory_set",
+      "memory_replace"
+    ],
+    "protectUserMessages": true
+  },
+
+  "strategies": {
+    "deduplication": {
+      "enabled": true,
+      "protectedTools": []
+    },
+    "purgeErrors": {
+      "enabled": true,
+      "turns": 4,
+      "protectedTools": []
+    }
+  }
+}

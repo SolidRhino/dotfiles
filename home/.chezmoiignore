@@ -2,6 +2,10 @@
 .DS_Store
 .wget-hsts
 
+# Generated dependency/build artifacts (global)
+**/node_modules/
+**/tsconfig.tsbuildinfo
+
 # SSH private keys — never manage via chezmoi
 .ssh/id_*
 .ssh/known_hosts
