@@ -42,6 +42,9 @@ chore(deps): bump picomatch in /site
 - Merge pull request #10 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.0
 
 chore(deps): bump astro from 6.0.8 to 6.1.0 in /site
+- Merge pull request #11 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.1
+
+chore(deps): bump astro from 6.1.0 to 6.1.1 in /site
 
 ### 📦 Refactoring
 - **dotfiles:** Tighten script and template consistency
@@ -63,6 +66,8 @@ chore(deps): bump astro from 6.0.8 to 6.1.0 in /site
 - **serena:** Record warning cleanup maintenance notes
 - Update changelog
 - **serena:** Record pull-before-push workflow preference
+- Update changelog
+- **deps:** Bump astro from 6.1.0 to 6.1.1 in /site
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
@@ -74,6 +79,7 @@ chore(deps): bump astro from 6.0.8 to 6.1.0 in /site
 - **opencode:** Switch to jsonc
 - **ocx:** Install and update OCX on macOS
 - **fish:** Add guarded atuin completion template
+- **opencode:** Add dynamic fish completion and memory strategy
 
 ## 23-03-2026
 ### ⚙️ CI
