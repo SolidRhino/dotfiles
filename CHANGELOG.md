@@ -69,6 +69,8 @@ chore(deps): bump astro from 6.1.0 to 6.1.1 in /site
 - Update changelog
 - **deps:** Bump astro from 6.1.0 to 6.1.1 in /site
 - Update changelog
+- Update changelog
+- **serena:** Mark 1Password bootstrap migration as completed
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
