@@ -1,7 +1,7 @@
 # 1Password Pre-Source-State Bootstrap Migration
 
 ## Status
-In progress, implemented locally but not committed yet.
+Completed — all changes committed and merged to main.
 
 ## Files changed
 - `.install-op-and-age.sh` (new)
