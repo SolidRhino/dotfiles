@@ -8,9 +8,13 @@ description: All notable changes to this dotfiles repository.
 All notable changes to this dotfiles repository will be documented here.
 
 ## 🌿 Latest
+### 📚 Documentation
+- **agents:** Tighten repo guidance for coding agents
+
 ### 🔧 Miscellaneous
 - Update changelog
 - **packages:** Track ghostty, snip, and yamllint
+- Update changelog
 
 ## 30-03-2026
 ### ⚙️ CI
