@@ -7,6 +7,11 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 🌿 Latest
+### 🔧 Miscellaneous
+- Update changelog
+- **packages:** Track ghostty, snip, and yamllint
+
 ## 30-03-2026
 ### ⚙️ CI
 - Expand dotfiles validation coverage
