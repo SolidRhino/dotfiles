@@ -7,7 +7,7 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
-## 🌿 Latest
+## 30-03-2026
 ### ⚙️ CI
 - Expand dotfiles validation coverage
 - Validate bootstrap helper in lint workflow
@@ -71,6 +71,7 @@ chore(deps): bump astro from 6.1.0 to 6.1.1 in /site
 - Update changelog
 - Update changelog
 - **serena:** Mark 1Password bootstrap migration as completed
+- Update changelog
 
 ### 🚀 Features
 - Consolidate linux package repo bootstrap
