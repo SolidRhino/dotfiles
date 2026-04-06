@@ -7,14 +7,29 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
-## 🌿 Latest
+## 06-04-2026
 ### 📚 Documentation
 - **agents:** Tighten repo guidance for coding agents
+
+### 📝 Other Changes
+- Merge pull request #12 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.2
+
+chore(deps): bump astro from 6.1.1 to 6.1.2 in /site
+- Merge pull request #13 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.3
+
+chore(deps): bump astro from 6.1.2 to 6.1.3 in /site
+- Merge pull request #14 from SolidRhino/dependabot/npm_and_yarn/site/defu-6.1.6
+
+chore(deps): bump defu from 6.1.4 to 6.1.6 in /site
 
 ### 🔧 Miscellaneous
 - Update changelog
 - **packages:** Track ghostty, snip, and yamllint
 - Update changelog
+- Update changelog
+- **deps:** Bump astro from 6.1.1 to 6.1.2 in /site
+- **deps:** Bump astro from 6.1.2 to 6.1.3 in /site
+- **deps:** Bump defu from 6.1.4 to 6.1.6 in /site
 
 ## 30-03-2026
 ### ⚙️ CI
