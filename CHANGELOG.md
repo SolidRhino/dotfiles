@@ -7,6 +7,24 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 04-05-2026
+### 📝 Other Changes
+- Merge pull request #24 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.10
+
+chore(deps): bump astro from 6.1.9 to 6.1.10 in /site
+- Merge pull request #25 from SolidRhino/dependabot/npm_and_yarn/site/postcss-8.5.12
+
+chore(deps): bump postcss from 8.5.8 to 8.5.12 in /site
+- Merge pull request #26 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.2.1
+
+chore(deps): bump astro from 6.1.10 to 6.2.1 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump astro from 6.1.9 to 6.1.10 in /site
+- **deps:** Bump postcss from 8.5.8 to 8.5.12 in /site
+- **deps:** Bump astro from 6.1.10 to 6.2.1 in /site
+
 ## 27-04-2026
 ### 📝 Other Changes
 - Merge pull request #21 from SolidRhino/dependabot/npm_and_yarn/site/astro-6.1.8
