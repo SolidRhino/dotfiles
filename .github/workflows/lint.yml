@@ -11,7 +11,7 @@ jobs:
     name: shellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Run shellcheck on plain shell scripts
         run: |
           shellcheck \
@@ -59,7 +59,7 @@ jobs:
             headless: false
             ephemeral: false
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install shellcheck (Linux)
         if: runner.os == 'Linux'
         run: |
@@ -136,7 +136,7 @@ jobs:
     name: yamllint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install yamllint
         run: pip install yamllint
       - name: Lint YAML files
@@ -148,7 +148,7 @@ jobs:
     name: toml
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Check TOML syntax
         run: |
           python3 -c "import tomllib; tomllib.load(open('cliff.toml', 'rb')); print('cliff.toml OK')"
@@ -188,7 +188,7 @@ jobs:
             headless: false
             ephemeral: false
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Install chezmoi
         run: |
           sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
