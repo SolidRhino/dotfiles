@@ -7,6 +7,16 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 10-08-2026
+### 📝 Other Changes
+- Merge pull request #78 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.41.6
+
+chore(deps): bump @astrojs/starlight from 0.41.5 to 0.41.6 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump @astrojs/starlight from 0.41.5 to 0.41.6 in /site
+
 ## 03-08-2026
 ### 📝 Other Changes
 - Merge pull request #73 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.1.4
