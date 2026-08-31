@@ -7,6 +7,28 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 31-08-2026
+### 📝 Other Changes
+- Merge pull request #85 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.4
+
+chore(deps): bump astro from 7.2.3 to 7.2.4 in /site
+- Merge pull request #86 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.41.8
+
+chore(deps): bump @astrojs/starlight from 0.41.7 to 0.41.8 in /site
+- Merge pull request #87 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.6
+
+chore(deps): bump astro from 7.2.4 to 7.2.6 in /site
+- Merge pull request #88 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.41.9
+
+chore(deps): bump @astrojs/starlight from 0.41.8 to 0.41.9 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump astro from 7.2.3 to 7.2.4 in /site
+- **deps:** Bump @astrojs/starlight from 0.41.7 to 0.41.8 in /site
+- **deps:** Bump astro from 7.2.4 to 7.2.6 in /site
+- **deps:** Bump @astrojs/starlight from 0.41.8 to 0.41.9 in /site
+
 ## 24-08-2026
 ### 📝 Other Changes
 - Merge pull request #83 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.2
