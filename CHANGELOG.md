@@ -7,6 +7,32 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 07-09-2026
+### 📝 Other Changes
+- Merge pull request #89 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.9
+
+chore(deps): bump astro from 7.2.6 to 7.2.9 in /site
+- Merge pull request #91 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.41.10
+
+chore(deps): bump @astrojs/starlight from 0.41.9 to 0.41.10 in /site
+- Merge pull request #92 from SolidRhino/dependabot/npm_and_yarn/site/postcss-selector-parser-6.1.4
+
+chore(deps): bump postcss-selector-parser from 6.1.2 to 6.1.4 in /site
+- Merge pull request #93 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.10
+
+chore(deps): bump astro from 7.2.9 to 7.2.10 in /site
+- Merge pull request #94 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.41.11
+
+chore(deps): bump @astrojs/starlight from 0.41.10 to 0.41.11 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump astro from 7.2.6 to 7.2.9 in /site
+- **deps:** Bump @astrojs/starlight from 0.41.9 to 0.41.10 in /site
+- **deps:** Bump postcss-selector-parser from 6.1.2 to 6.1.4 in /site
+- **deps:** Bump astro from 7.2.9 to 7.2.10 in /site
+- **deps:** Bump @astrojs/starlight from 0.41.10 to 0.41.11 in /site
+
 ## 31-08-2026
 ### 📝 Other Changes
 - Merge pull request #85 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.4
