@@ -7,6 +7,36 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 14-09-2026
+### 📝 Other Changes
+- Merge pull request #95 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.42.0
+
+chore(deps): bump @astrojs/starlight from 0.41.11 to 0.42.0 in /site
+- Merge pull request #96 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.3.1
+
+chore(deps): bump astro from 7.2.10 to 7.3.1 in /site
+- Merge pull request #97 from SolidRhino/dependabot/npm_and_yarn/site/svgo-4.1.0
+
+chore(deps): bump svgo from 4.0.2 to 4.1.0 in /site
+- Merge pull request #98 from SolidRhino/dependabot/npm_and_yarn/site/js-yaml-4.3.2
+
+chore(deps): bump js-yaml from 4.3.1 to 4.3.2 in /site
+- Merge pull request #99 from SolidRhino/dependabot/npm_and_yarn/site/smol-toml-1.8.0
+
+chore(deps): bump smol-toml from 1.6.1 to 1.8.0 in /site
+- Merge pull request #100 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.3.2
+
+chore(deps): bump astro from 7.3.1 to 7.3.2 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump @astrojs/starlight from 0.41.11 to 0.42.0 in /site
+- **deps:** Bump astro from 7.2.10 to 7.3.1 in /site
+- **deps:** Bump svgo from 4.0.2 to 4.1.0 in /site
+- **deps:** Bump js-yaml from 4.3.1 to 4.3.2 in /site
+- **deps:** Bump smol-toml from 1.6.1 to 1.8.0 in /site
+- **deps:** Bump astro from 7.3.1 to 7.3.2 in /site
+
 ## 07-09-2026
 ### 📝 Other Changes
 - Merge pull request #89 from SolidRhino/dependabot/npm_and_yarn/site/astro-7.2.9
