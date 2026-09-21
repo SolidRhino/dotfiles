@@ -7,6 +7,24 @@ description: All notable changes to this dotfiles repository.
 
 All notable changes to this dotfiles repository will be documented here.
 
+## 21-09-2026
+### 📝 Other Changes
+- Merge pull request #101 from SolidRhino/dependabot/npm_and_yarn/site/devalue-5.9.2
+
+chore(deps): bump devalue from 5.8.1 to 5.9.2 in /site
+- Merge pull request #102 from SolidRhino/dependabot/npm_and_yarn/site/nanoid-3.3.19
+
+chore(deps): bump nanoid from 3.3.16 to 3.3.19 in /site
+- Merge pull request #103 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.42.1
+
+chore(deps): bump @astrojs/starlight from 0.42.0 to 0.42.1 in /site
+
+### 🔧 Miscellaneous
+- Update changelog
+- **deps:** Bump devalue from 5.8.1 to 5.9.2 in /site
+- **deps:** Bump nanoid from 3.3.16 to 3.3.19 in /site
+- **deps:** Bump @astrojs/starlight from 0.42.0 to 0.42.1 in /site
+
 ## 14-09-2026
 ### 📝 Other Changes
 - Merge pull request #95 from SolidRhino/dependabot/npm_and_yarn/site/astrojs/starlight-0.42.0
